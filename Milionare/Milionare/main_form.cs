@@ -149,7 +149,7 @@ namespace Milionare
             
 
             if (id >= 5 && id < 10)
-            {
+            { 
                 Global.wallet += 1000;
                 if (MetroFramework.MetroMessageBox.Show(this, "Results", "You earned 1 thousand dollars", MessageBoxButtons.RetryCancel, MessageBoxIcon.Information) == DialogResult.Retry)
                 {
@@ -288,8 +288,8 @@ namespace Milionare
                 }
                 else
                 {
-                    validate = 2;
-                }
+                    validate = 2; question_timer.Stop();
+            }
         }
         private void B_btn_Click(object sender, EventArgs e)
         {
@@ -305,8 +305,8 @@ namespace Milionare
                 }
                 else
                 {
-                    validate = 4;
-                }
+                    validate = 4; question_timer.Stop();
+            }
 
         }
         private void C_btn_Click(object sender, EventArgs e)
@@ -323,8 +323,8 @@ namespace Milionare
                 }
                 else
                 {
-                    validate = 6;
-                }
+                    validate = 6; question_timer.Stop();
+            }
         }
         private void D_btn_Click(object sender, EventArgs e)
         {
@@ -339,8 +339,8 @@ namespace Milionare
                 }
                 else
                 {
-                    validate = 8;
-                }
+                    validate = 8; question_timer.Stop();
+            }
         }
         //-----------------------------------------------------------------------------------------------
         //Timere
@@ -355,7 +355,7 @@ namespace Milionare
             }
             else
             if (question_timebar.Value == 10) { question_timebar.ProgressColor = Color.Red;  }
-                 if (id == 16)
+            if (id == 16)
             {
                 question_timer.Stop(); //caz de castig 
             }
