@@ -38,7 +38,9 @@
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.re_pass_txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // nickname_txt
@@ -52,7 +54,7 @@
             this.nickname_txt.SelectedText = "";
             this.nickname_txt.SelectionLength = 0;
             this.nickname_txt.SelectionStart = 0;
-            this.nickname_txt.Size = new System.Drawing.Size(254, 23);
+            this.nickname_txt.Size = new System.Drawing.Size(185, 23);
             this.nickname_txt.TabIndex = 1;
             this.nickname_txt.UseSystemPasswordChar = false;
             this.nickname_txt.Leave += new System.EventHandler(this.nickname_txt_Leave);
@@ -84,7 +86,7 @@
             this.name_txt.SelectedText = "";
             this.name_txt.SelectionLength = 0;
             this.name_txt.SelectionStart = 0;
-            this.name_txt.Size = new System.Drawing.Size(254, 23);
+            this.name_txt.Size = new System.Drawing.Size(185, 23);
             this.name_txt.TabIndex = 0;
             this.name_txt.UseSystemPasswordChar = false;
             this.name_txt.Leave += new System.EventHandler(this.name_txt_Leave);
@@ -150,11 +152,22 @@
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider1.Icon")));
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Milionare.Properties.Resources._1;
+            this.pictureBox1.Location = new System.Drawing.Point(219, 78);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(63, 56);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(314, 292);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.re_pass_txt);
             this.Controls.Add(this.materialDivider1);
             this.Controls.Add(this.reg_btn);
@@ -169,6 +182,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.register_FormClosed);
             this.Load += new System.EventHandler(this.register_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -183,5 +197,6 @@
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
         private MaterialSkin.Controls.MaterialSingleLineTextField re_pass_txt;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
