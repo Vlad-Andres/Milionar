@@ -228,7 +228,7 @@ namespace Milionare
             }
             else if (id < 5)
             {
-                if (MetroFramework.MetroMessageBox.Show(this, "Results", "You didn't earned anything :(", MessageBoxButtons.RetryCancel, MessageBoxIcon.Information) == DialogResult.Retry)
+                if (MetroFramework.MetroMessageBox.Show(this, "Results", "You didn't earned anything :(", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
                 {
                     first_form f = new first_form();
                     this.Hide();
@@ -354,6 +354,7 @@ namespace Milionare
                 result(id);
             }
             else
+            if (question_timebar.Value == 10) { question_timebar.ProgressColor = Color.Red;  }
                  if (id == 16)
             {
                 question_timer.Stop(); //caz de castig 

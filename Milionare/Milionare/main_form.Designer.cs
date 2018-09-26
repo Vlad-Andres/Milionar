@@ -116,8 +116,8 @@
             this.question_timebar.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.question_timebar.MaxValue = 61;
             this.question_timebar.Name = "question_timebar";
-            this.question_timebar.ProgressBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(207)))), ((int)(((byte)(250)))));
-            this.question_timebar.ProgressColor = System.Drawing.Color.DarkViolet;
+            this.question_timebar.ProgressBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(60)))), ((int)(((byte)(151)))));
+            this.question_timebar.ProgressColor = System.Drawing.Color.Yellow;
             this.question_timebar.Size = new System.Drawing.Size(286, 286);
             this.question_timebar.TabIndex = 6;
             this.question_timebar.Value = 60;
