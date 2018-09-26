@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="milionaireDataSet" targetNamespace="http://tempuri.org/milionaireDataSet.xsd" xmlns:mstns="http://tempuri.org/milionaireDataSet.xsd" xmlns="http://tempuri.org/milionaireDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="milionaireConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="milionaireConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Milionare.Properties.Settings.GlobalReference.Default.milionaireConnectionString" Provider="MySql.Data.MySqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="answersTableAdapter" GeneratorDataComponentClassName="answersTableAdapter" Name="answers" UserDataComponentName="answersTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="milionaireConnectionString (Settings)" DbObjectName="milionaire.answers" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Id, answer, question_id, letter FROM answers</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="gamesTableAdapter" GeneratorDataComponentClassName="gamesTableAdapter" Name="games" UserDataComponentName="gamesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="milionaireConnectionString (Settings)" DbObjectName="milionaire.games" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Id, topic_id, failed_at, right_ans, canceled FROM games</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="questionsTableAdapter" GeneratorDataComponentClassName="questionsTableAdapter" Name="questions" UserDataComponentName="questionsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="milionaireConnectionString (Settings)" DbObjectName="milionaire.questions" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Id, question, answer_id, author, topic_id FROM questions</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="topicsTableAdapter" GeneratorDataComponentClassName="topicsTableAdapter" Name="topics" UserDataComponentName="topicsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="milionaireConnectionString (Settings)" DbObjectName="milionaire.topics" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Id, topic FROM topics</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="verifyTableAdapter" GeneratorDataComponentClassName="verifyTableAdapter" Name="verify" UserDataComponentName="verifyTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="milionaireConnectionString (Settings)" DbObjectName="milionaire.verify" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT id, verifycol FROM verify</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="milionaireDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="milionaireDataSet" msprop:Generator_UserDSName="milionaireDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="answers" msprop:Generator_TableClassName="answersDataTable" msprop:Generator_TableVarName="tableanswers" msprop:Generator_TablePropName="answers" msprop:Generator_RowDeletingName="answersRowDeleting" msprop:Generator_RowChangingName="answersRowChanging" msprop:Generator_RowEvHandlerName="answersRowChangeEventHandler" msprop:Generator_RowDeletedName="answersRowDeleted" msprop:Generator_UserTableName="answers" msprop:Generator_RowChangedName="answersRowChanged" msprop:Generator_RowEvArgName="answersRowChangeEvent" msprop:Generator_RowClassName="answersRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="games" msprop:Generator_TableClassName="gamesDataTable" msprop:Generator_TableVarName="tablegames" msprop:Generator_TablePropName="games" msprop:Generator_RowDeletingName="gamesRowDeleting" msprop:Generator_RowChangingName="gamesRowChanging" msprop:Generator_RowEvHandlerName="gamesRowChangeEventHandler" msprop:Generator_RowDeletedName="gamesRowDeleted" msprop:Generator_UserTableName="games" msprop:Generator_RowChangedName="gamesRowChanged" msprop:Generator_RowEvArgName="gamesRowChangeEvent" msprop:Generator_RowClassName="gamesRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="questions" msprop:Generator_TableClassName="questionsDataTable" msprop:Generator_TableVarName="tablequestions" msprop:Generator_TablePropName="questions" msprop:Generator_RowDeletingName="questionsRowDeleting" msprop:Generator_RowChangingName="questionsRowChanging" msprop:Generator_RowEvHandlerName="questionsRowChangeEventHandler" msprop:Generator_RowDeletedName="questionsRowDeleted" msprop:Generator_UserTableName="questions" msprop:Generator_RowChangedName="questionsRowChanged" msprop:Generator_RowEvArgName="questionsRowChangeEvent" msprop:Generator_RowClassName="questionsRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="topics" msprop:Generator_TableClassName="topicsDataTable" msprop:Generator_TableVarName="tabletopics" msprop:Generator_TablePropName="topics" msprop:Generator_RowDeletingName="topicsRowDeleting" msprop:Generator_RowChangingName="topicsRowChanging" msprop:Generator_RowEvHandlerName="topicsRowChangeEventHandler" msprop:Generator_RowDeletedName="topicsRowDeleted" msprop:Generator_UserTableName="topics" msprop:Generator_RowChangedName="topicsRowChanged" msprop:Generator_RowEvArgName="topicsRowChangeEvent" msprop:Generator_RowClassName="topicsRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="verify" msprop:Generator_TableClassName="verifyDataTable" msprop:Generator_TableVarName="tableverify" msprop:Generator_TablePropName="verify" msprop:Generator_RowDeletingName="verifyRowDeleting" msprop:Generator_RowChangingName="verifyRowChanging" msprop:Generator_RowEvHandlerName="verifyRowChangeEventHandler" msprop:Generator_RowDeletedName="verifyRowDeleted" msprop:Generator_UserTableName="verify" msprop:Generator_RowChangedName="verifyRowChanged" msprop:Generator_RowEvArgName="verifyRowChangeEvent" msprop:Generator_RowClassName="verifyRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
