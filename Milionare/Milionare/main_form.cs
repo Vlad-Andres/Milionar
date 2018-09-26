@@ -351,7 +351,7 @@ namespace Milionare
             {
                 question_timer.Stop(); //caz cand timerul a expirat 
 
-                this.Close();
+                result(id);
             }
             else
                  if (id == 16)
@@ -359,6 +359,9 @@ namespace Milionare
                 question_timer.Stop(); //caz de castig 
             }
             question_timebar.Value--;
+            quetion_timer_lbl.Text = question_timebar.Value.ToString();
+
+
 
         }
 

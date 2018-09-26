@@ -44,6 +44,7 @@
             this.B_btn = new System.Windows.Forms.Button();
             this.validation_timer = new System.Windows.Forms.Timer(this.components);
             this.level_up_timer = new System.Windows.Forms.Timer(this.components);
+            this.quetion_timer_lbl = new System.Windows.Forms.Label();
             this.circle_btn_public = new Milionare.circle_button();
             this.circle_btn_call = new Milionare.circle_button();
             this.circle_btn_half = new Milionare.circle_button();
@@ -108,18 +109,18 @@
             this.question_timebar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("question_timebar.BackgroundImage")));
             this.question_timebar.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
             this.question_timebar.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.question_timebar.LabelVisible = true;
+            this.question_timebar.LabelVisible = false;
             this.question_timebar.LineProgressThickness = 8;
             this.question_timebar.LineThickness = 5;
             this.question_timebar.Location = new System.Drawing.Point(404, 22);
             this.question_timebar.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.question_timebar.MaxValue = 100;
+            this.question_timebar.MaxValue = 61;
             this.question_timebar.Name = "question_timebar";
-            this.question_timebar.ProgressBackColor = System.Drawing.Color.Gainsboro;
+            this.question_timebar.ProgressBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(207)))), ((int)(((byte)(250)))));
             this.question_timebar.ProgressColor = System.Drawing.Color.DarkViolet;
             this.question_timebar.Size = new System.Drawing.Size(286, 286);
             this.question_timebar.TabIndex = 6;
-            this.question_timebar.Value = 99;
+            this.question_timebar.Value = 60;
             // 
             // question_timer
             // 
@@ -234,6 +235,17 @@
             // 
             this.level_up_timer.Tick += new System.EventHandler(this.level_up_timer_Tick);
             // 
+            // quetion_timer_lbl
+            // 
+            this.quetion_timer_lbl.AutoSize = true;
+            this.quetion_timer_lbl.BackColor = System.Drawing.Color.Transparent;
+            this.quetion_timer_lbl.Font = new System.Drawing.Font("Nirmala UI", 29.75F);
+            this.quetion_timer_lbl.Location = new System.Drawing.Point(516, 142);
+            this.quetion_timer_lbl.Name = "quetion_timer_lbl";
+            this.quetion_timer_lbl.Size = new System.Drawing.Size(67, 54);
+            this.quetion_timer_lbl.TabIndex = 14;
+            this.quetion_timer_lbl.Text = "60";
+            // 
             // circle_btn_public
             // 
             this.circle_btn_public.BackColor = System.Drawing.Color.Transparent;
@@ -307,6 +319,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1096, 618);
             this.ControlBox = false;
+            this.Controls.Add(this.quetion_timer_lbl);
             this.Controls.Add(this.D_btn);
             this.Controls.Add(this.B_btn);
             this.Controls.Add(this.panel_off_lbl);
@@ -353,5 +366,6 @@
         private System.Windows.Forms.Button A_btn;
         private System.Windows.Forms.Timer validation_timer;
         private System.Windows.Forms.Timer level_up_timer;
+        private System.Windows.Forms.Label quetion_timer_lbl;
     }
 }
