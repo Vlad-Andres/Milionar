@@ -284,7 +284,7 @@ namespace Milionare
                 if (correct_letter() == "A")
                 {
                     validate = 1;
-                    question_timebar.Value = 99;
+                    question_timebar.Value = 59;
                 }
                 else
                 {
@@ -301,7 +301,7 @@ namespace Milionare
                 if (correct_letter() == "B")
                 {
                     validate = 3;
-                    question_timebar.Value = 99;
+                    question_timebar.Value = 59;
                 }
                 else
                 {
@@ -319,7 +319,7 @@ namespace Milionare
                 if (correct_letter() == "C")
                 {
                     validate = 5;
-                    question_timebar.Value = 99;
+                    question_timebar.Value = 59;
                 }
                 else
                 {
@@ -335,7 +335,7 @@ namespace Milionare
                 if (correct_letter() == "D")
                 {
                     validate = 7;
-                    question_timebar.Value = 99;
+                    question_timebar.Value = 59;
                 }
                 else
                 {

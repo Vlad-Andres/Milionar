@@ -13,7 +13,7 @@ namespace Milionare
         public static int global_int = 0;
         public static int game_id = 0, topic;
         public static bool passed = true;
-        public static string db_connect_prop = "server=localhost; database=milionaire; user=root; password=toor";
+        public static string db_connect_prop = "server=eu-cdbr-west-02.cleardb.net; database=heroku_e02ae5755bbb967; user=b604b027dea8bd; password=9b329d90";
 
         public static int GlobalVar
         {
