@@ -35,9 +35,9 @@ namespace Milionare
         }
         public void side_labels(string[] s)
         {
-              int loc = 577;
-              
-            
+            int loc = 577;
+
+
 
             for (int i = 0; i < 15; i++)
             {
@@ -46,7 +46,7 @@ namespace Milionare
             }
             for (int i = 0; i < 15; i++)
             {
-                labels_nr[i].Top = loc ;
+                labels_nr[i].Top = loc;
                 labels_txt[i].Top = loc;
                 loc -= 40;
                 labels_nr[i].Left = 30;
@@ -73,7 +73,7 @@ namespace Milionare
 
             }
         }
-        int side_panel_level = 0, panel_off_colorG=171, panel_off_colorB=153;
+        int side_panel_level = 0, panel_off_colorG = 171, panel_off_colorB = 153;
         public void side_panel_move()
         {
             if (side_panel_level < 15)
@@ -81,7 +81,7 @@ namespace Milionare
                 labels_txt[side_panel_level].ForeColor = Color.FromArgb(255, 234, 203, 63);
                 labels_nr[side_panel_level].ForeColor = Color.FromArgb(255, 234, 203, 63);
                 panel_off_lbl.Top -= 40;
-                panel_off_lbl.BackColor = Color.FromArgb(255, 234, panel_off_colorG+=5 , panel_off_colorB-=10 );
+                panel_off_lbl.BackColor = Color.FromArgb(255, 234, panel_off_colorG += 5, panel_off_colorB -= 10);
                 if (side_panel_level > 0)
                 {
                     labels_txt[side_panel_level - 1].ForeColor = Color.Green;
@@ -92,7 +92,23 @@ namespace Milionare
 
         }
         //--------------------------------------
-
+        public class Question
+        {
+            public string question_text, answer, variant_a_text, variant_b_text, variant_c_text, variant_d_text, correct_var;
+            public int question_id;
+            public Question(string quest_txt, int quest_id, string answ, string var_a, string var_b, string var_c, string var_d, string corr_var )
+            {
+                question_text = quest_txt;
+                question_id = quest_id;
+                answer = answ;
+                variant_a_text = var_a;
+                variant_b_text = var_b;
+                variant_c_text = var_c;
+                variant_d_text = var_d;
+                correct_var = corr_var;
+            }
+        }
+        
         /*SqlConnection connection;*/
         string[] sums = new string[] {"100 $","200 $","300 $","500 $","1 000 $","2 000 $","4 000 $","8 000 $",
             "16 000 $","32 000 $","64 000 $","125 000 $","250 000 $","500 000 $","1 Milion"};
