@@ -128,12 +128,12 @@ namespace Milionare
             adapter.Fill(table);
             foreach (DataRow row in table.Rows)
             {
-                if (!String.IsNullOrEmpty(q_text) && p!=-1)
+                if (!String.IsNullOrEmpty(q_text) && !String.IsNullOrEmpty(ans) && !String.IsNullOrEmpty(v_a) && !String.IsNullOrEmpty(v_b) && !String.IsNullOrEmpty(v_c) && !String.IsNullOrEmpty(v_d))
                 {
                     // Question q = new Question(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString(), row[3].ToString(), Convert.ToBoolean(row[4]));
                     Question q = new Question(q_id, q_text, v_a, v_b, v_c, v_d, ans, p);
                     questions_list.Add(q);
-                    q_text = "";
+                    q_text = ""; ans = ""; v_a = ""; v_b = ""; v_c = ""; v_d = "";
                 }
                 else
                 {
@@ -161,12 +161,12 @@ namespace Milionare
 
 
         }
+        List<int> price_equal = new List<int>();
         int current_id;
         private void populate_main(int price)
         {
-            level_up_timer.Stop();
-            MessageBox.Show(current_id.ToString());
-            List<int> price_equal = new List<int>(); 
+           // Cursor.Position = new Point(author_img.Location.X, author_img.Location.Y);
+            price_equal.Clear();
             validating = false;
             A_btn.BackgroundImage = null; A_btn.Visible = true;
             B_btn.BackgroundImage = null; B_btn.Visible = true;
@@ -174,16 +174,16 @@ namespace Milionare
             D_btn.BackgroundImage = null; D_btn.Visible = true;
             for (int i=0; i<questions_list.Count; i++)
             {
-                if (questions_list[i].q_price == price) { price_equal.Add(i);  }
+                if (questions_list[i].q_price == price) { price_equal.Add(i);}
             }
             Random random = new Random();
             current_id = random.Next(0,price_equal.Count);
 
-            label1.Text = questions_list[current_id].question_text;
-            A_btn.Text = questions_list[current_id].variant_a_text;
-            B_btn.Text = questions_list[current_id].variant_b_text;
-            C_btn.Text = questions_list[current_id].variant_c_text;
-            D_btn.Text = questions_list[current_id].variant_d_text;
+            label1.Text = questions_list[price_equal[current_id]].question_text;
+            A_btn.Text = questions_list[price_equal[current_id]].variant_a_text;
+            B_btn.Text = questions_list[price_equal[current_id]].variant_b_text;
+            C_btn.Text = questions_list[price_equal[current_id]].variant_c_text;
+            D_btn.Text = questions_list[price_equal[current_id]].variant_d_text;
             
             //MySqlConnection connection = new MySqlConnection();
             //string con_string = Global.db_connect_prop;
@@ -347,6 +347,11 @@ namespace Milionare
             side_labels(sums);
             side_panel_change(false);
             fill_quest_list();
+            foreach (Question q in questions_list)
+            {
+                MessageBox.Show(q.question_id.ToString() +" "+ q.question_text + " " + q.variant_a_text + " " + q.variant_b_text + " " + q.variant_c_text + " " + q.variant_d_text + " " + q.answer);
+            }
+            
             populate_main(0);
             side_panel_move();
 
@@ -364,10 +369,10 @@ namespace Milionare
                 validating = true;
                 // A_btn.BackColor = Color.Yellow;
                 A_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/A_yellow.png"); 
-                if (questions_list[current_id].answer == A_btn.Text)
+                if (questions_list[price_equal[current_id]].answer == A_btn.Text)
                 {
                     validate = 1;
-                    question_timebar.Value = 59;
+                    question_timebar.Value = 60;
                 }
                 else
                 {
@@ -382,10 +387,10 @@ namespace Milionare
                 //B_btn.BackColor = Color.Yellow;\
                 B_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/B_yellow.png");
 
-                if (questions_list[current_id].answer == B_btn.Text)
+                if (questions_list[price_equal[current_id]].answer == B_btn.Text)
                 {
                     validate = 3;
-                    question_timebar.Value = 59;
+                    question_timebar.Value = 60;
                 }
                 else
                 {
@@ -400,10 +405,10 @@ namespace Milionare
                 // C_btn.BackColor = Color.Yellow;
                 C_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/C_yellow.png");
 
-                if (questions_list[current_id].answer == C_btn.Text)
+                if (questions_list[price_equal[current_id]].answer == C_btn.Text)
                 {
                     validate = 5;
-                    question_timebar.Value = 59;
+                    question_timebar.Value = 60;
                 }
                 else
                 {
@@ -417,10 +422,10 @@ namespace Milionare
                 validating = true;
                 // D_btn.BackColor = Color.Yellow;
                 D_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/D_yellow.png");
-                if (questions_list[current_id].answer == D_btn.Text)
+                if (questions_list[price_equal[current_id]].answer == D_btn.Text)
                 {
                     validate = 7;
-                    question_timebar.Value = 59;
+                    question_timebar.Value = 60;
                 }
                 else
                 {
@@ -454,30 +459,30 @@ namespace Milionare
         
         private void validation_timer_Tick(object sender, EventArgs e)
         {
-            
 
+            validation_timer.Stop();
             switch (validate)
             {
-                case 1: { A_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/A_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; level_up_timer.Start(); break; }
+                case 1: { A_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/A_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; lvl_change(); break; }
                 case 2: { A_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/A_red.png"); result(id); break; }
 
-                case 3: { B_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/B_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; level_up_timer.Start(); break; }
+                case 3: { B_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/B_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; lvl_change(); break; }
                 case 4: { B_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/B_red.png"); result(id); break; }
 
-                case 5: { C_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/C_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; level_up_timer.Start(); break; }
+                case 5: { C_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/C_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; lvl_change(); break; }
                 case 6: { C_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/C_red.png"); result(id); break; }
 
-                case 7: { D_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/D_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; level_up_timer.Start(); break; }
+                case 7: { D_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/D_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; lvl_change(); break; }
                 case 8: { D_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/D_red.png"); result(id); break; }
             }
-            validation_timer.Stop();
+            
         }
-        private void level_up_timer_Tick(object sender, EventArgs e)
+        public void lvl_change()
         {
-            MessageBox.Show("now");
-            price++;
-            populate_main(price);
-            level_up_timer.Stop();
+            if (price < 14) {
+                price++;
+                populate_main(price);
+            }
             side_panel_move();
         }
         //-----------------------------------------------------------------------------------------------

@@ -124,19 +124,6 @@
     <value>55</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="side_panel_gradient.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGSSURBVChTBcFpS9NxAMDx3+sIAqPskIZHntM59mdubc7Z
-        5ti8GpMhCkMQQTBJRc1kaNbS1nK5pmu5mudczRNvyS7RUENFCupBD3oN3z4fsaX/zEbJBqt3Flgum2HR
-        Nk6iMkD87jNijn6mnd1M1LUi5tV7vNfuECteYcYYZ9IUJWoZI2J7QbjqCSF7L8GadkRUeUBE2iWsWSOk
-        SxA0TBEoDeM3j+CzDuGt6GOwugsRkB/hV3zFp9rCq15iUBvDo3/LQEmQPtNz3JYBHtp6EJ6sEx7n7tOf
-        /xF34Sq90gceFE3Sefs1HcV+7hufcs/sRvSkntOVcUhH9hfa8jZpLVikRTlLsxShSfOKRp2XBsMjREvK
-        L5plP2hK36Mxc4eGnBVc8jj1iglqVSGc6mEcWg/ClfyH+utn1N78jjP1E46MdexZ81TlTlNe8AarcoQy
-        aQhhT/pL9eWfVFw9xnrjGxbZNqa0ZYy35jBkv0OXN4pG4UOYL/yj9OJvDJdO0V85QHttl6KUNSRZAmX6
-        FIrMMPKcl/wHOgf0fcUatHoAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="question_timebar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAR4AAAEeCAYAAABcyXrWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -254,13 +241,23 @@
         +uFnEdIfWQAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="side_panel_gradient.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGSSURBVChTBcFpS9NxAMDx3+sIAqPskIZHntM59mdubc7Z
+        5ti8GpMhCkMQQTBJRc1kaNbS1nK5pmu5mudczRNvyS7RUENFCupBD3oN3z4fsaX/zEbJBqt3Flgum2HR
+        Nk6iMkD87jNijn6mnd1M1LUi5tV7vNfuECteYcYYZ9IUJWoZI2J7QbjqCSF7L8GadkRUeUBE2iWsWSOk
+        SxA0TBEoDeM3j+CzDuGt6GOwugsRkB/hV3zFp9rCq15iUBvDo3/LQEmQPtNz3JYBHtp6EJ6sEx7n7tOf
+        /xF34Sq90gceFE3Sefs1HcV+7hufcs/sRvSkntOVcUhH9hfa8jZpLVikRTlLsxShSfOKRp2XBsMjREvK
+        L5plP2hK36Mxc4eGnBVc8jj1iglqVSGc6mEcWg/ClfyH+utn1N78jjP1E46MdexZ81TlTlNe8AarcoQy
+        aQhhT/pL9eWfVFw9xnrjGxbZNqa0ZYy35jBkv0OXN4pG4UOYL/yj9OJvDJdO0V85QHttl6KUNSRZAmX6
+        FIrMMPKcl/wHOgf0fcUatHoAAAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="question_timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>141, 17</value>
   </metadata>
   <metadata name="validation_timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>274, 17</value>
-  </metadata>
-  <metadata name="level_up_timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>412, 17</value>
   </metadata>
 </root>
