@@ -94,25 +94,21 @@ namespace Milionare
         //--------------------------------------
         public class Question
         {
-            public string question_text, answer, variant_a_text, variant_b_text, variant_c_text, variant_d_text, correct_var;
+            public string question_text, variant_a_text, variant_b_text, variant_c_text, variant_d_text, correct_var, answer;
             public int question_id;
-            public Question(int quest_id, string quest_txt, string var, string letter, bool is_correct )
+            public Question(int quest_id, string quest_txt, string var_a, string var_b, string var_c, string var_d, string correct, string answ)
             {
-                if (question_id != quest_id) { question_id = quest_id; }
-                if (is_correct) { question_text = quest_txt; answer = var; };
-                switch (letter) {
-                    case "A": variant_a_text = var;
-                        break;
-                    case "B": variant_b_text = var;
-                        break;
-                    case "C": variant_c_text = var;
-                        break;
-                    case "D": variant_d_text = var;
-                        break;
-
-                }
+                question_id = quest_id;
+                question_text = quest_txt;
+                answer = answ;
+                variant_a_text = var_a;
+                variant_b_text = var_b;
+                variant_c_text = var_c;
+                variant_d_text = var_d;
+                correct_var = correct;
             }
         }
+        
         List<Question> questions_list = new List<Question>();
         
         /*SqlConnection connection;*/
@@ -123,29 +119,48 @@ namespace Milionare
         // funtia cu adaugare informatie din db--------------------------------------------------------------------
         private void fill_quest_list()
         {
+            string q_text="", ans="", v_a = "", v_b = "", v_c = "", v_d = "", c_var = "";
+            int q_id=-1;
             MySqlConnection connection = new MySqlConnection();
-            //string con_string = Global.db_connect_prop;
-            //string select_querry = "SELECT a.question_id, q.question ,a.answer, a.letter , IF(q.answer_id=a.Id, 1, 0) AS `if_correct` FROM questions q RIGHT JOIN answers a ON q.answer_id = a.Id;";
-            //using (connection = new MySqlConnection(con_string))
-            //using (MySqlCommand question_print = new MySqlCommand(select_querry, connection))
-            //{
-            //    connection.Open();
-            //    MySqlDataReader qs = question_print.ExecuteReader(); qs.Read();
-            //    Question q = new Question(Convert.ToInt32(qs["question_id"]), qs["question"].ToString(), qs["answer"].ToString(), qs["letter"].ToString(),Convert.ToBoolean(qs["if_correct"]));
-            //    questions_list.Add(q);
-            //    connection.Close();
-            //}
             DataTable table = new DataTable();
             string select_querry = "SELECT a.question_id, q.question ,a.answer, a.letter , IF(q.answer_id=a.Id, 1, 0) AS `if_correct` FROM questions q RIGHT JOIN answers a ON q.answer_id = a.Id;";
             MySqlDataAdapter adapter = new MySqlDataAdapter(select_querry, con_string);
             adapter.Fill(table);
             foreach (DataRow row in table.Rows)
             {
-                    Question q = new Question(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString(), row[3].ToString(),Convert.ToBoolean(row[4]));
+                if (!String.IsNullOrEmpty(q_text))
+                {
+                    // Question q = new Question(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString(), row[3].ToString(), Convert.ToBoolean(row[4]));
+                    Question q = new Question(q_id, q_text, v_a, v_b, v_c, v_d, c_var, ans);
                     questions_list.Add(q);
-                    connection.Close();
+                    q_text = "";
+                }
+                else
+                {
+                    if (q_id != Convert.ToInt32(row[0])) { q_id = Convert.ToInt32(row[0]); }
+                    if (Convert.ToBoolean(row[4])) { q_text = row[1].ToString(); ans = row[2].ToString(); };
+                    switch (row[3].ToString())
+                    {
+                        case "A":
+                            v_a = row[2].ToString();
+                            break;
+                        case "B":
+                            v_b = row[2].ToString();
+                            break;
+                        case "C":
+                            v_c = row[2].ToString();
+                            break;
+                        case "D":
+                            v_d = row[2].ToString();
+                            break;
+                    }
+                }
+                connection.Close();
             }
+
+
         }
+        
         private void populate_main(int price)
         {
             validating = false;
