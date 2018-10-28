@@ -43,13 +43,13 @@
             this.D_btn = new System.Windows.Forms.Button();
             this.B_btn = new System.Windows.Forms.Button();
             this.validation_timer = new System.Windows.Forms.Timer(this.components);
-            this.level_up_timer = new System.Windows.Forms.Timer(this.components);
             this.quetion_timer_lbl = new System.Windows.Forms.Label();
             this.circle_btn_public = new Milionare.circle_button();
             this.circle_btn_call = new Milionare.circle_button();
             this.circle_btn_half = new Milionare.circle_button();
             this.circle_btn_slide = new Milionare.circle_button();
             this.circle_btn_leave = new Milionare.circle_button();
+            this.level_up_timer = new System.Windows.Forms.Timer(this.components);
             this.side_panel_gradient.SuspendLayout();
             this.side_panel.SuspendLayout();
             this.SuspendLayout();
@@ -70,10 +70,9 @@
             this.side_panel_gradient.GradientTopLeft = System.Drawing.Color.BlueViolet;
             this.side_panel_gradient.GradientTopRight = System.Drawing.Color.DarkOliveGreen;
             this.side_panel_gradient.Location = new System.Drawing.Point(0, 0);
-            this.side_panel_gradient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.side_panel_gradient.Name = "side_panel_gradient";
             this.side_panel_gradient.Quality = 10;
-            this.side_panel_gradient.Size = new System.Drawing.Size(37, 761);
+            this.side_panel_gradient.Size = new System.Drawing.Size(28, 618);
             this.side_panel_gradient.TabIndex = 0;
             this.side_panel_gradient.Paint += new System.Windows.Forms.PaintEventHandler(this.side_panel_gradient_Paint);
             // 
@@ -84,10 +83,9 @@
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button1.Location = new System.Drawing.Point(257, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(193, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(36, 32);
+            this.button1.Size = new System.Drawing.Size(27, 26);
             this.button1.TabIndex = 0;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -97,9 +95,8 @@
             this.side_panel.Controls.Add(this.side_panel_gradient);
             this.side_panel.Dock = System.Windows.Forms.DockStyle.Left;
             this.side_panel.Location = new System.Drawing.Point(0, 0);
-            this.side_panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.side_panel.Name = "side_panel";
-            this.side_panel.Size = new System.Drawing.Size(37, 761);
+            this.side_panel.Size = new System.Drawing.Size(28, 618);
             this.side_panel.TabIndex = 5;
             this.side_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.side_panel_Paint);
             // 
@@ -115,13 +112,13 @@
             this.question_timebar.LabelVisible = false;
             this.question_timebar.LineProgressThickness = 8;
             this.question_timebar.LineThickness = 5;
-            this.question_timebar.Location = new System.Drawing.Point(539, 27);
-            this.question_timebar.Margin = new System.Windows.Forms.Padding(13, 11, 13, 11);
+            this.question_timebar.Location = new System.Drawing.Point(404, 22);
+            this.question_timebar.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.question_timebar.MaxValue = 61;
             this.question_timebar.Name = "question_timebar";
             this.question_timebar.ProgressBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(60)))), ((int)(((byte)(151)))));
             this.question_timebar.ProgressColor = System.Drawing.Color.Yellow;
-            this.question_timebar.Size = new System.Drawing.Size(352, 352);
+            this.question_timebar.Size = new System.Drawing.Size(286, 286);
             this.question_timebar.TabIndex = 6;
             this.question_timebar.Value = 60;
             // 
@@ -134,20 +131,18 @@
             // panel_off_lbl
             // 
             this.panel_off_lbl.AutoSize = true;
-            this.panel_off_lbl.Location = new System.Drawing.Point(16, 437);
-            this.panel_off_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.panel_off_lbl.Location = new System.Drawing.Point(12, 355);
             this.panel_off_lbl.Name = "panel_off_lbl";
-            this.panel_off_lbl.Size = new System.Drawing.Size(0, 17);
+            this.panel_off_lbl.Size = new System.Drawing.Size(0, 13);
             this.panel_off_lbl.TabIndex = 7;
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
-            this.label1.Location = new System.Drawing.Point(225, 423);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(169, 344);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1044, 110);
+            this.label1.Size = new System.Drawing.Size(783, 89);
             this.label1.TabIndex = 8;
             this.label1.Text = "label1";
             // 
@@ -160,10 +155,10 @@
             this.A_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.A_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.A_btn.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.A_btn.Location = new System.Drawing.Point(148, 559);
+            this.A_btn.Location = new System.Drawing.Point(111, 454);
             this.A_btn.Margin = new System.Windows.Forms.Padding(0);
             this.A_btn.Name = "A_btn";
-            this.A_btn.Size = new System.Drawing.Size(569, 71);
+            this.A_btn.Size = new System.Drawing.Size(427, 58);
             this.A_btn.TabIndex = 10;
             this.A_btn.Text = "buttonA";
             this.A_btn.UseVisualStyleBackColor = false;
@@ -180,10 +175,10 @@
             this.C_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.C_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.C_btn.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.C_btn.Location = new System.Drawing.Point(152, 647);
+            this.C_btn.Location = new System.Drawing.Point(114, 526);
             this.C_btn.Margin = new System.Windows.Forms.Padding(0);
             this.C_btn.Name = "C_btn";
-            this.C_btn.Size = new System.Drawing.Size(569, 74);
+            this.C_btn.Size = new System.Drawing.Size(427, 60);
             this.C_btn.TabIndex = 11;
             this.C_btn.Text = "buttonC";
             this.C_btn.UseVisualStyleBackColor = false;
@@ -200,10 +195,10 @@
             this.D_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.D_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.D_btn.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.D_btn.Location = new System.Drawing.Point(741, 647);
+            this.D_btn.Location = new System.Drawing.Point(556, 526);
             this.D_btn.Margin = new System.Windows.Forms.Padding(0);
             this.D_btn.Name = "D_btn";
-            this.D_btn.Size = new System.Drawing.Size(571, 74);
+            this.D_btn.Size = new System.Drawing.Size(428, 60);
             this.D_btn.TabIndex = 13;
             this.D_btn.Text = "buttonD";
             this.D_btn.UseVisualStyleBackColor = false;
@@ -220,10 +215,10 @@
             this.B_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.B_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.B_btn.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.B_btn.Location = new System.Drawing.Point(740, 559);
+            this.B_btn.Location = new System.Drawing.Point(555, 454);
             this.B_btn.Margin = new System.Windows.Forms.Padding(0);
             this.B_btn.Name = "B_btn";
-            this.B_btn.Size = new System.Drawing.Size(571, 71);
+            this.B_btn.Size = new System.Drawing.Size(428, 58);
             this.B_btn.TabIndex = 12;
             this.B_btn.Text = "buttonB";
             this.B_btn.UseVisualStyleBackColor = false;
@@ -236,19 +231,14 @@
             this.validation_timer.Interval = 1000;
             this.validation_timer.Tick += new System.EventHandler(this.validation_timer_Tick);
             // 
-            // level_up_timer
-            // 
-            this.level_up_timer.Tick += new System.EventHandler(this.level_up_timer_Tick);
-            // 
             // quetion_timer_lbl
             // 
             this.quetion_timer_lbl.AutoSize = true;
             this.quetion_timer_lbl.BackColor = System.Drawing.Color.Transparent;
             this.quetion_timer_lbl.Font = new System.Drawing.Font("Nirmala UI", 29.75F);
-            this.quetion_timer_lbl.Location = new System.Drawing.Point(688, 175);
-            this.quetion_timer_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.quetion_timer_lbl.Location = new System.Drawing.Point(516, 142);
             this.quetion_timer_lbl.Name = "quetion_timer_lbl";
-            this.quetion_timer_lbl.Size = new System.Drawing.Size(83, 67);
+            this.quetion_timer_lbl.Size = new System.Drawing.Size(67, 54);
             this.quetion_timer_lbl.TabIndex = 14;
             this.quetion_timer_lbl.Text = "60";
             // 
@@ -256,10 +246,9 @@
             // 
             this.circle_btn_public.BackColor = System.Drawing.Color.Transparent;
             this.circle_btn_public.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.circle_btn_public.Location = new System.Drawing.Point(1337, 23);
-            this.circle_btn_public.Margin = new System.Windows.Forms.Padding(4);
+            this.circle_btn_public.Location = new System.Drawing.Point(1003, 19);
             this.circle_btn_public.Name = "circle_btn_public";
-            this.circle_btn_public.Size = new System.Drawing.Size(77, 66);
+            this.circle_btn_public.Size = new System.Drawing.Size(58, 54);
             this.circle_btn_public.TabIndex = 4;
             this.circle_btn_public.UseVisualStyleBackColor = false;
             this.circle_btn_public.Click += new System.EventHandler(this.circle_btn_public_Click);
@@ -270,10 +259,9 @@
             // 
             this.circle_btn_call.BackColor = System.Drawing.Color.Transparent;
             this.circle_btn_call.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.circle_btn_call.Location = new System.Drawing.Point(1192, 23);
-            this.circle_btn_call.Margin = new System.Windows.Forms.Padding(4);
+            this.circle_btn_call.Location = new System.Drawing.Point(894, 19);
             this.circle_btn_call.Name = "circle_btn_call";
-            this.circle_btn_call.Size = new System.Drawing.Size(77, 66);
+            this.circle_btn_call.Size = new System.Drawing.Size(58, 54);
             this.circle_btn_call.TabIndex = 3;
             this.circle_btn_call.UseVisualStyleBackColor = false;
             this.circle_btn_call.Click += new System.EventHandler(this.circle_btn_call_Click);
@@ -284,10 +272,9 @@
             // 
             this.circle_btn_half.BackColor = System.Drawing.Color.Transparent;
             this.circle_btn_half.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.circle_btn_half.Location = new System.Drawing.Point(1047, 23);
-            this.circle_btn_half.Margin = new System.Windows.Forms.Padding(4);
+            this.circle_btn_half.Location = new System.Drawing.Point(785, 19);
             this.circle_btn_half.Name = "circle_btn_half";
-            this.circle_btn_half.Size = new System.Drawing.Size(77, 66);
+            this.circle_btn_half.Size = new System.Drawing.Size(58, 54);
             this.circle_btn_half.TabIndex = 2;
             this.circle_btn_half.UseVisualStyleBackColor = false;
             this.circle_btn_half.Click += new System.EventHandler(this.circle_btn_half_Click);
@@ -298,10 +285,9 @@
             // 
             this.circle_btn_slide.BackColor = System.Drawing.Color.Transparent;
             this.circle_btn_slide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.circle_btn_slide.Location = new System.Drawing.Point(45, 23);
-            this.circle_btn_slide.Margin = new System.Windows.Forms.Padding(4);
+            this.circle_btn_slide.Location = new System.Drawing.Point(34, 19);
             this.circle_btn_slide.Name = "circle_btn_slide";
-            this.circle_btn_slide.Size = new System.Drawing.Size(77, 66);
+            this.circle_btn_slide.Size = new System.Drawing.Size(58, 54);
             this.circle_btn_slide.TabIndex = 0;
             this.circle_btn_slide.UseVisualStyleBackColor = false;
             this.circle_btn_slide.Click += new System.EventHandler(this.circle_btn_slide_Click);
@@ -312,23 +298,26 @@
             // 
             this.circle_btn_leave.BackColor = System.Drawing.Color.Transparent;
             this.circle_btn_leave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.circle_btn_leave.Location = new System.Drawing.Point(191, 25);
-            this.circle_btn_leave.Margin = new System.Windows.Forms.Padding(4);
+            this.circle_btn_leave.Location = new System.Drawing.Point(143, 20);
             this.circle_btn_leave.Name = "circle_btn_leave";
-            this.circle_btn_leave.Size = new System.Drawing.Size(77, 66);
+            this.circle_btn_leave.Size = new System.Drawing.Size(58, 54);
             this.circle_btn_leave.TabIndex = 1;
             this.circle_btn_leave.UseVisualStyleBackColor = false;
             this.circle_btn_leave.Click += new System.EventHandler(this.circle_btn_leave_Click);
             this.circle_btn_leave.MouseEnter += new System.EventHandler(this.circle_btn_leave_MouseEnter);
             this.circle_btn_leave.MouseLeave += new System.EventHandler(this.circle_btn_leave_MouseLeave);
             // 
+            // level_up_timer
+            // 
+            this.level_up_timer.Tick += new System.EventHandler(this.level_up_timer_Tick);
+            // 
             // main_form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Milionare.Properties.Resources.main;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(1461, 761);
+            this.ClientSize = new System.Drawing.Size(1096, 618);
             this.ControlBox = false;
             this.Controls.Add(this.quetion_timer_lbl);
             this.Controls.Add(this.D_btn);
@@ -346,7 +335,6 @@
             this.Controls.Add(this.C_btn);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "main_form";
             this.Load += new System.EventHandler(this.main_form_Load);
@@ -377,7 +365,7 @@
         private System.Windows.Forms.Button C_btn;
         private System.Windows.Forms.Button A_btn;
         private System.Windows.Forms.Timer validation_timer;
-        private System.Windows.Forms.Timer level_up_timer;
         private System.Windows.Forms.Label quetion_timer_lbl;
+        private System.Windows.Forms.Timer level_up_timer;
     }
 }

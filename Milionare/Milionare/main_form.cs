@@ -94,9 +94,9 @@ namespace Milionare
         //--------------------------------------
         public class Question
         {
-            public string question_text, variant_a_text, variant_b_text, variant_c_text, variant_d_text, correct_var, answer;
-            public int question_id;
-            public Question(int quest_id, string quest_txt, string var_a, string var_b, string var_c, string var_d, string correct, string answ)
+            public string question_text, variant_a_text, variant_b_text, variant_c_text, variant_d_text, answer;
+            public int question_id,q_price;
+            public Question(int quest_id, string quest_txt, string var_a, string var_b, string var_c, string var_d,  string answ, int prc )
             {
                 question_id = quest_id;
                 question_text = quest_txt;
@@ -105,7 +105,7 @@ namespace Milionare
                 variant_b_text = var_b;
                 variant_c_text = var_c;
                 variant_d_text = var_d;
-                correct_var = correct;
+                q_price = prc;
             }
         }
         
@@ -114,31 +114,31 @@ namespace Milionare
         /*SqlConnection connection;*/
         string[] sums = new string[] {"100 $","200 $","300 $","500 $","1 000 $","2 000 $","4 000 $","8 000 $",
             "16 000 $","32 000 $","64 000 $","125 000 $","250 000 $","500 000 $","1 Milion"};
-        MySqlConnection connetion = new MySqlConnection();
+
         string con_string = Global.db_connect_prop;
         // funtia cu adaugare informatie din db--------------------------------------------------------------------
         private void fill_quest_list()
         {
-            string q_text="", ans="", v_a = "", v_b = "", v_c = "", v_d = "", c_var = "";
-            int q_id=-1;
+            string q_text="", ans="", v_a = "", v_b = "", v_c = "", v_d = "";
+            int q_id=-1,p=-1;
             MySqlConnection connection = new MySqlConnection();
             DataTable table = new DataTable();
-            string select_querry = "SELECT a.question_id, q.question ,a.answer, a.letter , IF(q.answer_id=a.Id, 1, 0) AS `if_correct` FROM questions q RIGHT JOIN answers a ON q.answer_id = a.Id;";
+            string select_querry = "SELECT a.question_id, q.question ,a.answer, a.letter , IF(q.answer_id=a.Id, 1, 0) AS `if_correct`, price FROM questions q RIGHT JOIN answers a ON q.answer_id = a.Id;";
             MySqlDataAdapter adapter = new MySqlDataAdapter(select_querry, con_string);
             adapter.Fill(table);
             foreach (DataRow row in table.Rows)
             {
-                if (!String.IsNullOrEmpty(q_text))
+                if (!String.IsNullOrEmpty(q_text) && p!=-1)
                 {
                     // Question q = new Question(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString(), row[3].ToString(), Convert.ToBoolean(row[4]));
-                    Question q = new Question(q_id, q_text, v_a, v_b, v_c, v_d, c_var, ans);
+                    Question q = new Question(q_id, q_text, v_a, v_b, v_c, v_d, ans, p);
                     questions_list.Add(q);
                     q_text = "";
                 }
                 else
                 {
                     if (q_id != Convert.ToInt32(row[0])) { q_id = Convert.ToInt32(row[0]); }
-                    if (Convert.ToBoolean(row[4])) { q_text = row[1].ToString(); ans = row[2].ToString(); };
+                    if (Convert.ToBoolean(row[4])) { q_text = row[1].ToString(); ans = row[2].ToString(); p = Convert.ToInt32(row[5]); };
                     switch (row[3].ToString())
                     {
                         case "A":
@@ -154,51 +154,69 @@ namespace Milionare
                             v_d = row[2].ToString();
                             break;
                     }
+                   
                 }
                 connection.Close();
             }
 
 
         }
-        
+        int current_id;
         private void populate_main(int price)
         {
+            level_up_timer.Stop();
+            MessageBox.Show(current_id.ToString());
+            List<int> price_equal = new List<int>(); 
             validating = false;
             A_btn.BackgroundImage = null; A_btn.Visible = true;
             B_btn.BackgroundImage = null; B_btn.Visible = true;
             C_btn.BackgroundImage = null; C_btn.Visible = true;
             D_btn.BackgroundImage = null; D_btn.Visible = true;
-            MySqlConnection connection = new MySqlConnection();
-            string con_string = Global.db_connect_prop;
-
-
-            string question_select = "SELECT questions.question, questions.Id FROM questions,topics WHERE price = " + price + " AND topic_id="+Global.topic+"  ORDER BY RAND() LIMIT 1;";
-            using (connection = new MySqlConnection(con_string))
-            using (MySqlCommand question_print = new MySqlCommand(question_select, connection))
+            for (int i=0; i<questions_list.Count; i++)
             {
-                connection.Open();
-                MySqlDataReader qs = question_print.ExecuteReader(); qs.Read();
-                label1.Text = (qs["question"].ToString());
-                Global.global_int = Convert.ToInt32(qs["Id"]); qs.Close();
-                connection.Close();
+                if (questions_list[i].q_price == price) { price_equal.Add(i);  }
             }
+            Random random = new Random();
+            current_id = random.Next(0,price_equal.Count);
+
+            label1.Text = questions_list[current_id].question_text;
+            A_btn.Text = questions_list[current_id].variant_a_text;
+            B_btn.Text = questions_list[current_id].variant_b_text;
+            C_btn.Text = questions_list[current_id].variant_c_text;
+            D_btn.Text = questions_list[current_id].variant_d_text;
+            
+            //MySqlConnection connection = new MySqlConnection();
+            //string con_string = Global.db_connect_prop;
+
+
+            //string question_select = "SELECT questions.question, questions.Id FROM questions,topics WHERE price = " + price + " AND topic_id="+Global.topic+"  ORDER BY RAND() LIMIT 1;";
+            //using (connection = new MySqlConnection(con_string))
+            //using (MySqlCommand question_print = new MySqlCommand(question_select, connection))
+            //{
+            //    connection.Open();
+            //    MySqlDataReader qs = question_print.ExecuteReader(); qs.Read();
+            //    label1.Text = (qs["question"].ToString());
+            //    Global.global_int = Convert.ToInt32(qs["Id"]); qs.Close();
+            //    connection.Close();
+            //}
+
 
             // Adaugare informatie butoane 
-            string btns_paste = "SELECT answer FROM answers WHERE answers.question_id=" + Global.global_int + " ;";
- 
-            using (connection = new MySqlConnection(con_string))
-            using (MySqlCommand btn_print = new MySqlCommand(btns_paste, connection))
-            {
-                connection.Open();
-                MySqlDataReader a = btn_print.ExecuteReader(); a.Read();
+            //string btns_paste = "SELECT answer FROM answers WHERE answers.question_id=" + Global.global_int + " ;";
 
-                A_btn.Text = (a["answer"].ToString()); a.Read();
-                B_btn.Text = (a["answer"].ToString()); a.Read();
-                C_btn.Text = (a["answer"].ToString()); a.Read();
-                D_btn.Text = (a["answer"].ToString()); 
-                a.Close();
-                connection.Close();
-            }
+            //using (connection = new MySqlConnection(con_string))
+            //using (MySqlCommand btn_print = new MySqlCommand(btns_paste, connection))
+            //{
+            //    connection.Open();
+            //    MySqlDataReader a = btn_print.ExecuteReader(); a.Read();
+
+            //    A_btn.Text = (a["answer"].ToString()); a.Read();
+            //    B_btn.Text = (a["answer"].ToString()); a.Read();
+            //    C_btn.Text = (a["answer"].ToString()); a.Read();
+            //    D_btn.Text = (a["answer"].ToString()); 
+            //    a.Close();
+            //    connection.Close();
+            //}
         }
         //---------------------------------------------------------------------------------------------- Cazuri de castig si pierdere
         private void result(int id)
@@ -328,14 +346,11 @@ namespace Milionare
             question_timer.Start();
             side_labels(sums);
             side_panel_change(false);
+            fill_quest_list();
             populate_main(0);
             side_panel_move();
 
-            fill_quest_list();
-            foreach (Question q in questions_list)
-            {
-                MessageBox.Show(q.question_id.ToString()+" "+q.question_text + " " + q.variant_a_text + " " + q.variant_b_text + " " + q.variant_c_text + " " + q.variant_d_text + " " + q.answer + " " + q.correct_var);
-            }
+
         }
 
 
@@ -349,7 +364,7 @@ namespace Milionare
                 validating = true;
                 // A_btn.BackColor = Color.Yellow;
                 A_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/A_yellow.png"); 
-                if (correct_letter() == "A")
+                if (questions_list[current_id].answer == A_btn.Text)
                 {
                     validate = 1;
                     question_timebar.Value = 59;
@@ -357,6 +372,7 @@ namespace Milionare
                 else
                 {
                     validate = 2; question_timer.Stop();
+               
             }
         }
         private void B_btn_Click(object sender, EventArgs e)
@@ -366,7 +382,7 @@ namespace Milionare
                 //B_btn.BackColor = Color.Yellow;\
                 B_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/B_yellow.png");
 
-                if (correct_letter() == "B")
+                if (questions_list[current_id].answer == B_btn.Text)
                 {
                     validate = 3;
                     question_timebar.Value = 59;
@@ -384,7 +400,7 @@ namespace Milionare
                 // C_btn.BackColor = Color.Yellow;
                 C_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/C_yellow.png");
 
-                if (correct_letter() == "C")
+                if (questions_list[current_id].answer == C_btn.Text)
                 {
                     validate = 5;
                     question_timebar.Value = 59;
@@ -392,7 +408,8 @@ namespace Milionare
                 else
                 {
                     validate = 6; question_timer.Stop();
-            }
+                    
+                }
         }
         private void D_btn_Click(object sender, EventArgs e)
         {
@@ -400,7 +417,7 @@ namespace Milionare
                 validating = true;
                 // D_btn.BackColor = Color.Yellow;
                 D_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/D_yellow.png");
-                if (correct_letter() == "D")
+                if (questions_list[current_id].answer == D_btn.Text)
                 {
                     validate = 7;
                     question_timebar.Value = 59;
@@ -409,6 +426,7 @@ namespace Milionare
                 {
                     validate = 8; question_timer.Stop();
             }
+            
         }
         //-----------------------------------------------------------------------------------------------
         //Timere
@@ -433,7 +451,7 @@ namespace Milionare
 
 
         }
-
+        
         private void validation_timer_Tick(object sender, EventArgs e)
         {
             
@@ -456,6 +474,7 @@ namespace Milionare
         }
         private void level_up_timer_Tick(object sender, EventArgs e)
         {
+            MessageBox.Show("now");
             price++;
             populate_main(price);
             level_up_timer.Stop();
@@ -503,7 +522,7 @@ namespace Milionare
         private void circle_btn_leave_Click(object sender, EventArgs e)
         {
             string query = "UPDATE games SET canceled = 'YES' WHERE Id = "+Global.game_id;
-
+            MySqlConnection connetion = new MySqlConnection();
             using (connetion = new MySqlConnection(con_string))
             using (MySqlCommand write = new MySqlCommand(query, connetion))
             {
@@ -658,6 +677,8 @@ namespace Milionare
             if (!validating)
                 C_btn.BackgroundImage = null;
         }
+
+
 
         private void D_btn_MouseEnter(object sender, EventArgs e)
         {
