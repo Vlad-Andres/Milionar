@@ -96,18 +96,24 @@ namespace Milionare
         {
             public string question_text, answer, variant_a_text, variant_b_text, variant_c_text, variant_d_text, correct_var;
             public int question_id;
-            public Question(string quest_txt, int quest_id, string answ, string var_a, string var_b, string var_c, string var_d, string corr_var )
+            public Question(int quest_id, string quest_txt, string var, string letter, bool is_correct )
             {
-                question_text = quest_txt;
-                question_id = quest_id;
-                answer = answ;
-                variant_a_text = var_a;
-                variant_b_text = var_b;
-                variant_c_text = var_c;
-                variant_d_text = var_d;
-                correct_var = corr_var;
+                if (question_id != quest_id) { question_id = quest_id; }
+                if (is_correct) { question_text = quest_txt; answer = var; };
+                switch (letter) {
+                    case "A": variant_a_text = var;
+                        break;
+                    case "B": variant_b_text = var;
+                        break;
+                    case "C": variant_c_text = var;
+                        break;
+                    case "D": variant_d_text = var;
+                        break;
+
+                }
             }
         }
+        List<Question> questions_list = new List<Question>();
         
         /*SqlConnection connection;*/
         string[] sums = new string[] {"100 $","200 $","300 $","500 $","1 000 $","2 000 $","4 000 $","8 000 $",
@@ -115,6 +121,31 @@ namespace Milionare
         MySqlConnection connetion = new MySqlConnection();
         string con_string = Global.db_connect_prop;
         // funtia cu adaugare informatie din db--------------------------------------------------------------------
+        private void fill_quest_list()
+        {
+            MySqlConnection connection = new MySqlConnection();
+            //string con_string = Global.db_connect_prop;
+            //string select_querry = "SELECT a.question_id, q.question ,a.answer, a.letter , IF(q.answer_id=a.Id, 1, 0) AS `if_correct` FROM questions q RIGHT JOIN answers a ON q.answer_id = a.Id;";
+            //using (connection = new MySqlConnection(con_string))
+            //using (MySqlCommand question_print = new MySqlCommand(select_querry, connection))
+            //{
+            //    connection.Open();
+            //    MySqlDataReader qs = question_print.ExecuteReader(); qs.Read();
+            //    Question q = new Question(Convert.ToInt32(qs["question_id"]), qs["question"].ToString(), qs["answer"].ToString(), qs["letter"].ToString(),Convert.ToBoolean(qs["if_correct"]));
+            //    questions_list.Add(q);
+            //    connection.Close();
+            //}
+            DataTable table = new DataTable();
+            string select_querry = "SELECT a.question_id, q.question ,a.answer, a.letter , IF(q.answer_id=a.Id, 1, 0) AS `if_correct` FROM questions q RIGHT JOIN answers a ON q.answer_id = a.Id;";
+            MySqlDataAdapter adapter = new MySqlDataAdapter(select_querry, con_string);
+            adapter.Fill(table);
+            foreach (DataRow row in table.Rows)
+            {
+                    Question q = new Question(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString(), row[3].ToString(),Convert.ToBoolean(row[4]));
+                    questions_list.Add(q);
+                    connection.Close();
+            }
+        }
         private void populate_main(int price)
         {
             validating = false;
@@ -284,6 +315,12 @@ namespace Milionare
             side_panel_change(false);
             populate_main(0);
             side_panel_move();
+
+            fill_quest_list();
+            foreach (Question q in questions_list)
+            {
+                MessageBox.Show(q.question_id.ToString()+" "+q.question_text + " " + q.variant_a_text + " " + q.variant_b_text + " " + q.variant_c_text + " " + q.variant_d_text + " " + q.answer + " " + q.correct_var);
+            }
         }
 
 
