@@ -13,7 +13,7 @@ namespace Milionare
         public static int global_int = 0;
         public static int game_id = 0, topic;
         public static bool passed = true;
-        public static string db_connect_prop = "server=eu-cdbr-west-02.cleardb.net; database=heroku_e02ae5755bbb967; user=b604b027dea8bd; password=9b329d90";
+        public static string db_connect_prop = "server=localhost; database=milionaire; user=root; password=toor";
 
         public static int GlobalVar
         {
@@ -100,38 +100,14 @@ namespace Milionare
         {
             MySqlConnection connection = new MySqlConnection();
             string con_string = db_connect_prop;
-
-            string write_in_questions = "INSERT INTO questions (question,author,price) VALUES('" + question + "','" + Nickname + "'," + question_value + ")";
-            string write_answer_A = "INSERT INTO answers(answer,letter,question_id) values ('" + variant_A + "','A',(SELECT Id FROM questions WHERE question='" + question + "'))";
-            string write_answer_B = "INSERT INTO answers(answer,letter,question_id) values ('" + variant_B + "','B',(SELECT Id FROM questions WHERE question='" + question + "'))";
-            string write_answer_C = "INSERT INTO answers(answer,letter,question_id) values ('" + variant_C + "','C',(SELECT Id FROM questions WHERE question='" + question + "'))";
-            string write_answer_D = "INSERT INTO answers(answer,letter,question_id) values ('" + variant_D + "','D',(SELECT Id FROM questions WHERE question='" + question + "'))";
-
-            string right_answer_write = "UPDATE questions SET answer_id = (SELECT Id FROM answers WHERE letter = '" + right_answer + "' AND question_id = questions.Id )  WHERE question='" + question + "';";
-            string topic_write = "UPDATE questions SET topic_id = (SELECT Id FROM topics WHERE topic = '" + topic + "' )  WHERE question='" + question + "';";
-            //(SELECT Id FROM answers WHERE letter = '"+ right_answer + "')
+            string question_insert = "INSERT INTO milionaire.questions (question,author,price,var_a,var_b,var_c,var_d,correct_ans,topic_id) VALUES('" + question + "', '"+Nickname+"', "+question_value+", '" + variant_A + "', '" + variant_B + "', '" + variant_C + "', '" + variant_D + "', '"+right_answer+"', (SELECT Id FROM topics WHERE topic = '" + topic + "' )); ";
 
             try { 
                 using (connection = new MySqlConnection(con_string))
-                using (MySqlCommand write = new MySqlCommand(write_in_questions, connection))
-                using (MySqlCommand write_A = new MySqlCommand(write_answer_A, connection))
-                using (MySqlCommand write_B = new MySqlCommand(write_answer_B, connection))
-                using (MySqlCommand write_C = new MySqlCommand(write_answer_C, connection))
-                using (MySqlCommand write_D = new MySqlCommand(write_answer_D, connection))
-
-
-                using (MySqlCommand write_ans = new MySqlCommand(right_answer_write, connection))
-
-                using (MySqlCommand write_topic = new MySqlCommand(topic_write, connection))
+                using (MySqlCommand write = new MySqlCommand(question_insert, connection))
                 {
                     connection.Open();
                     write.ExecuteNonQuery();
-                    write_A.ExecuteNonQuery();
-                    write_B.ExecuteNonQuery();
-                    write_C.ExecuteNonQuery();
-                    write_D.ExecuteNonQuery();
-                    write_ans.ExecuteNonQuery();
-                    write_topic.ExecuteNonQuery();
                     connection.Close();
                 }
             }
@@ -141,6 +117,7 @@ namespace Milionare
                 {
                     System.Diagnostics.Process.Start("https://dev.mysql.com/doc/refman/5.6/en/error-messages-server.html");
                     System.Windows.Forms.Clipboard.SetText(ex.Number.ToString());
+                    Application.Exit();
                 }
 
             }
