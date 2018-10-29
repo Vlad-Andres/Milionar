@@ -53,7 +53,7 @@ namespace Milionare
             {
                 if (MetroFramework.MetroMessageBox.Show(this, "Do you want to Log in to be able for stats?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.Yes)
                 {
-                    login l = new login();
+                    login_old l = new login_old();
                     this.Hide();
                     l.ShowDialog();
                 }
@@ -89,7 +89,7 @@ namespace Milionare
             {
                 if (MetroFramework.MetroMessageBox.Show(this, "Do you want to Log in to be able for stats?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.Yes)
                 {
-                    login l = new login();
+                    login_old l = new login_old();
                     this.Hide();
                     l.ShowDialog();
                 }
@@ -125,7 +125,7 @@ namespace Milionare
             {
                 if (MetroFramework.MetroMessageBox.Show(this, "Do you want to Log in to be able for stats?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.Yes)
                 {
-                    login l = new login();
+                    login_old l = new login_old();
                     this.Hide();
                     l.ShowDialog();
                 }
@@ -162,7 +162,7 @@ namespace Milionare
             {
                 if (MetroFramework.MetroMessageBox.Show(this, "Do you want to Log in to be able for stats?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.Yes)
                 {
-                    login l = new login();
+                    login_old l = new login_old();
                     this.Hide();
                     l.ShowDialog();
                 }
@@ -245,7 +245,7 @@ namespace Milionare
 
         private void login_lbl_Click(object sender, EventArgs e)
         {
-            login l = new login();
+            //login l = new login();
             this.Hide();
             l.ShowDialog();
         }
@@ -262,7 +262,7 @@ namespace Milionare
             }
             else
             { 
-                register r = new register();
+                register_old r = new register_old();
                 this.Hide();
                 r.ShowDialog();
             }

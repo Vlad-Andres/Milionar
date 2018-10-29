@@ -16,9 +16,9 @@ using System.Security.Cryptography;
 
 namespace Milionare
 {
-    public partial class register : MaterialSkin.Controls.MaterialForm
+    public partial class register_old : MaterialSkin.Controls.MaterialForm
     {
-        public register()
+        public register_old()
         {
             InitializeComponent();
             reg_btn.Enabled = false;
@@ -160,7 +160,7 @@ namespace Milionare
                 connection.Close();
             }
             this.Hide();
-            login l = new login();
+            login_old l = new login_old();
             l.ShowDialog();
         }
 

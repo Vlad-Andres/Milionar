@@ -45,7 +45,7 @@ namespace Milionare
 
         private void materialRaisedButton2_Click(object sender, EventArgs e)
         {
-            login l = new login();
+            login_old l = new login_old();
             this.Dispose();
             l.ShowDialog();
         }

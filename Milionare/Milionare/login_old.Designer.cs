@@ -1,6 +1,6 @@
 ﻿namespace Milionare
 {
-    partial class login
+    partial class login_old
     {
         /// <summary>
         /// Required designer variable.

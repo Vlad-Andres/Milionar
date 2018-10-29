@@ -6,9 +6,9 @@ using System.Windows.Forms;
 
 namespace Milionare
 {
-    public partial class login : MaterialSkin.Controls.MaterialForm
+    public partial class login_old : MaterialSkin.Controls.MaterialForm
     {
-        public login()
+        public login_old()
         {
             InitializeComponent();
             MaterialSkin.MaterialSkinManager skinManager = MaterialSkin.MaterialSkinManager.Instance;
@@ -93,7 +93,7 @@ namespace Milionare
 
         private void register_lbl_Click(object sender, EventArgs e)
         {
-            register f = new register();
+            register_old f = new register_old();
             this.Dispose();
             f.ShowDialog();
         }
