@@ -119,44 +119,18 @@ namespace Milionare
         // funtia cu adaugare informatie din db--------------------------------------------------------------------
         private void fill_quest_list()
         {
-            string[] temp_question;
-            string q_text="", ans="", v_a = "", v_b = "", v_c = "", v_d = "";
+           // string[] temp_question;
+           //string q_text="", ans="", v_a = "", v_b = "", v_c = "", v_d = "";
             int q_id=-1,p=-1;
             MySqlConnection connection = new MySqlConnection();
             DataTable table = new DataTable();
-            string select_querry = "SELECT a.question_id, q.question ,a.answer, a.letter , IF(q.answer_id=a.Id, 1, 0) AS `if_correct`, price FROM questions q JOIN answers a ON a.question_id = q.Id;";
+            string select_querry = "SELECT Id, question, var_a, var_b, var_c, var_d, correct_ans, price FROM milionaire.questions; ";
             MySqlDataAdapter adapter = new MySqlDataAdapter(select_querry, con_string);
             adapter.Fill(table);
             foreach (DataRow row in table.Rows)
             {
-                if (q_text != "")
-                {
-                    // Question q = new Question(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString(), row[3].ToString(), Convert.ToBoolean(row[4]));
-                    Question q = new Question(q_id, q_text, v_a, v_b, v_c, v_d, ans, p);
-                    questions_list.Add(q);
-                    q_text = ""; 
-                }
-                else
-                {
-                    if (q_id != Convert.ToInt32(row[0])) { q_id = Convert.ToInt32(row[0]); }
-                    if (Convert.ToBoolean(row[4])) { q_text = row[1].ToString(); ans = row[2].ToString(); p = Convert.ToInt32(row[5]); };
-                    switch (row[3].ToString())
-                    {
-                        case "A":
-                            v_a = row[2].ToString();
-                            break;
-                        case "B":
-                            v_b = row[2].ToString();
-                            break;
-                        case "C":
-                            v_c = row[2].ToString();
-                            break;
-                        case "D":
-                            v_d = row[2].ToString();
-                            break;
-                    }
-                   
-                }
+                Question q = new Question(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString(), row[6].ToString(), Convert.ToInt32(row[7]));
+                questions_list.Add(q);
                 connection.Close();
             }
 
