@@ -119,21 +119,22 @@ namespace Milionare
         // funtia cu adaugare informatie din db--------------------------------------------------------------------
         private void fill_quest_list()
         {
+            string[] temp_question;
             string q_text="", ans="", v_a = "", v_b = "", v_c = "", v_d = "";
             int q_id=-1,p=-1;
             MySqlConnection connection = new MySqlConnection();
             DataTable table = new DataTable();
-            string select_querry = "SELECT a.question_id, q.question ,a.answer, a.letter , IF(q.answer_id=a.Id, 1, 0) AS `if_correct`, price FROM questions q RIGHT JOIN answers a ON q.answer_id = a.Id;";
+            string select_querry = "SELECT a.question_id, q.question ,a.answer, a.letter , IF(q.answer_id=a.Id, 1, 0) AS `if_correct`, price FROM questions q JOIN answers a ON a.question_id = q.Id;";
             MySqlDataAdapter adapter = new MySqlDataAdapter(select_querry, con_string);
             adapter.Fill(table);
             foreach (DataRow row in table.Rows)
             {
-                if (!String.IsNullOrEmpty(q_text) && !String.IsNullOrEmpty(ans) && !String.IsNullOrEmpty(v_a) && !String.IsNullOrEmpty(v_b) && !String.IsNullOrEmpty(v_c) && !String.IsNullOrEmpty(v_d))
+                if (q_text != "")
                 {
                     // Question q = new Question(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString(), row[3].ToString(), Convert.ToBoolean(row[4]));
                     Question q = new Question(q_id, q_text, v_a, v_b, v_c, v_d, ans, p);
                     questions_list.Add(q);
-                    q_text = ""; ans = ""; v_a = ""; v_b = ""; v_c = ""; v_d = "";
+                    q_text = ""; 
                 }
                 else
                 {
