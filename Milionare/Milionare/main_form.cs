@@ -303,25 +303,18 @@ namespace Milionare
             ((Button)sender).BackgroundImage = Image.FromFile("../../../../variants_btns/"+letter+"_yellow.png");
             if (questions_list[price_equal[current_id]].answer == letter)
             {
-                Thread.Sleep(2000);
-                ((Button)sender).BackgroundImage = Image.FromFile("../../../../variants_btns/"+letter+"_green.png");
-                if (id == 15)
-                {
-                    question_timer.Stop();
-                    result(15);
-                }
-
-                id++; lvl_change();
-                question_timebar.Value = 60;
                 
+                ((Button)sender).BackgroundImage = Image.FromFile("../../../../variants_btns/" + letter + "_green.png");
+                if_correct = true;
             }
             else
             {
-                ((Button)sender).BackgroundImage = Image.FromFile("../../../../variants_btns/"+letter+"_red.png"); result(id);
-                question_timer.Stop();
-
+                ((Button)sender).BackgroundImage = Image.FromFile("../../../../variants_btns/" + letter + "_red.png");
+                if_correct = false;
             }
+            validation_timer.Start();
         }
+        private bool if_correct;
         //-----------------------------------------------------------------------------------------------
 
         //-----------------------------------------------------------------------------------------------
@@ -396,20 +389,35 @@ namespace Milionare
         {
 
             validation_timer.Stop();
-            switch (validate)
+            if (if_correct)
             {
-                case 1: { A_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/A_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; lvl_change(); break; }
-                case 2: { A_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/A_red.png"); result(id); break; }
-
-                case 3: { B_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/B_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; lvl_change(); break; }
-                case 4: { B_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/B_red.png"); result(id); break; }
-
-                case 5: { C_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/C_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; lvl_change(); break; }
-                case 6: { C_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/C_red.png"); result(id); break; }
-
-                case 7: { D_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/D_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; lvl_change(); break; }
-                case 8: { D_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/D_red.png"); result(id); break; }
+                if (id == 15)
+                {
+                    question_timer.Stop();
+                    result(15);
+                }
+                id++; lvl_change();
+                question_timebar.Value = 60;
             }
+            else
+            {
+                result(id);
+                question_timer.Stop();
+            }
+            //switch (validate)
+            //{
+            //    case 1: { A_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/A_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; lvl_change(); break; }
+            //    case 2: { A_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/A_red.png"); result(id); break; }
+
+            //    case 3: { B_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/B_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; lvl_change(); break; }
+            //    case 4: { B_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/B_red.png"); result(id); break; }
+
+            //    case 5: { C_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/C_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; lvl_change(); break; }
+            //    case 6: { C_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/C_red.png"); result(id); break; }
+
+            //    case 7: { D_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/D_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; lvl_change(); break; }
+            //    case 8: { D_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/D_red.png"); result(id); break; }
+            //}
             
         }
         public void lvl_change()
@@ -645,3 +653,20 @@ namespace Milionare
 
     }
 }
+/*
+private void LogLastButton(Button button)
+{
+   Session["LastButtonId"] = button.ID;
+}
+
+protected void ButtonView_Click(object sender, EventArgs e)
+{
+   this.LogLastButton((Button)sender);
+}
+
+protected void ButtonViewDayWise_Click(object sender, EventArgs e)
+{
+   this.LogLastButton((Button)sender);
+}
+Button lastButton = Page.Controls.Find(Session["LastButtonId"].ToString());
+*/
