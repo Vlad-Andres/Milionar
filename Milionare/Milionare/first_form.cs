@@ -245,7 +245,7 @@ namespace Milionare
 
         private void login_lbl_Click(object sender, EventArgs e)
         {
-            //login l = new login();
+            login l = new login();
             this.Hide();
             l.ShowDialog();
         }
