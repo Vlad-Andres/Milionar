@@ -67,12 +67,7 @@ namespace Milionare
             }
             catch (MySqlException ex)
             {
-                if (MessageBox.Show("Error number: " + ex.Number.ToString() + " \n Do you want to read more?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
-                {
-                    System.Diagnostics.Process.Start("https://dev.mysql.com/doc/refman/5.6/en/error-messages-server.html");
-                    System.Windows.Forms.Clipboard.SetText(ex.Number.ToString());
-                    
-                }
+                mysql_err_msg(ex);
 
             }
 
@@ -113,12 +108,7 @@ namespace Milionare
             }
             catch (MySqlException ex)
             {
-                if (MessageBox.Show("Error number: " + ex.Number.ToString() + " \n ,Do you want to read more?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
-                {
-                    System.Diagnostics.Process.Start("https://dev.mysql.com/doc/refman/5.6/en/error-messages-server.html");
-                    System.Windows.Forms.Clipboard.SetText(ex.Number.ToString());
-                    Application.Exit();
-                }
+                mysql_err_msg(ex);
 
             }
 
@@ -129,6 +119,15 @@ namespace Milionare
             SELECT* FROM topics WHERE Id IN
               (SELECT topic_id FROM games)*/
 
+        }
+        public static void mysql_err_msg(MySqlException ex)
+        {
+            if (MessageBox.Show("Error number: " + ex.Number.ToString() + " \n Do you want to read more?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
+            {
+                System.Diagnostics.Process.Start("https://dev.mysql.com/doc/refman/5.6/en/error-messages-server.html");
+                System.Windows.Forms.Clipboard.SetText(ex.Number.ToString());
+
+            }
         }
 
         //----------------------------------------Users-----------------------------------------------------------------------

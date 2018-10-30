@@ -50,40 +50,48 @@ namespace Milionare
 
             if (nick_txt.Text.Length>0 && pass_txt.Text.Length>0)
             {
-                MySqlConnection connection = new MySqlConnection();
-                string con_string = Global.db_connect_prop;
-                string query = "SELECT COUNT(*),`wallet`,`rank`,`name`,`email` FROM users WHERE Nickname='" + nick_txt.Text+"' AND password='"+pass_encrypt(pass_txt.Text)+"'";
-                using (connection = new MySqlConnection(con_string))
-                using (MySqlCommand query_print = new MySqlCommand(query, connection))
+                try
                 {
-                    connection.Open();
-                    MySqlDataReader dr = query_print.ExecuteReader(); dr.Read();
-                    if (dr["COUNT(*)"].ToString() == "1")
+                    MySqlConnection connection = new MySqlConnection();
+                    string con_string = Global.db_connect_prop;
+                    string query = "SELECT COUNT(*),`wallet`,`rank`,`name`,`email` FROM users WHERE Nickname='" + nick_txt.Text + "' AND password='" + pass_encrypt(pass_txt.Text) + "'";
+                    using (connection = new MySqlConnection(con_string))
+                    using (MySqlCommand query_print = new MySqlCommand(query, connection))
                     {
-                        if (Properties.Settings.Default.remember)
+                        connection.Open();
+                        MySqlDataReader dr = query_print.ExecuteReader(); dr.Read();
+                        if (dr["COUNT(*)"].ToString() == "1")
                         {
-                            Properties.Settings.Default.UserName = nick_txt.Text;
-                            Properties.Settings.Default.Password = pass_txt.Text;
-                            Properties.Settings.Default.Save();
+                            if (Properties.Settings.Default.remember)
+                            {
+                                Properties.Settings.Default.UserName = nick_txt.Text;
+                                Properties.Settings.Default.Password = pass_txt.Text;
+                                Properties.Settings.Default.Save();
+                            }
+                            Global.Nickname = nick_txt.Text;
+                            Global.name = dr["name"].ToString();
+                            Global.rank = dr["rank"].ToString();
+                            Global.wallet = Convert.ToInt32(dr["wallet"]);
+                            acc_recovery.sender_mail = dr["email"].ToString();
+                            first_form f = new first_form();
+                            this.Hide();
+                            f.ShowDialog();
                         }
-                        Global.Nickname = nick_txt.Text;
-                        Global.name = dr["name"].ToString();
-                        Global.rank = dr["rank"].ToString();
-                        Global.wallet = Convert.ToInt32(dr["wallet"]);
-                        acc_recovery.sender_mail = dr["email"].ToString();
-                        first_form f = new first_form();
-                        this.Hide();
-                        f.ShowDialog();
-                    }
-                    else
-                        if (MetroFramework.MetroMessageBox.Show(this, "Wrong Username or Password", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Hand) == DialogResult.Cancel)
-                    {
-                        first_form f = new first_form();
-                        this.Dispose();
-                        f.ShowDialog();
-                    }
+                        else
+                            if (MetroFramework.MetroMessageBox.Show(this, "Wrong Username or Password", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Hand) == DialogResult.Cancel)
+                        {
+                            first_form f = new first_form();
+                            this.Dispose();
+                            f.ShowDialog();
+                        }
                         connection.Close();
+                    }
+                    
+                }catch (MySqlException ex)
+                {
+                    Global.mysql_err_msg(ex);
                 }
+                
             }
             else
             {
