@@ -143,6 +143,7 @@ namespace Milionare
         int current_id;
         private void populate_main(int price)
         {
+
            // Cursor.Position = new Point(author_img.Location.X, author_img.Location.Y);
             price_equal.Clear();
             validating = false;
@@ -163,38 +164,6 @@ namespace Milionare
             C_btn.Text = questions_list[price_equal[current_id]].variant_c_text;
             D_btn.Text = questions_list[price_equal[current_id]].variant_d_text;
             
-            //MySqlConnection connection = new MySqlConnection();
-            //string con_string = Global.db_connect_prop;
-
-
-            //string question_select = "SELECT questions.question, questions.Id FROM questions,topics WHERE price = " + price + " AND topic_id="+Global.topic+"  ORDER BY RAND() LIMIT 1;";
-            //using (connection = new MySqlConnection(con_string))
-            //using (MySqlCommand question_print = new MySqlCommand(question_select, connection))
-            //{
-            //    connection.Open();
-            //    MySqlDataReader qs = question_print.ExecuteReader(); qs.Read();
-            //    label1.Text = (qs["question"].ToString());
-            //    Global.global_int = Convert.ToInt32(qs["Id"]); qs.Close();
-            //    connection.Close();
-            //}
-
-
-            // Adaugare informatie butoane 
-            //string btns_paste = "SELECT answer FROM answers WHERE answers.question_id=" + Global.global_int + " ;";
-
-            //using (connection = new MySqlConnection(con_string))
-            //using (MySqlCommand btn_print = new MySqlCommand(btns_paste, connection))
-            //{
-            //    connection.Open();
-            //    MySqlDataReader a = btn_print.ExecuteReader(); a.Read();
-
-            //    A_btn.Text = (a["answer"].ToString()); a.Read();
-            //    B_btn.Text = (a["answer"].ToString()); a.Read();
-            //    C_btn.Text = (a["answer"].ToString()); a.Read();
-            //    D_btn.Text = (a["answer"].ToString()); 
-            //    a.Close();
-            //    connection.Close();
-            //}
         }
         //---------------------------------------------------------------------------------------------- Cazuri de castig si pierdere
         private void result(int id)
@@ -303,7 +272,7 @@ namespace Milionare
             ((Button)sender).BackgroundImage = Image.FromFile("../../../../variants_btns/"+letter+"_yellow.png");
             if (questions_list[price_equal[current_id]].answer == letter)
             {
-                
+                validating = true;
                 ((Button)sender).BackgroundImage = Image.FromFile("../../../../variants_btns/" + letter + "_green.png");
                 if_correct = true;
             }
@@ -404,24 +373,11 @@ namespace Milionare
                 result(id);
                 question_timer.Stop();
             }
-            //switch (validate)
-            //{
-            //    case 1: { A_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/A_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; lvl_change(); break; }
-            //    case 2: { A_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/A_red.png"); result(id); break; }
-
-            //    case 3: { B_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/B_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; lvl_change(); break; }
-            //    case 4: { B_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/B_red.png"); result(id); break; }
-
-            //    case 5: { C_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/C_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; lvl_change(); break; }
-            //    case 6: { C_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/C_red.png"); result(id); break; }
-
-            //    case 7: { D_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/D_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; lvl_change(); break; }
-            //    case 8: { D_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/D_red.png"); result(id); break; }
-            //}
             
         }
         public void lvl_change()
         {
+            validating = false;
             if (price < 14) {
                 price++;
                 populate_main(price);
@@ -601,7 +557,10 @@ namespace Milionare
         private void A_btn_MouseLeave(object sender, EventArgs e)
         {
             if (!validating)
+            {
                 A_btn.BackgroundImage = null;
+                A_btn.BackColor = Color.Transparent;
+            }
         }
 
         private void B_btn_MouseEnter(object sender, EventArgs e)
@@ -612,7 +571,10 @@ namespace Milionare
         private void B_btn_MouseLeave(object sender, EventArgs e)
         {
             if (!validating)
+            {
                 B_btn.BackgroundImage = null;
+                B_btn.BackColor = Color.Transparent;
+            }
         }
 
         private void C_btn_MouseEnter(object sender, EventArgs e)
@@ -623,7 +585,10 @@ namespace Milionare
         private void C_btn_MouseLeave(object sender, EventArgs e)
         {
             if (!validating)
+            {
                 C_btn.BackgroundImage = null;
+                C_btn.BackColor = Color.Transparent;
+            }
         }
 
 
@@ -636,7 +601,10 @@ namespace Milionare
         private void D_btn_MouseLeave(object sender, EventArgs e)
         {
             if (!validating)
+            {
                 D_btn.BackgroundImage = null;
+                D_btn.BackColor = Color.Transparent;
+            }
         }
         private void side_panel_gradient_Paint(object sender, PaintEventArgs e)
         {
