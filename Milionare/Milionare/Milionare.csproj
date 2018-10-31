@@ -12,6 +12,10 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,12 +28,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -266,6 +266,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\C_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\C_grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\C_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D_grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\A_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\A_grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\A_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B_grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B_red.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

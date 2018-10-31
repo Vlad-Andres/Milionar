@@ -269,16 +269,17 @@ namespace Milionare
         {
             //cast de cautat
             // A_btn.BackColor = Color.Yellow;
-            ((Button)sender).BackgroundImage = Image.FromFile("../../../../variants_btns/"+letter+"_yellow.png");
+            ((Button)sender).BackgroundImage = Image.FromFile("resources/variants_btns/" + letter + "_yellow.png");
             if (questions_list[price_equal[current_id]].answer == letter)
             {
+                Thread.Sleep(2000);
                 validating = true;
-                ((Button)sender).BackgroundImage = Image.FromFile("../../../../variants_btns/" + letter + "_green.png");
+                ((Button)sender).BackgroundImage = Image.FromFile("resources/variants_btns/" + letter + "_green.png");
                 if_correct = true;
             }
             else
             {
-                ((Button)sender).BackgroundImage = Image.FromFile("../../../../variants_btns/" + letter + "_red.png");
+                ((Button)sender).BackgroundImage = Image.FromFile("resources/variants_btns/" + letter + "_red.png");
                 if_correct = false;
             }
             validation_timer.Start();
@@ -460,7 +461,7 @@ namespace Milionare
                     case 3: { if (questions_list[price_equal[current_id]].answer != "C") { C_btn.Visible = false; } else D_btn.Visible = false; break; }
                     case 4: { if (questions_list[price_equal[current_id]].answer != "D") { D_btn.Visible = false; } else C_btn.Visible = false; break; }
                 }
-                circle_btn_half.BackgroundImage = Image.FromFile("../../../../circle_btns_hover/half_option.png");
+                circle_btn_half.BackgroundImage = Image.FromFile("resources/circle_btns_hover/half_option.png");
                 // circle_btn_half.Enabled = false;
                 clicked = true;
                 circle_btn_half.BackgroundImageLayout = ImageLayout.Stretch;
@@ -482,7 +483,7 @@ namespace Milionare
 
         private void circle_btn_slide_MouseEnter(object sender, EventArgs e)
         {
-            circle_btn_slide.BackgroundImage = Image.FromFile("../../../../circle_btns_hover/circle_slide_hover.png");
+            circle_btn_slide.BackgroundImage = Image.FromFile("resources/circle_btns_hover/circle_slide_hover.png");
             circle_btn_slide.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
@@ -493,7 +494,7 @@ namespace Milionare
 
         private void circle_btn_leave_MouseEnter(object sender, EventArgs e)
         {
-            circle_btn_leave.BackgroundImage = Image.FromFile("../../../../circle_btns_hover/circle_exit_hover.png");
+            circle_btn_leave.BackgroundImage = Image.FromFile("resources/circle_btns_hover/circle_exit_hover.png");
             circle_btn_leave.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
@@ -506,7 +507,7 @@ namespace Milionare
         {
             if (!clicked)
             { 
-                circle_btn_half.BackgroundImage = Image.FromFile("../../../../circle_btns_hover/circle_half_hover.png");
+                circle_btn_half.BackgroundImage = Image.FromFile("resources/circle_btns_hover/circle_half_hover.png");
                 circle_btn_half.BackgroundImageLayout = ImageLayout.Stretch;
             }
         }
@@ -528,7 +529,7 @@ namespace Milionare
 
         private void circle_btn_call_MouseEnter(object sender, EventArgs e)
         {
-            circle_btn_call.BackgroundImage = Image.FromFile("../../../../circle_btns_hover/circle_call_hover.png");
+            circle_btn_call.BackgroundImage = Image.FromFile("resources/circle_btns_hover/circle_call_hover.png");
             circle_btn_call.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
@@ -540,7 +541,7 @@ namespace Milionare
 
         private void circle_btn_public_MouseEnter(object sender, EventArgs e)
         {
-            circle_btn_public.BackgroundImage = Image.FromFile("../../../../circle_btns_hover/circle_public_hover.png");
+            circle_btn_public.BackgroundImage = Image.FromFile("resources/circle_btns_hover/circle_public_hover.png");
             circle_btn_public.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
@@ -551,7 +552,7 @@ namespace Milionare
         //-------------------------------------
         private void A_btn_MouseEnter(object sender, EventArgs e)
         {
-            A_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/A_grey.png");
+            A_btn.BackgroundImage = Image.FromFile("resources/variants_btns/A_grey.png");
         }
 
         private void A_btn_MouseLeave(object sender, EventArgs e)
@@ -565,7 +566,7 @@ namespace Milionare
 
         private void B_btn_MouseEnter(object sender, EventArgs e)
         {
-            B_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/B_grey.png");
+            B_btn.BackgroundImage = Image.FromFile("resources/variants_btns/B_grey.png");
         }
 
         private void B_btn_MouseLeave(object sender, EventArgs e)
@@ -579,7 +580,7 @@ namespace Milionare
 
         private void C_btn_MouseEnter(object sender, EventArgs e)
         {
-            C_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/C_grey.png");
+            C_btn.BackgroundImage = Image.FromFile("resources/variants_btns/C_grey.png");
         }
 
         private void C_btn_MouseLeave(object sender, EventArgs e)
@@ -595,7 +596,7 @@ namespace Milionare
 
         private void D_btn_MouseEnter(object sender, EventArgs e)
         {
-            D_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/D_grey.png");
+            D_btn.BackgroundImage = Image.FromFile("resources/variants_btns/D_grey.png");
         }
 
         private void D_btn_MouseLeave(object sender, EventArgs e)

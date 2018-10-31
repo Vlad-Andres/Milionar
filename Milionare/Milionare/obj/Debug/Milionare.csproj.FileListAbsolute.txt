@@ -429,3 +429,4 @@ D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.p
 D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.Properties.Resources.resources
 D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.register.resources
 D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.csproj.GenerateResource.Cache
+C:\Users\bruno\Desktop\test_debug\Milionare.exe.config
