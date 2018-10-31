@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Threading;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,9 +36,9 @@ namespace Milionare
         }
         public void side_labels(string[] s)
         {
-              int loc = 577;
-              
-            
+            int loc = 577;
+
+
 
             for (int i = 0; i < 15; i++)
             {
@@ -46,7 +47,7 @@ namespace Milionare
             }
             for (int i = 0; i < 15; i++)
             {
-                labels_nr[i].Top = loc ;
+                labels_nr[i].Top = loc;
                 labels_txt[i].Top = loc;
                 loc -= 40;
                 labels_nr[i].Left = 30;
@@ -73,7 +74,7 @@ namespace Milionare
 
             }
         }
-        int side_panel_level = 0, panel_off_colorG=171, panel_off_colorB=153;
+        int side_panel_level = 0, panel_off_colorG = 171, panel_off_colorB = 153;
         public void side_panel_move()
         {
             if (side_panel_level < 15)
@@ -81,7 +82,7 @@ namespace Milionare
                 labels_txt[side_panel_level].ForeColor = Color.FromArgb(255, 234, 203, 63);
                 labels_nr[side_panel_level].ForeColor = Color.FromArgb(255, 234, 203, 63);
                 panel_off_lbl.Top -= 40;
-                panel_off_lbl.BackColor = Color.FromArgb(255, 234, panel_off_colorG+=5 , panel_off_colorB-=10 );
+                panel_off_lbl.BackColor = Color.FromArgb(255, 234, panel_off_colorG += 5, panel_off_colorB -= 10);
                 if (side_panel_level > 0)
                 {
                     labels_txt[side_panel_level - 1].ForeColor = Color.Green;
@@ -92,51 +93,77 @@ namespace Milionare
 
         }
         //--------------------------------------
-
+        public class Question
+        {
+            public string question_text, variant_a_text, variant_b_text, variant_c_text, variant_d_text, answer;
+            public int question_id,q_price;
+            public Question(int quest_id, string quest_txt, string var_a, string var_b, string var_c, string var_d,  string answ, int prc )
+            {
+                question_id = quest_id;
+                question_text = quest_txt;
+                answer = answ;
+                variant_a_text = var_a;
+                variant_b_text = var_b;
+                variant_c_text = var_c;
+                variant_d_text = var_d;
+                q_price = prc;
+            }
+        }
+        
+        List<Question> questions_list = new List<Question>();
+        
         /*SqlConnection connection;*/
         string[] sums = new string[] {"100 $","200 $","300 $","500 $","1 000 $","2 000 $","4 000 $","8 000 $",
             "16 000 $","32 000 $","64 000 $","125 000 $","250 000 $","500 000 $","1 Milion"};
-        MySqlConnection connetion = new MySqlConnection();
+
         string con_string = Global.db_connect_prop;
         // funtia cu adaugare informatie din db--------------------------------------------------------------------
+        private void fill_quest_list()
+        {
+            try { 
+            MySqlConnection connection = new MySqlConnection();
+            DataTable table = new DataTable();
+            string select_querry = "SELECT Id, question, var_a, var_b, var_c, var_d, correct_ans, price FROM milionaire.questions; ";
+            MySqlDataAdapter adapter = new MySqlDataAdapter(select_querry, con_string);
+            adapter.Fill(table);
+            foreach (DataRow row in table.Rows)
+            {
+                Question q = new Question(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString(), row[6].ToString(), Convert.ToInt32(row[7]));
+                questions_list.Add(q);
+                connection.Close();
+            }
+            }catch (Exception e)
+            {
+
+            }
+
+
+        }
+        List<int> price_equal = new List<int>();
+        int current_id;
         private void populate_main(int price)
         {
+
+           // Cursor.Position = new Point(author_img.Location.X, author_img.Location.Y);
+            price_equal.Clear();
             validating = false;
             A_btn.BackgroundImage = null; A_btn.Visible = true;
             B_btn.BackgroundImage = null; B_btn.Visible = true;
             C_btn.BackgroundImage = null; C_btn.Visible = true;
             D_btn.BackgroundImage = null; D_btn.Visible = true;
-            MySqlConnection connection = new MySqlConnection();
-            string con_string = Global.db_connect_prop;
-
-
-            string question_select = "SELECT questions.question, questions.Id FROM questions,topics WHERE price = " + price + " AND topic_id="+Global.topic+"  ORDER BY RAND() LIMIT 1;";
-            using (connection = new MySqlConnection(con_string))
-            using (MySqlCommand question_print = new MySqlCommand(question_select, connection))
+            for (int i=0; i<questions_list.Count; i++)
             {
-                connection.Open();
-                MySqlDataReader qs = question_print.ExecuteReader(); qs.Read();
-                label1.Text = (qs["question"].ToString());
-                Global.global_int = Convert.ToInt32(qs["Id"]); qs.Close();
-                connection.Close();
+                if (questions_list[i].q_price == price) { price_equal.Add(i);}
             }
+            Random random = new Random();
+            current_id = random.Next(0,price_equal.Count);
 
-            // Adaugare informatie butoane 
-            string btns_paste = "SELECT answer FROM answers WHERE answers.question_id=" + Global.global_int + " ;";
- 
-            using (connection = new MySqlConnection(con_string))
-            using (MySqlCommand btn_print = new MySqlCommand(btns_paste, connection))
-            {
-                connection.Open();
-                MySqlDataReader a = btn_print.ExecuteReader(); a.Read();
-
-                A_btn.Text = (a["answer"].ToString()); a.Read();
-                B_btn.Text = (a["answer"].ToString()); a.Read();
-                C_btn.Text = (a["answer"].ToString()); a.Read();
-                D_btn.Text = (a["answer"].ToString()); 
-                a.Close();
-                connection.Close();
-            }
+            label1.Text = questions_list[price_equal[current_id]].question_text;
+            A_btn.Text = questions_list[price_equal[current_id]].variant_a_text;
+            B_btn.Text = questions_list[price_equal[current_id]].variant_b_text;
+            C_btn.Text = questions_list[price_equal[current_id]].variant_c_text;
+            D_btn.Text = questions_list[price_equal[current_id]].variant_d_text;
+            
         }
         //---------------------------------------------------------------------------------------------- Cazuri de castig si pierdere
         private void result(int id)
@@ -238,20 +265,25 @@ namespace Milionare
             }
 
         }
-        private string correct_letter()
+        private void btn_click_verify(object sender, EventArgs e, string letter)
         {
-            string verify = "SELECT answers.letter,question FROM answers,questions WHERE answers.Id=questions.answer_id AND questions.Id=" + Global.global_int + ";";
-            MySqlConnection connection = new MySqlConnection();
-            using (connection = new MySqlConnection(con_string))
-            using (MySqlCommand A_verify = new MySqlCommand(verify, connection))
+            //cast de cautat
+            // A_btn.BackColor = Color.Yellow;
+            ((Button)sender).BackgroundImage = Image.FromFile("../../../../variants_btns/"+letter+"_yellow.png");
+            if (questions_list[price_equal[current_id]].answer == letter)
             {
-                // A_btn.BackColor = Color.Yellow;
-                connection.Open();
-                MySqlDataReader A = A_verify.ExecuteReader(); A.Read();
-                return A["letter"].ToString();
-
+                validating = true;
+                ((Button)sender).BackgroundImage = Image.FromFile("../../../../variants_btns/" + letter + "_green.png");
+                if_correct = true;
             }
+            else
+            {
+                ((Button)sender).BackgroundImage = Image.FromFile("../../../../variants_btns/" + letter + "_red.png");
+                if_correct = false;
+            }
+            validation_timer.Start();
         }
+        private bool if_correct;
         //-----------------------------------------------------------------------------------------------
 
         //-----------------------------------------------------------------------------------------------
@@ -266,8 +298,13 @@ namespace Milionare
             question_timer.Start();
             side_labels(sums);
             side_panel_change(false);
+            fill_quest_list();
+            
+
             populate_main(0);
             side_panel_move();
+
+
         }
 
 
@@ -277,70 +314,21 @@ namespace Milionare
         bool validating = false;
         private void A_btn_Click(object sender, EventArgs e)
         {
-                validation_timer.Start();
-                validating = true;
-                // A_btn.BackColor = Color.Yellow;
-                A_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/A_yellow.png"); 
-                if (correct_letter() == "A")
-                {
-                    validate = 1;
-                    question_timebar.Value = 59;
-                }
-                else
-                {
-                    validate = 2; question_timer.Stop();
-            }
+            btn_click_verify(sender, e, "A");
         }
         private void B_btn_Click(object sender, EventArgs e)
         {
-                validation_timer.Start();
-                validating = true;
-                //B_btn.BackColor = Color.Yellow;\
-                B_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/B_yellow.png");
-
-                if (correct_letter() == "B")
-                {
-                    validate = 3;
-                    question_timebar.Value = 59;
-                }
-                else
-                {
-                    validate = 4; question_timer.Stop();
-            }
+            btn_click_verify(sender, e, "B");
 
         }
         private void C_btn_Click(object sender, EventArgs e)
         {
-                validation_timer.Start();
-                validating = true;
-                // C_btn.BackColor = Color.Yellow;
-                C_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/C_yellow.png");
-
-                if (correct_letter() == "C")
-                {
-                    validate = 5;
-                    question_timebar.Value = 59;
-                }
-                else
-                {
-                    validate = 6; question_timer.Stop();
-            }
+            btn_click_verify(sender, e, "C");
         }
         private void D_btn_Click(object sender, EventArgs e)
         {
-                validation_timer.Start();
-                validating = true;
-                // D_btn.BackColor = Color.Yellow;
-                D_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/D_yellow.png");
-                if (correct_letter() == "D")
-                {
-                    validate = 7;
-                    question_timebar.Value = 59;
-                }
-                else
-                {
-                    validate = 8; question_timer.Stop();
-            }
+            btn_click_verify(sender, e, "D");
+
         }
         //-----------------------------------------------------------------------------------------------
         //Timere
@@ -365,32 +353,35 @@ namespace Milionare
 
 
         }
-
+        
         private void validation_timer_Tick(object sender, EventArgs e)
         {
-            
 
-            switch (validate)
-            {
-                case 1: { A_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/A_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; level_up_timer.Start(); break; }
-                case 2: { A_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/A_red.png"); result(id); break; }
-
-                case 3: { B_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/B_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; level_up_timer.Start(); break; }
-                case 4: { B_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/B_red.png"); result(id); break; }
-
-                case 5: { C_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/C_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; level_up_timer.Start(); break; }
-                case 6: { C_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/C_red.png"); result(id); break; }
-
-                case 7: { D_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/D_green.png"); if (id == 15) { question_timer.Stop(); validation_timer.Stop(); result(15); } id++; level_up_timer.Start(); break; }
-                case 8: { D_btn.BackgroundImage = Image.FromFile("../../../../variants_btns/D_red.png"); result(id); break; }
-            }
             validation_timer.Stop();
+            if (if_correct)
+            {
+                if (id == 15)
+                {
+                    question_timer.Stop();
+                    result(15);
+                }
+                id++; lvl_change();
+                question_timebar.Value = 60;
+            }
+            else
+            {
+                result(id);
+                question_timer.Stop();
+            }
+            
         }
-        private void level_up_timer_Tick(object sender, EventArgs e)
+        public void lvl_change()
         {
-            price++;
-            populate_main(price);
-            level_up_timer.Stop();
+            validating = false;
+            if (price < 14) {
+                price++;
+                populate_main(price);
+            }
             side_panel_move();
         }
         //-----------------------------------------------------------------------------------------------
@@ -435,7 +426,7 @@ namespace Milionare
         private void circle_btn_leave_Click(object sender, EventArgs e)
         {
             string query = "UPDATE games SET canceled = 'YES' WHERE Id = "+Global.game_id;
-
+            MySqlConnection connetion = new MySqlConnection();
             using (connetion = new MySqlConnection(con_string))
             using (MySqlCommand write = new MySqlCommand(query, connetion))
             {
@@ -460,14 +451,14 @@ namespace Milionare
                 int r1 = r.Next(1, 3);
                 switch (r1)
                 {
-                    case 1:{ if (correct_letter() != "A") { A_btn.Visible = false; } else B_btn.Visible = false; break; }
-                    case 2:{ if (correct_letter() != "B") { B_btn.Visible = false; } else A_btn.Visible = false; break; }
+                    case 1:{ if (questions_list[price_equal[current_id]].answer != "A") { A_btn.Visible = false; } else B_btn.Visible = false; break; }
+                    case 2:{ if (questions_list[price_equal[current_id]].answer != "B") { B_btn.Visible = false; } else A_btn.Visible = false; break; }
                 }
                 int r2 = r.Next(3, 5);
                 switch (r2)
                 {
-                    case 3: { if (correct_letter() != "C") { C_btn.Visible = false; } else D_btn.Visible = false; break; }
-                    case 4: { if (correct_letter() != "D") { D_btn.Visible = false; } else C_btn.Visible = false; break; }
+                    case 3: { if (questions_list[price_equal[current_id]].answer != "C") { C_btn.Visible = false; } else D_btn.Visible = false; break; }
+                    case 4: { if (questions_list[price_equal[current_id]].answer != "D") { D_btn.Visible = false; } else C_btn.Visible = false; break; }
                 }
                 circle_btn_half.BackgroundImage = Image.FromFile("../../../../circle_btns_hover/half_option.png");
                 // circle_btn_half.Enabled = false;
@@ -566,7 +557,10 @@ namespace Milionare
         private void A_btn_MouseLeave(object sender, EventArgs e)
         {
             if (!validating)
+            {
                 A_btn.BackgroundImage = null;
+                A_btn.BackColor = Color.Transparent;
+            }
         }
 
         private void B_btn_MouseEnter(object sender, EventArgs e)
@@ -577,7 +571,10 @@ namespace Milionare
         private void B_btn_MouseLeave(object sender, EventArgs e)
         {
             if (!validating)
+            {
                 B_btn.BackgroundImage = null;
+                B_btn.BackColor = Color.Transparent;
+            }
         }
 
         private void C_btn_MouseEnter(object sender, EventArgs e)
@@ -588,8 +585,13 @@ namespace Milionare
         private void C_btn_MouseLeave(object sender, EventArgs e)
         {
             if (!validating)
+            {
                 C_btn.BackgroundImage = null;
+                C_btn.BackColor = Color.Transparent;
+            }
         }
+
+
 
         private void D_btn_MouseEnter(object sender, EventArgs e)
         {
@@ -599,7 +601,10 @@ namespace Milionare
         private void D_btn_MouseLeave(object sender, EventArgs e)
         {
             if (!validating)
+            {
                 D_btn.BackgroundImage = null;
+                D_btn.BackColor = Color.Transparent;
+            }
         }
         private void side_panel_gradient_Paint(object sender, PaintEventArgs e)
         {
@@ -616,3 +621,20 @@ namespace Milionare
 
     }
 }
+/*
+private void LogLastButton(Button button)
+{
+   Session["LastButtonId"] = button.ID;
+}
+
+protected void ButtonView_Click(object sender, EventArgs e)
+{
+   this.LogLastButton((Button)sender);
+}
+
+protected void ButtonViewDayWise_Click(object sender, EventArgs e)
+{
+   this.LogLastButton((Button)sender);
+}
+Button lastButton = Page.Controls.Find(Session["LastButtonId"].ToString());
+*/
