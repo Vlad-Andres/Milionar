@@ -1,22 +1,21 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Milionare
 {
-    public partial class login : Form
+    public partial class login_old : MaterialSkin.Controls.MaterialForm
     {
-        public login()
+        public login_old()
         {
             InitializeComponent();
+            MaterialSkin.MaterialSkinManager skinManager = MaterialSkin.MaterialSkinManager.Instance;
+            skinManager.AddFormToManage(this);
+            skinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.DARK;
+            skinManager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.Blue900, MaterialSkin.Primary.BlueGrey900, MaterialSkin.Primary.BlueGrey500, MaterialSkin.Accent.Orange700, MaterialSkin.TextShade.WHITE);
+            this.MaximizeBox = false;
         }
         private string pass_encrypt(string password)
         {
@@ -34,14 +33,13 @@ namespace Milionare
                 }
             }
         }
-
         private void login_Load(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.remember && Properties.Settings.Default.UserName != null && Properties.Settings.Default.Password != null)
             {
-                username_txt.Text = Properties.Settings.Default.UserName;
-                password_txt.Text = Properties.Settings.Default.Password;
-                remember_checkbx.Checked = true;
+                nick_txt.Text = Properties.Settings.Default.UserName;
+                pass_txt.Text = Properties.Settings.Default.Password;
+                materialCheckBox1.Checked = true;
             }
             else
                 Properties.Settings.Default.remember = false;
@@ -49,11 +47,12 @@ namespace Milionare
 
         private void login_btn_Click(object sender, EventArgs e)
         {
-            if (username_txt.Text.Length > 0 && password_txt.Text.Length > 0)
+
+            if (nick_txt.Text.Length>0 && pass_txt.Text.Length>0)
             {
                 MySqlConnection connection = new MySqlConnection();
                 string con_string = Global.db_connect_prop;
-                string query = "SELECT COUNT(*),`wallet`,`rank`,`name`,`email` FROM users WHERE Nickname='" + username_txt.Text + "' AND password='" + pass_encrypt(password_txt.Text) + "'";
+                string query = "SELECT COUNT(*),`wallet`,`rank`,`name`,`email` FROM users WHERE Nickname='" + nick_txt.Text+"' AND password='"+pass_encrypt(pass_txt.Text)+"'";
                 using (connection = new MySqlConnection(con_string))
                 using (MySqlCommand query_print = new MySqlCommand(query, connection))
                 {
@@ -63,11 +62,11 @@ namespace Milionare
                     {
                         if (Properties.Settings.Default.remember)
                         {
-                            Properties.Settings.Default.UserName = username_txt.Text;
-                            Properties.Settings.Default.Password = password_txt.Text;
+                            Properties.Settings.Default.UserName = nick_txt.Text;
+                            Properties.Settings.Default.Password = pass_txt.Text;
                             Properties.Settings.Default.Save();
                         }
-                        Global.Nickname = username_txt.Text;
+                        Global.Nickname = nick_txt.Text;
                         Global.name = dr["name"].ToString();
                         Global.rank = dr["rank"].ToString();
                         Global.wallet = Convert.ToInt32(dr["wallet"]);
@@ -83,7 +82,7 @@ namespace Milionare
                         this.Dispose();
                         f.ShowDialog();
                     }
-                    connection.Close();
+                        connection.Close();
                 }
             }
             else
@@ -92,30 +91,9 @@ namespace Milionare
             }
         }
 
-        private void remember_checkbx_CheckedChanged(object sender, EventArgs e)
-        {
-            if (remember_checkbx.Checked)
-            {
-                Properties.Settings.Default.remember = true;
-                Properties.Settings.Default.Save();
-            }
-            else
-            {
-                Properties.Settings.Default.remember = false;
-                Properties.Settings.Default.Save();
-            }
-        }
-
-        private void login_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            first_form f = new first_form();
-            this.Dispose();
-            f.ShowDialog();
-        }
-
         private void register_lbl_Click(object sender, EventArgs e)
         {
-            Register f = new Register();
+            register_old f = new register_old();
             this.Dispose();
             f.ShowDialog();
         }
@@ -127,11 +105,24 @@ namespace Milionare
             pss.ShowDialog();
         }
 
-        private void exit_button_Click(object sender, EventArgs e)
+        private void login_FormClosed(object sender, FormClosedEventArgs e)
         {
-            first_form f = new first_form();
-            this.Dispose();
-            f.ShowDialog();
+            Application.Exit();
+        }
+
+        private void materialCheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (materialCheckBox1.Checked)
+            {
+                Properties.Settings.Default.remember = true;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.remember = false;
+                Properties.Settings.Default.Save();
+            }
+                
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Milionare
 {
-    partial class register
+    partial class register_old
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(register));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(register_old));
             this.nickname_txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.mail_txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.name_txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
