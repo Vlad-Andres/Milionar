@@ -208,4 +208,40 @@
   <data name="pass_icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pass_icon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="A_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\A_green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="A_grey" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\A_grey.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="A_red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\A_red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="B_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\B_green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="B_grey" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\B_grey.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="B_red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\B_red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="C_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\C_green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="C_grey" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\C_grey.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="C_red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\C_red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="D_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\D_green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="D_grey" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\D_grey.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="D_red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\D_red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -43,13 +43,13 @@
             this.D_btn = new System.Windows.Forms.Button();
             this.B_btn = new System.Windows.Forms.Button();
             this.validation_timer = new System.Windows.Forms.Timer(this.components);
-            this.level_up_timer = new System.Windows.Forms.Timer(this.components);
             this.quetion_timer_lbl = new System.Windows.Forms.Label();
             this.circle_btn_public = new Milionare.circle_button();
             this.circle_btn_call = new Milionare.circle_button();
             this.circle_btn_half = new Milionare.circle_button();
             this.circle_btn_slide = new Milionare.circle_button();
             this.circle_btn_leave = new Milionare.circle_button();
+            this.author_img = new Milionare.circle_button();
             this.side_panel_gradient.SuspendLayout();
             this.side_panel.SuspendLayout();
             this.SuspendLayout();
@@ -231,10 +231,6 @@
             this.validation_timer.Interval = 1000;
             this.validation_timer.Tick += new System.EventHandler(this.validation_timer_Tick);
             // 
-            // level_up_timer
-            // 
-            this.level_up_timer.Tick += new System.EventHandler(this.level_up_timer_Tick);
-            // 
             // quetion_timer_lbl
             // 
             this.quetion_timer_lbl.AutoSize = true;
@@ -311,6 +307,15 @@
             this.circle_btn_leave.MouseEnter += new System.EventHandler(this.circle_btn_leave_MouseEnter);
             this.circle_btn_leave.MouseLeave += new System.EventHandler(this.circle_btn_leave_MouseLeave);
             // 
+            // author_img
+            // 
+            this.author_img.Location = new System.Drawing.Point(529, 504);
+            this.author_img.Name = "author_img";
+            this.author_img.Size = new System.Drawing.Size(36, 33);
+            this.author_img.TabIndex = 15;
+            this.author_img.Text = "circle_button1";
+            this.author_img.UseVisualStyleBackColor = true;
+            // 
             // main_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -319,6 +324,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1096, 618);
             this.ControlBox = false;
+            this.Controls.Add(this.author_img);
             this.Controls.Add(this.quetion_timer_lbl);
             this.Controls.Add(this.D_btn);
             this.Controls.Add(this.B_btn);
@@ -365,7 +371,7 @@
         private System.Windows.Forms.Button C_btn;
         private System.Windows.Forms.Button A_btn;
         private System.Windows.Forms.Timer validation_timer;
-        private System.Windows.Forms.Timer level_up_timer;
         private System.Windows.Forms.Label quetion_timer_lbl;
+        private circle_button author_img;
     }
 }

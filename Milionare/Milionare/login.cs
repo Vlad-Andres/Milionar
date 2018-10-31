@@ -57,11 +57,15 @@ namespace Milionare
                 using (connection = new MySqlConnection(con_string))
                 using (MySqlCommand query_print = new MySqlCommand(query, connection))
                 {
-                    connection.Open();
-                    MySqlDataReader dr = query_print.ExecuteReader(); dr.Read();
-                    if (dr["COUNT(*)"].ToString() == "1")
+                    MySqlConnection connection = new MySqlConnection();
+                    string con_string = Global.db_connect_prop;
+                    string query = "SELECT COUNT(*),`wallet`,`rank`,`name`,`email` FROM users WHERE Nickname='" + nick_txt.Text + "' AND password='" + pass_encrypt(pass_txt.Text) + "'";
+                    using (connection = new MySqlConnection(con_string))
+                    using (MySqlCommand query_print = new MySqlCommand(query, connection))
                     {
-                        if (Properties.Settings.Default.remember)
+                        connection.Open();
+                        MySqlDataReader dr = query_print.ExecuteReader(); dr.Read();
+                        if (dr["COUNT(*)"].ToString() == "1")
                         {
                             Properties.Settings.Default.UserName = username_txt.Text;
                             Properties.Settings.Default.Password = password_txt.Text;
@@ -85,6 +89,7 @@ namespace Milionare
                     }
                     connection.Close();
                 }
+                
             }
             else
             {
