@@ -276,6 +276,17 @@
   <ItemGroup>
     <None Include="Resources\1.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\gradient_bkg.png" />
+    <None Include="Resources\pass_icon.png" />
+    <None Include="Resources\login_icon.png" />
+    <None Include="Resources\power2.png" />
+    <None Include="Resources\power1.png" />
+    <None Include="Resources\power.png" />
+    <None Include="Resources\gradient_bkg4.png" />
+    <None Include="Resources\gradient_bkg2.png" />
+    <None Include="Resources\gradient_bkg1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
