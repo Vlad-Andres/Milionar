@@ -23,13 +23,13 @@ namespace Milionare
         private void populate()
         {
             //users_datagrid.Rows.Add(id, question, answer, author, topic, price);
-            string query = "SELECT questions.Id,questions.question,answers.answer,questions.author,topics.topic,questions.price FROM questions,answers,topics WHERE answers.Id=questions.answer_id AND topics.Id= questions.topic_id";
+            string query = "SELECT questions.Id, questions.question, questions.var_a, questions.var_b, questions.var_c, questions.var_d, questions.author, questions.correct_ans, topics.topic, questions.price FROM questions,topics WHERE topics.Id= questions.topic_id";
             
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, con_string);
             adapter.Fill(table);
             foreach (DataRow row in table.Rows)
             {
-                questions_datagrid.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString());
+                questions_datagrid.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString(), row[6].ToString(), row[7].ToString(), row[8].ToString(), row[9].ToString());
             }
             //users_datagrid.DataSource = table;
             //SELECT PROPRIETIES
