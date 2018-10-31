@@ -115,7 +115,7 @@ namespace Milionare
 
         private void register_lbl_Click(object sender, EventArgs e)
         {
-            register_old f = new register_old();
+            Register f = new Register();
             this.Dispose();
             f.ShowDialog();
         }
@@ -125,6 +125,13 @@ namespace Milionare
             pass_recovery pss = new pass_recovery();
             this.Dispose();
             pss.ShowDialog();
+        }
+
+        private void exit_button_Click(object sender, EventArgs e)
+        {
+            first_form f = new first_form();
+            this.Dispose();
+            f.ShowDialog();
         }
     }
 }

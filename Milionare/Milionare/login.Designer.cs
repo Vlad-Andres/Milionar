@@ -41,6 +41,7 @@
             this.remember_checkbx = new System.Windows.Forms.CheckBox();
             this.pass_lost = new MaterialSkin.Controls.MaterialLabel();
             this.register_lbl = new MaterialSkin.Controls.MaterialLabel();
+            this.exit_button = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -120,6 +121,7 @@
             this.password_txt.Name = "password_txt";
             this.password_txt.Size = new System.Drawing.Size(278, 32);
             this.password_txt.TabIndex = 0;
+            this.password_txt.UseSystemPasswordChar = true;
             // 
             // login_btn
             // 
@@ -185,6 +187,19 @@
             this.register_lbl.Text = "Register";
             this.register_lbl.Click += new System.EventHandler(this.register_lbl_Click);
             // 
+            // exit_button
+            // 
+            this.exit_button.BackColor = System.Drawing.Color.Transparent;
+            this.exit_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exit_button.ForeColor = System.Drawing.Color.DimGray;
+            this.exit_button.Location = new System.Drawing.Point(413, 12);
+            this.exit_button.Name = "exit_button";
+            this.exit_button.Size = new System.Drawing.Size(25, 26);
+            this.exit_button.TabIndex = 9;
+            this.exit_button.Text = "X";
+            this.exit_button.UseVisualStyleBackColor = false;
+            this.exit_button.Click += new System.EventHandler(this.exit_button_Click);
+            // 
             // login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -192,6 +207,7 @@
             this.BackgroundImage = global::Milionare.Properties.Resources.gradient_bkg;
             this.ClientSize = new System.Drawing.Size(450, 500);
             this.ControlBox = false;
+            this.Controls.Add(this.exit_button);
             this.Controls.Add(this.register_lbl);
             this.Controls.Add(this.pass_lost);
             this.Controls.Add(this.remember_checkbx);
@@ -230,5 +246,6 @@
         private System.Windows.Forms.CheckBox remember_checkbx;
         private MaterialSkin.Controls.MaterialLabel pass_lost;
         private MaterialSkin.Controls.MaterialLabel register_lbl;
+        private System.Windows.Forms.Button exit_button;
     }
 }

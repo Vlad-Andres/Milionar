@@ -123,6 +123,12 @@
     <Compile Include="Questions.Designer.cs">
       <DependentUpon>Questions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -179,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Questions.resx">
       <DependentUpon>Questions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users.resx">
       <DependentUpon>Users.cs</DependentUpon>
@@ -277,7 +286,14 @@
     <None Include="Resources\1.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\pass_icon1.png" />
+    <None Include="Resources\email_icon.png" />
+    <None Include="Resources\username_icon.png" />
+    <None Include="Resources\name_icon.png" />
+    <None Include="Resources\forgot_pass_icon.png" />
     <Content Include="Resources\gradient_bkg.png" />
+    <None Include="Resources\register_lbl_icon.png" />
+    <None Include="Resources\register_icon.png" />
     <None Include="Resources\pass_icon.png" />
     <None Include="Resources\login_icon.png" />
     <None Include="Resources\power2.png" />

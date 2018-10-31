@@ -262,7 +262,7 @@ namespace Milionare
             }
             else
             { 
-                register_old r = new register_old();
+                Register r = new Register();
                 this.Hide();
                 r.ShowDialog();
             }
