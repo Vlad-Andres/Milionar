@@ -53,11 +53,11 @@
             // 
             this.username_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
             this.username_txt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.username_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.username_txt.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.username_txt.ForeColor = System.Drawing.Color.White;
             this.username_txt.Location = new System.Drawing.Point(67, 19);
             this.username_txt.Name = "username_txt";
-            this.username_txt.Size = new System.Drawing.Size(278, 32);
+            this.username_txt.Size = new System.Drawing.Size(278, 33);
             this.username_txt.TabIndex = 0;
             // 
             // panel1
