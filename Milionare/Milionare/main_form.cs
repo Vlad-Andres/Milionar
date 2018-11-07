@@ -187,7 +187,7 @@ namespace Milionare
                         {  connection.Open(); write.ExecuteNonQuery(); connection.Close(); }
                     }
                     first_form f = new first_form();
-                    this.Hide();
+                    this.Dispose();
                     f.ShowDialog();
                 }
                 else {
@@ -213,7 +213,7 @@ namespace Milionare
                         { connection.Open(); write.ExecuteNonQuery(); connection.Close(); }
                     }
                     first_form f = new first_form();
-                    this.Hide();
+                    this.Dispose();
                     f.ShowDialog();
                 }
                 else {
@@ -240,7 +240,7 @@ namespace Milionare
                         { connection.Open(); write.ExecuteNonQuery(); connection.Close(); }
                     }
                     first_form f = new first_form();
-                    this.Hide();
+                    this.Dispose();
                     f.ShowDialog();
                 }
                 else {
@@ -258,7 +258,7 @@ namespace Milionare
                 if (MetroFramework.MetroMessageBox.Show(this, "Results", "You didn't earned anything :(", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
                 {
                     first_form f = new first_form();
-                    this.Hide();
+                    this.Dispose();
                     f.ShowDialog();
                 }
                 else { Application.Exit(); }

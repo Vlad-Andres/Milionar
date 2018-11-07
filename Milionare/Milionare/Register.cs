@@ -138,14 +138,21 @@ namespace Milionare
         {
             MySqlConnection connection = new MySqlConnection();
             string con_string = Global.db_connect_prop;
-            string query = "INSERT INTO users (Name,Nickname,email,password,wallet,rank) VALUES ('" + name_txt.Text + "','" + username_txt.Text + "','" + mail_txt.Text + "','" + pass_encrypt(username_txt.Text) + "',0,'user')";
-            using (connection = new MySqlConnection(con_string))
-            using (MySqlCommand write = new MySqlCommand(query, connection))
+            string query = "INSERT INTO users (`Name`,`Nickname`,`email`,`password`,`wallet`,`rank`) VALUES ('" + name_txt.Text + "','" + username_txt.Text + "','" + mail_txt.Text + "','" + pass_encrypt(username_txt.Text) + "',0,'user')";
+            try
             {
-                connection.Open();
-                write.ExecuteNonQuery();
-                connection.Close();
+                using (connection = new MySqlConnection(con_string))
+                using (MySqlCommand write = new MySqlCommand(query, connection))
+                {
+                    connection.Open();
+                    write.ExecuteNonQuery();
+                    connection.Close();
+                }
+            } catch (MySqlException ex)
+            {
+                Global.mysql_err_msg(ex);
             }
+
             this.Hide();
             login l = new login();
             l.ShowDialog();

@@ -286,6 +286,7 @@
     <None Include="Resources\1.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\gradient_bkg3.png" />
     <None Include="Resources\pass_icon1.png" />
     <None Include="Resources\email_icon.png" />
     <None Include="Resources\username_icon.png" />
