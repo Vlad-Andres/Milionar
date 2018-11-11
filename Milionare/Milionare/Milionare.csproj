@@ -129,7 +129,6 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
-    <Compile Include="User.cs" />
     <Compile Include="Users.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -149,12 +148,6 @@
       <DependentUpon>backstage.cs</DependentUpon>
     </Compile>
     <Compile Include="Global_var.cs" />
-    <Compile Include="login_old.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="login_old.Designer.cs">
-      <DependentUpon>login_old.cs</DependentUpon>
-    </Compile>
     <Compile Include="main_form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,12 +162,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="register_old.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="register_old.Designer.cs">
-      <DependentUpon>register_old.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Admin_panel.resx">
       <DependentUpon>Admin_panel.cs</DependentUpon>
     </EmbeddedResource>
@@ -196,9 +183,6 @@
     <EmbeddedResource Include="first_form.resx">
       <DependentUpon>first_form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="login_old.resx">
-      <DependentUpon>login_old.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="main_form.resx">
       <DependentUpon>main_form.cs</DependentUpon>
     </EmbeddedResource>
@@ -215,9 +199,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="register_old.resx">
-      <DependentUpon>register_old.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

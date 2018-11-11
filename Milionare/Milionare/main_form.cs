@@ -168,6 +168,7 @@ namespace Milionare
         //---------------------------------------------------------------------------------------------- Cazuri de castig si pierdere
         private void result(int id)
         {
+            question_timer.Stop();
             validation_timer.Stop();
             MySqlConnection connection = new MySqlConnection();
             string con_string = Global.db_connect_prop;
@@ -177,11 +178,11 @@ namespace Milionare
 
             if (id >= 5 && id < 10)
             { 
-                Global.wallet += 1000;
+                Global.User.wallet += 1000;
                 if (MetroFramework.MetroMessageBox.Show(this, "Results", "You earned 1 thousand dollars", MessageBoxButtons.RetryCancel, MessageBoxIcon.Information) == DialogResult.Retry)
                 {
-                    if (Global.Nickname != "undef") { 
-                        string query = "UPDATE users SET wallet=" + Global.wallet + " WHERE Nickname='" + Global.Nickname + "' ";
+                    if (Global.User.nickname != null) { 
+                        string query = "UPDATE users SET wallet=" + Global.User.wallet + " WHERE Nickname='" + Global.User.nickname + "' ";
                         using (connection = new MySqlConnection(con_string))
                         using (MySqlCommand write = new MySqlCommand(query, connection))
                         {  connection.Open(); write.ExecuteNonQuery(); connection.Close(); }
@@ -191,9 +192,9 @@ namespace Milionare
                     f.ShowDialog();
                 }
                 else {
-                    if (Global.Nickname != "undef")
+                    if (Global.User.nickname != null)
                     {
-                        string query = "UPDATE users SET wallet=" + Global.wallet + " WHERE Nickname='" + Global.Nickname + "' ";
+                        string query = "UPDATE users SET wallet=" + Global.User.wallet + " WHERE Nickname='" + Global.User.nickname + "' ";
                         using (connection = new MySqlConnection(con_string))
                         using (MySqlCommand write = new MySqlCommand(query, connection))
                         { connection.Open(); write.ExecuteNonQuery(); connection.Close(); }
@@ -202,12 +203,12 @@ namespace Milionare
             }
             else if (id >= 10 && id < 15)
             {
-                Global.wallet += 32000;
+                Global.User.wallet += 32000;
                 if (MetroFramework.MetroMessageBox.Show(this, "Results", "You earned 32 thousands dollars", MessageBoxButtons.RetryCancel, MessageBoxIcon.Information) == DialogResult.Retry)
                 {
-                    if (Global.Nickname != "undef")
+                    if (Global.User.nickname != null)
                     {
-                        string query = "UPDATE users SET wallet=" + Global.wallet + " WHERE Nickname='" + Global.Nickname + "' ";
+                        string query = "UPDATE users SET wallet=" + Global.User.wallet + " WHERE Nickname='" + Global.User.nickname + "' ";
                         using (connection = new MySqlConnection(con_string))
                         using (MySqlCommand write = new MySqlCommand(query, connection))
                         { connection.Open(); write.ExecuteNonQuery(); connection.Close(); }
@@ -217,9 +218,9 @@ namespace Milionare
                     f.ShowDialog();
                 }
                 else {
-                    if (Global.Nickname != "undef")
+                    if (Global.User.nickname != null)
                     {
-                        string query = "UPDATE users SET wallet=" + Global.wallet + " WHERE Nickname='" + Global.Nickname + "' ";
+                        string query = "UPDATE users SET wallet=" + Global.User.wallet + " WHERE Nickname='" + Global.User.nickname + "' ";
                         using (connection = new MySqlConnection(con_string))
                         using (MySqlCommand write = new MySqlCommand(query, connection))
                         { connection.Open(); write.ExecuteNonQuery(); connection.Close(); }
@@ -228,13 +229,13 @@ namespace Milionare
             }
             else if (id == 15)
             {
-                Global.wallet += 1000000;
+                Global.User.wallet += 1000000;
 
                 if (MetroFramework.MetroMessageBox.Show(this, "Congratulations", "You won 1 million dollars", MessageBoxButtons.RetryCancel, MessageBoxIcon.Information) == DialogResult.Retry)
                 {
-                    if (Global.Nickname != "undef")
+                    if (Global.User.nickname != null)
                     {
-                        string query = "UPDATE users SET wallet=" + Global.wallet + " WHERE Nickname='" + Global.Nickname + "' ";
+                        string query = "UPDATE users SET wallet=" + Global.User.wallet + " WHERE Nickname='" + Global.User.nickname + "' ";
                         using (connection = new MySqlConnection(con_string))
                         using (MySqlCommand write = new MySqlCommand(query, connection))
                         { connection.Open(); write.ExecuteNonQuery(); connection.Close(); }
@@ -244,9 +245,9 @@ namespace Milionare
                     f.ShowDialog();
                 }
                 else {
-                    if (Global.Nickname != "undef")
+                    if (Global.User.nickname != null)
                     {
-                        string query = "UPDATE users SET wallet=" + Global.wallet + " WHERE Nickname='" + Global.Nickname + "' ";
+                        string query = "UPDATE users SET wallet=" + Global.User.wallet + " WHERE Nickname='" + Global.User.nickname + "' ";
                         using (connection = new MySqlConnection(con_string))
                         using (MySqlCommand write = new MySqlCommand(query, connection))
                         { connection.Open(); write.ExecuteNonQuery(); connection.Close(); }
@@ -363,7 +364,6 @@ namespace Milionare
             {
                 if (id == 15)
                 {
-                    question_timer.Stop();
                     result(15);
                 }
                 id++; lvl_change();
@@ -372,7 +372,6 @@ namespace Milionare
             else
             {
                 result(id);
-                question_timer.Stop();
             }
             
         }
@@ -436,7 +435,7 @@ namespace Milionare
                 
             }
             first_form f = new first_form();
-            this.Hide();
+            this.Dispose();
             f.ShowDialog();
             // Database -> Delete session row
         }

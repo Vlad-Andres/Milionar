@@ -15,7 +15,7 @@ namespace Milionare
         public Admin_panel()
         {
             InitializeComponent();
-            admin_name.Text = Global.name;
+            admin_name.Text = Global.User.name;
 
 
         }

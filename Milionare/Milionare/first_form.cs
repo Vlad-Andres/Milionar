@@ -27,15 +27,15 @@ namespace Milionare
         {
             
             InitializeComponent();
-            if (Global.Nickname != "undef")
+            if (Global.User.nickname != null)
             {
-                login_lbl.Text = Global.Nickname +" "+Global.wallet.ToString() + " $";
+                login_lbl.Text = Global.User.nickname +" "+Global.User.wallet.ToString() + " $";
                 login_lbl.Enabled = false;
                 login_lbl.Top += 30;
                 slash_lbl.Visible = false;
                 reg_lbl.Text = " Log out..";       
             }
-            if (Global.rank=="admin" || Global.rank == "moder") { label1.Text = "Back Stage +"; };
+            if (Global.User.rank=="admin" || Global.User.rank == "moder") { label1.Text = "Back Stage +"; };
            // Application.Run(new first_form());
             
 
@@ -49,11 +49,11 @@ namespace Milionare
 
         private void science_btn_Click(object sender, EventArgs e)
         {
-            if (Global.Nickname == "undef")
+            if (Global.User.nickname == null)
             {
                 if (MetroFramework.MetroMessageBox.Show(this, "Do you want to Log in to be able for stats?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.Yes)
                 {
-                    login_old l = new login_old();
+                    login l = new login();
                     this.Hide();
                     l.ShowDialog();
                 }
@@ -85,11 +85,11 @@ namespace Milionare
         private void sport_Click(object sender, EventArgs e)
         {
             // Database -> session -> topic -> 
-            if (Global.Nickname == "undef")
+            if (Global.User.nickname == null)
             {
                 if (MetroFramework.MetroMessageBox.Show(this, "Do you want to Log in to be able for stats?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.Yes)
                 {
-                    login_old l = new login_old();
+                    login l = new login();
                     this.Hide();
                     l.ShowDialog();
                 }
@@ -121,11 +121,11 @@ namespace Milionare
         private void arts_btn_Click(object sender, EventArgs e)
         {
             // Database -> session -> topic -> 
-            if (Global.Nickname == "undef")
+            if (Global.User.nickname == null)
             {
                 if (MetroFramework.MetroMessageBox.Show(this, "Do you want to Log in to be able for stats?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.Yes)
                 {
-                    login_old l = new login_old();
+                    login l = new login();
                     this.Hide();
                     l.ShowDialog();
                 }
@@ -158,11 +158,11 @@ namespace Milionare
         {
             // Database -> session -> topic ->
             // Database -> session -> topic -> science
-            if (Global.Nickname == "undef")
+            if (Global.User.nickname == null)
             {
                 if (MetroFramework.MetroMessageBox.Show(this, "Do you want to Log in to be able for stats?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.Yes)
                 {
-                    login_old l = new login_old();
+                    login l = new login();
                     this.Hide();
                     l.ShowDialog();
                 }
@@ -226,8 +226,8 @@ namespace Milionare
 
         private void label1_Click(object sender, EventArgs e)
         {
-            if (Global.Nickname != "undef")
-            { if (Global.rank == "admin" || Global.rank == "moder")
+            if (Global.User.nickname != null)
+            { if (Global.User.rank == "admin" || Global.User.rank == "moder")
                 {
                     Admin_panel a = new Admin_panel();
                     this.Dispose();
@@ -254,7 +254,7 @@ namespace Milionare
         {
             if(reg_lbl.Text== " Log out..")
             {
-                Global.Nickname = "undef";
+                Global.User.nickname = null;
                 first_form f = new first_form();
                 this.Dispose();
                 f.Show();

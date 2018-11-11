@@ -28,7 +28,7 @@ namespace Milionare
             string con_string = db_connect_prop;
             string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             string q_verify_number = "SELECT COUNT(*) FROM questions WHERE topic_id=" + s + "";
-            string query = "INSERT INTO games (topic_id,user_id,begin_at) VALUES(" + s + ",(SELECT Id From users WHERE Nickname = '" + Nickname + "'),'"+timestamp+"')";
+            string query = "INSERT INTO games (topic_id,user_id,begin_at) VALUES(" + s + ","+User.id+",'"+timestamp+"')";
             string save_id = "SELECT Id FROM games WHERE begin_at='"+timestamp+"'";
             try
             {
@@ -95,7 +95,7 @@ namespace Milionare
         {
             MySqlConnection connection = new MySqlConnection();
             string con_string = db_connect_prop;
-            string question_insert = "INSERT INTO milionaire.questions (question,author,price,var_a,var_b,var_c,var_d,correct_ans,topic_id) VALUES('" + question + "', '"+Nickname+"', "+question_value+", '" + variant_A + "', '" + variant_B + "', '" + variant_C + "', '" + variant_D + "', '"+right_answer+"', (SELECT Id FROM topics WHERE topic = '" + topic + "' )); ";
+            string question_insert = "INSERT INTO milionaire.questions (question,author,price,var_a,var_b,var_c,var_d,correct_ans,topic_id) VALUES('" + question + "', '"+User.id+"', "+question_value+", '" + variant_A + "', '" + variant_B + "', '" + variant_C + "', '" + variant_D + "', '"+right_answer+"', (SELECT Id FROM topics WHERE topic = '" + topic + "' )); ";
 
             try { 
                 using (connection = new MySqlConnection(con_string))
@@ -145,8 +145,7 @@ namespace Milionare
                 email = mail;
             }
         }
-        public static string Nickname="undef", rank, name;
-        public static int wallet;
+
 
     }
 }

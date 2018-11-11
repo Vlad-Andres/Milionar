@@ -69,11 +69,7 @@ namespace Milionare
                         }
                         //Global.User.name = "testnamne";
                         Global.User current_user = new Global.User(Convert.ToInt32(dr["Id"]), dr["name"].ToString(), dr["Nickname"].ToString(), dr["rank"].ToString(), Convert.ToInt32(dr["wallet"]), dr["email"].ToString());
-                        Global.Nickname = username_txt.Text;
-                        Global.name = dr["name"].ToString();
-                        Global.rank = dr["rank"].ToString();
-                        Global.wallet = Convert.ToInt32(dr["wallet"]);
-                        acc_recovery.sender_mail = dr["email"].ToString();
+                        acc_recovery.sender_mail = Global.User.email.ToString();
                         first_form f = new first_form();
                         this.Hide();
                         f.ShowDialog();
