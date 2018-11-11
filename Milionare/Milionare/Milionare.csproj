@@ -129,6 +129,7 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
     <Compile Include="Users.cs">
       <SubType>UserControl</SubType>
     </Compile>

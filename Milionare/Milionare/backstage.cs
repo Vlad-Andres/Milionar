@@ -20,8 +20,8 @@ namespace Milionare
             topic_txt.SelectedIndex = 0;
             question_value_txt.SelectedIndex = 0;
             right_asnwer_txt.SelectedIndex = 0;
-            author_txt.Text = Global.Nickname;
-
+            author_txt.Text = Global.User.nickname;
+            MessageBox.Show(Global.User.name);
 
         }
 

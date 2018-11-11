@@ -132,9 +132,9 @@ namespace Milionare
                 questions_list.Add(q);
                 connection.Close();
             }
-            }catch (Exception e)
+            }catch (MySqlException e)
             {
-
+              Global.mysql_err_msg(e);
             }
 
 

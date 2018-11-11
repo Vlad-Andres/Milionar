@@ -131,6 +131,20 @@ namespace Milionare
         }
 
         //----------------------------------------Users-----------------------------------------------------------------------
+        public class User
+        {
+            public static int wallet,id;
+            public static string name,nickname,rank,email;
+            public User(int ident, string nm, string nk, string rnk,int wall, string mail)
+            {
+                id = ident;
+                name = nm;
+                nickname = nk;
+                rank = rnk;
+                wallet = wall;
+                email = mail;
+            }
+        }
         public static string Nickname="undef", rank, name;
         public static int wallet;
 
