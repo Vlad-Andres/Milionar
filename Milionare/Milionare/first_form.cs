@@ -190,6 +190,43 @@ namespace Milionare
                 }
             }
         }
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+            // Database -> session -> topic ->
+            // Database -> session -> topic -> science
+            if (Global.User.nickname == null)
+            {
+                if (MetroFramework.MetroMessageBox.Show(this, "Do you want to Log in to be able for stats?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.Yes)
+                {
+                    login l = new login();
+                    this.Hide();
+                    l.ShowDialog();
+                }
+                else
+                {
+
+                    Global.topic_write(5);
+                    if (Global.passed)
+                    {
+                        main_form f = new main_form();
+                        this.Hide();
+                        f.ShowDialog();
+                    }
+                }
+            }
+            else
+            {
+
+                Global.topic_write(5);
+                if (Global.passed)
+                {
+                    main_form f = new main_form();
+                    this.Hide();
+                    f.ShowDialog();
+                }
+            }
+        }
         private void exit_button_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -267,5 +304,16 @@ namespace Milionare
                 r.ShowDialog();
             }
         }
+
+        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox1.BackColor = Color.Azure;
+        }
+
+        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox1.BackColor = Color.Transparent;
+        }
+
     }
 }

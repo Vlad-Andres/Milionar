@@ -421,11 +421,9 @@ D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.l
 D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.Questions.resources
 D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.Users.resources
 D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.first_form.resources
-D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.login_old.resources
 D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.main_form.resources
 D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.pass_recovery.resources
 D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.Properties.Resources.resources
-D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.register_old.resources
 D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.csproj.GenerateResource.Cache
 D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.exe
 D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.pdb

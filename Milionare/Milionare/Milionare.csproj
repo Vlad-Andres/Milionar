@@ -274,6 +274,7 @@
     <None Include="Resources\username_icon.png" />
     <None Include="Resources\name_icon.png" />
     <None Include="Resources\forgot_pass_icon.png" />
+    <None Include="bin\Debug\resources\icons\mixed_class.png" />
     <Content Include="Resources\gradient_bkg.png" />
     <None Include="Resources\register_lbl_icon.png" />
     <None Include="Resources\register_icon.png" />

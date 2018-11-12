@@ -403,6 +403,16 @@ namespace Milionare.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mixed_class {
+            get {
+                object obj = ResourceManager.GetObject("mixed_class", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap name_icon {
             get {
                 object obj = ResourceManager.GetObject("name_icon", resourceCulture);

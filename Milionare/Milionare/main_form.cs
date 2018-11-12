@@ -123,7 +123,8 @@ namespace Milionare
             try { 
             MySqlConnection connection = new MySqlConnection();
             DataTable table = new DataTable();
-            string select_querry = "SELECT Id, question, var_a, var_b, var_c, var_d, correct_ans, price FROM milionaire.questions; ";
+                MessageBox.Show(Global.topic.ToString());
+            string select_querry = "SELECT Id, question, var_a, var_b, var_c, var_d, correct_ans, price FROM milionaire.questions WHERE topic_id = "+Global.topic+" ORDER BY RAND() LIMIT 16; ";
             MySqlDataAdapter adapter = new MySqlDataAdapter(select_querry, con_string);
             adapter.Fill(table);
             foreach (DataRow row in table.Rows)
