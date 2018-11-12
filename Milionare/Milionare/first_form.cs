@@ -25,7 +25,7 @@ namespace Milionare
         
         public first_form()
         {
-            
+
             InitializeComponent();
             if (Global.User.nickname != null)
             {

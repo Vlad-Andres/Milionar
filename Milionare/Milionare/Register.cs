@@ -66,9 +66,9 @@ namespace Milionare
                 return false;
             }
         }
-
         private void mail_txt_Leave(object sender, EventArgs e)
         {
+            if (mail_txt.Text == "") { mail_txt.Text = "abc@example.com"; mail_txt.ForeColor = Color.MediumAquamarine; }
             string pattern = "^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$";
 
 
@@ -86,8 +86,11 @@ namespace Milionare
             }
         }
 
+
         private void name_txt_Leave(object sender, EventArgs e)
         {
+            if (name_txt.Text == "") { name_txt.Text = "Name"; name_txt.ForeColor = Color.MediumAquamarine; }
+
             if (name_txt.Text.Length > 2 && name_txt.Text.Length < 10)
             {
                 errorProvider1.Clear();
@@ -104,6 +107,7 @@ namespace Milionare
 
         private void password_txt_Leave(object sender, EventArgs e)
         {
+            if (password_txt.Text == "") { password_txt.Text = "Password"; password_txt.UseSystemPasswordChar = false; password_txt.ForeColor = Color.MediumAquamarine; }
             if (password_txt.Text.Length > 2 && password_txt.Text.Length < 25)
             {
                 errorProvider1.Clear();
@@ -120,6 +124,7 @@ namespace Milionare
 
         private void username_txt_Leave(object sender, EventArgs e)
         {
+            if (username_txt.Text == "") { username_txt.Text = "Username"; username_txt.ForeColor = Color.MediumAquamarine; }
             if (username_txt.Text.Length > 2 && username_txt.Text.Length < 25)
             {
                 errorProvider1.Clear();
@@ -156,6 +161,54 @@ namespace Milionare
             this.Hide();
             login l = new login();
             l.ShowDialog();
+        }
+
+        private void name_txt_Enter(object sender, EventArgs e)
+        {
+            name_txt.Text = "";
+            name_txt.ForeColor = Color.MediumSpringGreen;
+        }
+
+        private void username_txt_Enter(object sender, EventArgs e)
+        {
+            username_txt.Text = "";
+            username_txt.ForeColor = Color.MediumSpringGreen;
+        }
+
+        private void mail_txt_Enter(object sender, EventArgs e)
+        {
+            mail_txt.Text = "";
+            mail_txt.ForeColor = Color.MediumSpringGreen;
+        }
+
+        private void password_txt_Enter(object sender, EventArgs e)
+        {
+            password_txt.Text = "";
+            password_txt.UseSystemPasswordChar = true;
+            password_txt.ForeColor = Color.MediumSpringGreen;
+        }
+
+        private void re_pass_txt_Enter(object sender, EventArgs e)
+        {
+            re_pass_txt.Text = "";
+            re_pass_txt.UseSystemPasswordChar = true;
+            re_pass_txt.ForeColor = Color.MediumSpringGreen;
+        }
+
+        private void re_pass_txt_Leave(object sender, EventArgs e)
+        {
+            if (re_pass_txt.Text == "") { re_pass_txt.Text = "Retype password"; re_pass_txt.UseSystemPasswordChar = false; re_pass_txt.ForeColor = Color.MediumAquamarine; }
+            if (re_pass_txt.Text == password_txt.Text)
+            {
+                errorProvider1.Clear();
+                reg_btn.Enabled = true;
+            }
+            else
+            {
+                errorProvider1.SetError(this.re_pass_txt, "Password don't match");
+                reg_btn.Enabled = false;
+                return;
+            }
         }
     }
 }

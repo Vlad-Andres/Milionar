@@ -27,7 +27,7 @@ namespace Milionare
             MySqlConnection connection = new MySqlConnection();
             string con_string = db_connect_prop;
             string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            string q_verify_number = "SELECT COUNT(*) FROM questions WHERE topic_id=" + s + "";
+            string q_verify_number = "SELECT COUNT(DISTINCT(price)) FROM questions WHERE topic_id=" + s + "";
             string query = "INSERT INTO games (topic_id,user_id,begin_at) VALUES(" + s + ","+User.id+",'"+timestamp+"')";
             string save_id = "SELECT Id FROM games WHERE begin_at='"+timestamp+"'";
             try
