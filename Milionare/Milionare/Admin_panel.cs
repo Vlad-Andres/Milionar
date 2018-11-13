@@ -55,7 +55,9 @@ namespace Milionare
 
         private void quest_add_btn_Click(object sender, EventArgs e)
         {
-
+            backstage f = new backstage();
+            this.Hide();
+            f.ShowDialog();
         }
     }
 }

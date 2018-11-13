@@ -293,7 +293,7 @@
             // 
             this.bunifuDragControl1.Fixed = true;
             this.bunifuDragControl1.Horizontal = true;
-            this.bunifuDragControl1.TargetControl = null;
+            this.bunifuDragControl1.TargetControl = this;
             this.bunifuDragControl1.Vertical = true;
             // 
             // Register

@@ -32,14 +32,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.users_datagrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
-            this.set_admin_btn = new System.Windows.Forms.Button();
-            this.set_user_btn = new System.Windows.Forms.Button();
             this.Id_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nick_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.wallet_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rank_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.set_admin_btn = new System.Windows.Forms.Button();
+            this.set_user_btn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.add_user_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.users_datagrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,26 +93,6 @@
             this.users_datagrid.Size = new System.Drawing.Size(689, 368);
             this.users_datagrid.TabIndex = 1;
             // 
-            // set_admin_btn
-            // 
-            this.set_admin_btn.Location = new System.Drawing.Point(522, 435);
-            this.set_admin_btn.Name = "set_admin_btn";
-            this.set_admin_btn.Size = new System.Drawing.Size(144, 24);
-            this.set_admin_btn.TabIndex = 2;
-            this.set_admin_btn.Text = "Set Admin";
-            this.set_admin_btn.UseVisualStyleBackColor = true;
-            this.set_admin_btn.Click += new System.EventHandler(this.set_admin_btn_Click);
-            // 
-            // set_user_btn
-            // 
-            this.set_user_btn.Location = new System.Drawing.Point(372, 435);
-            this.set_user_btn.Name = "set_user_btn";
-            this.set_user_btn.Size = new System.Drawing.Size(144, 24);
-            this.set_user_btn.TabIndex = 3;
-            this.set_user_btn.Text = "Set User";
-            this.set_user_btn.UseVisualStyleBackColor = true;
-            this.set_user_btn.Click += new System.EventHandler(this.set_user_btn_Click);
-            // 
             // Id_col
             // 
             this.Id_col.Frozen = true;
@@ -156,11 +138,57 @@
             this.rank_id.ReadOnly = true;
             this.rank_id.Width = 110;
             // 
+            // set_admin_btn
+            // 
+            this.set_admin_btn.Location = new System.Drawing.Point(388, 435);
+            this.set_admin_btn.Name = "set_admin_btn";
+            this.set_admin_btn.Size = new System.Drawing.Size(144, 24);
+            this.set_admin_btn.TabIndex = 2;
+            this.set_admin_btn.Text = "Set Admin";
+            this.set_admin_btn.UseVisualStyleBackColor = true;
+            this.set_admin_btn.Click += new System.EventHandler(this.set_admin_btn_Click);
+            // 
+            // set_user_btn
+            // 
+            this.set_user_btn.Location = new System.Drawing.Point(238, 435);
+            this.set_user_btn.Name = "set_user_btn";
+            this.set_user_btn.Size = new System.Drawing.Size(144, 24);
+            this.set_user_btn.TabIndex = 3;
+            this.set_user_btn.Text = "Set User";
+            this.set_user_btn.UseVisualStyleBackColor = true;
+            this.set_user_btn.Click += new System.EventHandler(this.set_user_btn_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Firebrick;
+            this.button1.ForeColor = System.Drawing.SystemColors.Control;
+            this.button1.Location = new System.Drawing.Point(538, 435);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(144, 24);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Delete User";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // add_user_btn
+            // 
+            this.add_user_btn.BackColor = System.Drawing.Color.YellowGreen;
+            this.add_user_btn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.add_user_btn.Location = new System.Drawing.Point(88, 435);
+            this.add_user_btn.Name = "add_user_btn";
+            this.add_user_btn.Size = new System.Drawing.Size(144, 24);
+            this.add_user_btn.TabIndex = 5;
+            this.add_user_btn.Text = "Register new";
+            this.add_user_btn.UseVisualStyleBackColor = false;
+            this.add_user_btn.Click += new System.EventHandler(this.add_user_btn_Click);
+            // 
             // Users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.Controls.Add(this.add_user_btn);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.set_user_btn);
             this.Controls.Add(this.set_admin_btn);
             this.Controls.Add(this.users_datagrid);
@@ -186,5 +214,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn email_col;
         private System.Windows.Forms.DataGridViewTextBoxColumn wallet_col;
         private System.Windows.Forms.DataGridViewTextBoxColumn rank_id;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button add_user_btn;
     }
 }

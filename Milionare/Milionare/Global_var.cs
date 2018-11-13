@@ -91,11 +91,11 @@ namespace Milionare
            // }
         }
 
-        public static void question_write( string topic, string question, string variant_A, string variant_B, string variant_C, string variant_D, string right_answer, int question_value)
+        public static void question_write(string table_in, string topic, string question, string variant_A, string variant_B, string variant_C, string variant_D, string right_answer, int question_value)
         {
             MySqlConnection connection = new MySqlConnection();
             string con_string = db_connect_prop;
-            string question_insert = "INSERT INTO milionaire.questions (question,author,price,var_a,var_b,var_c,var_d,correct_ans,topic_id) VALUES('" + question + "', '"+User.id+"', "+question_value+", '" + variant_A + "', '" + variant_B + "', '" + variant_C + "', '" + variant_D + "', '"+right_answer+"', (SELECT Id FROM topics WHERE topic = '" + topic + "' )); ";
+            string question_insert = "INSERT INTO milionaire.'"+table_in+"' (question,author,price,var_a,var_b,var_c,var_d,correct_ans,topic_id) VALUES('" + question + "', '"+User.id+"', "+question_value+", '" + variant_A + "', '" + variant_B + "', '" + variant_C + "', '" + variant_D + "', '"+right_answer+"', (SELECT Id FROM topics WHERE topic = '" + topic + "' )); ";
 
             try { 
                 using (connection = new MySqlConnection(con_string))

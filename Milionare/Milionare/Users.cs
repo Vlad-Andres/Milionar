@@ -10,19 +10,21 @@ namespace Milionare
         string con_string = Global.db_connect_prop;
         public Users()
         {
-
+            
             InitializeComponent();
+            if (Global.User.rank != "moder") { button1.Enabled = false; button1.Cursor = Cursors.No; }
         }
         private void populate()
         {
+            users_datagrid.Rows.Clear();
             //users_datagrid.Rows.Add(id, name, nick, email, wallet, rank);
-            string query = "SELECT * FROM users";
+            string query = "SELECT `Id`,`Name`,`Nickname`,`email`,`wallet`,`rank` FROM users;";
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, con_string);
             adapter.Fill(table);
             foreach (DataRow row in table.Rows)
             {
-                users_datagrid.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[5].ToString(), row[6].ToString());
+                users_datagrid.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString());
             }
             //users_datagrid.DataSource = table;
             //SELECT PROPRIETIES
@@ -37,23 +39,34 @@ namespace Milionare
         }
         private void add_rank(string rank,int ID)
         {
-            string query = "UPDATE `users` SET `rank` = '" + rank + "' WHERE (`Id` = " + ID + ")";
+            string querry = "UPDATE `users` SET `rank` = '" + rank + "' WHERE (`Id` = " + ID + ")";
             try
             {
                 using (connection = new MySqlConnection(con_string))
-                using (MySqlCommand query_print = new MySqlCommand(query, connection))
+                using (MySqlCommand querry_print = new MySqlCommand(querry, connection))
                 {
-                    connection.Open(); query_print.ExecuteNonQuery(); connection.Close();
+                    connection.Open(); querry_print.ExecuteNonQuery(); connection.Close();
                 }
             }
             catch (MySqlException ex)
             {
-                if (MessageBox.Show("Error number: " + ex.Number.ToString() + " \n ,Do you want to read more?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
+                Global.mysql_err_msg(ex);
+            }
+        }
+        private void delete_user(int ID)
+        {
+            string querry = "DELETE FROM `users` WHERE (`Id`= " + ID + ")";
+            try
+            {
+                using (connection = new MySqlConnection(con_string))
+                using (MySqlCommand querry_print = new MySqlCommand(querry, connection))
                 {
-                    System.Diagnostics.Process.Start("https://dev.mysql.com/doc/refman/5.6/en/error-messages-server.html");
-                    System.Windows.Forms.Clipboard.SetText(ex.Number.ToString());
+                    connection.Open(); querry_print.ExecuteNonQuery(); connection.Close();
                 }
-
+            }
+            catch (MySqlException ex)
+            {
+                Global.mysql_err_msg(ex);
             }
         }
         private void set_admin_btn_Click(object sender, EventArgs e)
@@ -66,7 +79,7 @@ namespace Milionare
                     add_rank("admin",Convert.ToInt32(users_datagrid.Rows[i].Cells[0].Value));
                 }
             }
-            users_datagrid.Rows.Clear();
+
             populate();
         }
 
@@ -82,6 +95,25 @@ namespace Milionare
             }
             users_datagrid.Rows.Clear();
             populate();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int rows = users_datagrid.RowCount;
+            for (int i = rows - 1; i >= 0; i--)
+            {
+                if (users_datagrid.Rows[i].Selected)
+                {
+                    delete_user(Convert.ToInt32(users_datagrid.Rows[i].Cells[0].Value));
+                }
+            }
+            populate();
+        }
+
+        private void add_user_btn_Click(object sender, EventArgs e)
+        {
+            Register r = new Register();
+            r.Show();
         }
     }
 

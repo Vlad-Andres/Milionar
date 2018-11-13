@@ -20,16 +20,18 @@ namespace Milionare
         {
             InitializeComponent();
         }
-        private void populate()
+        private void populate(string table_from)
         {
+            questions_datagrid.Rows.Clear();
+            questions_datagrid.Refresh();
             //users_datagrid.Rows.Add(id, question, answer, author, topic, price);
-            string query = "SELECT questions.Id, questions.question, questions.var_a, questions.var_b, questions.var_c, questions.var_d, questions.author, questions.correct_ans, topics.topic, questions.price FROM questions,topics WHERE topics.Id= questions.topic_id";
+            string query = "SELECT q.Id, q.question, q.correct_ans,  u.Name, t.topic, q.price FROM "+table_from+" q JOIN topics t ON q.topic_id = t.Id JOIN users u ON q.author = u.Id;";
             
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, con_string);
             adapter.Fill(table);
             foreach (DataRow row in table.Rows)
             {
-                questions_datagrid.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString(), row[6].ToString(), row[7].ToString(), row[8].ToString(), row[9].ToString());
+                questions_datagrid.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString());
             }
             //users_datagrid.DataSource = table;
             //SELECT PROPRIETIES
@@ -53,13 +55,37 @@ namespace Milionare
         private void Questions_Load(object sender, EventArgs e)
         {
             questions_datagrid.RowHeadersVisible = false;
-            populate();
+            label1.Text="Validating Questions";
+            populate("validating_questions");
         }
 
         private void set_filter_btn_Click(object sender, EventArgs e)
         {
 
             set_filter();
+        }
+
+        private void questions_datagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 3) {
+                //users_tab.Visible = true;
+                //questions_tab.Visible = false;
+            }
+            MessageBox.Show(e.ColumnIndex.ToString());
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if (label1.Text == "Questions")
+            {
+                label1.Text = "Validating Questions";
+                populate("validating_questions");
+            }
+            else
+            {
+                label1.Text = "Questions";
+                populate("questions");
+            }
         }
     }
 }
