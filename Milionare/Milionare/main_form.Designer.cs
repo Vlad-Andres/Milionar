@@ -44,12 +44,12 @@
             this.B_btn = new System.Windows.Forms.Button();
             this.validation_timer = new System.Windows.Forms.Timer(this.components);
             this.quetion_timer_lbl = new System.Windows.Forms.Label();
+            this.author_img = new Milionare.circle_button();
             this.circle_btn_public = new Milionare.circle_button();
             this.circle_btn_call = new Milionare.circle_button();
             this.circle_btn_half = new Milionare.circle_button();
             this.circle_btn_slide = new Milionare.circle_button();
             this.circle_btn_leave = new Milionare.circle_button();
-            this.author_img = new Milionare.circle_button();
             this.side_panel_gradient.SuspendLayout();
             this.side_panel.SuspendLayout();
             this.SuspendLayout();
@@ -242,6 +242,14 @@
             this.quetion_timer_lbl.TabIndex = 14;
             this.quetion_timer_lbl.Text = "60";
             // 
+            // author_img
+            // 
+            this.author_img.Location = new System.Drawing.Point(529, 502);
+            this.author_img.Name = "author_img";
+            this.author_img.Size = new System.Drawing.Size(38, 35);
+            this.author_img.TabIndex = 15;
+            this.author_img.UseVisualStyleBackColor = true;
+            // 
             // circle_btn_public
             // 
             this.circle_btn_public.BackColor = System.Drawing.Color.Transparent;
@@ -306,15 +314,6 @@
             this.circle_btn_leave.Click += new System.EventHandler(this.circle_btn_leave_Click);
             this.circle_btn_leave.MouseEnter += new System.EventHandler(this.circle_btn_leave_MouseEnter);
             this.circle_btn_leave.MouseLeave += new System.EventHandler(this.circle_btn_leave_MouseLeave);
-            // 
-            // author_img
-            // 
-            this.author_img.Location = new System.Drawing.Point(529, 504);
-            this.author_img.Name = "author_img";
-            this.author_img.Size = new System.Drawing.Size(36, 33);
-            this.author_img.TabIndex = 15;
-            this.author_img.Text = "circle_button1";
-            this.author_img.UseVisualStyleBackColor = true;
             // 
             // main_form
             // 

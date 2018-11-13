@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.IO;
 
 // https://www.youtube.com/watch?v=pd-S6UoQHh8
 namespace Milionare
@@ -97,7 +98,8 @@ namespace Milionare
         {
             public string question_text, variant_a_text, variant_b_text, variant_c_text, variant_d_text, answer;
             public int question_id,q_price;
-            public Question(int quest_id, string quest_txt, string var_a, string var_b, string var_c, string var_d,  string answ, int prc )
+            public static Image author_img;
+            public Question(int quest_id, string quest_txt, string var_a, string var_b, string var_c, string var_d,  string answ, int prc , byte[] img)
             {
                 question_id = quest_id;
                 question_text = quest_txt;
@@ -107,6 +109,12 @@ namespace Milionare
                 variant_c_text = var_c;
                 variant_d_text = var_d;
                 q_price = prc;
+                if (img != null)
+                {
+                    MemoryStream avatar_stream = new MemoryStream(img);
+                    author_img = Image.FromStream(avatar_stream);
+                }
+                else author_img = null;
             }
         }
         
@@ -123,13 +131,14 @@ namespace Milionare
             try { 
             MySqlConnection connection = new MySqlConnection();
             DataTable table = new DataTable();
-                MessageBox.Show(Global.topic.ToString());
-            string select_querry = "SELECT Id, question, var_a, var_b, var_c, var_d, correct_ans, price FROM milionaire.questions WHERE topic_id = "+Global.topic+" ORDER BY RAND() LIMIT 16; ";
+               // MessageBox.Show(Global.topic.ToString());
+            string select_querry = "SELECT q.Id, q.question, q.var_a, q.var_b, q.var_c, q.var_d , q.correct_ans, q.price, u.avatar  FROM milionaire.questions q JOIN users u ON q.author = u.Id  WHERE topic_id = "+Global.topic+" ORDER BY RAND() LIMIT 16; ";
             MySqlDataAdapter adapter = new MySqlDataAdapter(select_querry, con_string);
             adapter.Fill(table);
             foreach (DataRow row in table.Rows)
             {
-                Question q = new Question(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString(), row[6].ToString(), Convert.ToInt32(row[7]));
+                byte[] avatar_temp = ((row[8]) != DBNull.Value) ? ((byte[])row[8]) : null;
+                Question q = new Question(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString(), row[6].ToString(), Convert.ToInt32(row[7]),avatar_temp );
                 questions_list.Add(q);
                 connection.Close();
             }
@@ -158,7 +167,7 @@ namespace Milionare
             }
             Random random = new Random();
             current_id = random.Next(0,price_equal.Count);
-
+            author_img.Image = Global.User.avatar_img;
             label1.Text = questions_list[price_equal[current_id]].question_text;
             A_btn.Text = questions_list[price_equal[current_id]].variant_a_text;
             B_btn.Text = questions_list[price_equal[current_id]].variant_b_text;

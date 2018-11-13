@@ -40,7 +40,7 @@ namespace Milionare
                 {
                     connection.Open();
                     MySqlDataReader qv = q_ver.ExecuteReader(); qv.Read();
-                    if (Convert.ToInt32(qv["COUNT(DISTINCT(price))"]) < 16)
+                    if (Convert.ToInt32(qv["COUNT(DISTINCT(price))"]) < 15)
                     {
                         connection.Close();
                         MessageBox.Show("Unfortunately there is no enough questions for this topic , please try another", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
