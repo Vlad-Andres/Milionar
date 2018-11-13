@@ -53,7 +53,7 @@ namespace Milionare
             {
                 MySqlConnection connection = new MySqlConnection();
                 string con_string = Global.db_connect_prop;
-                string query = "SELECT COUNT(*),`Id`,`wallet`,`rank`,`name`,`Nickname`,`email` FROM users WHERE Nickname='" + username_txt.Text + "' AND password='" + pass_encrypt(password_txt.Text) + "'";
+                string query = "SELECT COUNT(*),`Id`,`wallet`,`rank`,`name`,`Nickname`,`email`,`avatar` FROM users WHERE Nickname='" + username_txt.Text + "' AND password='" + pass_encrypt(password_txt.Text) + "'";
                 using (connection = new MySqlConnection(con_string))
                 using (MySqlCommand query_print = new MySqlCommand(query, connection))
                 {
@@ -68,14 +68,14 @@ namespace Milionare
                             Properties.Settings.Default.Save();
                         }
                         //Global.User.name = "testnamne";
-                        Global.User current_user = new Global.User(Convert.ToInt32(dr["Id"]), dr["name"].ToString(), dr["Nickname"].ToString(), dr["rank"].ToString(), Convert.ToInt32(dr["wallet"]), dr["email"].ToString());
+                        Global.User current_user = new Global.User(Convert.ToInt32(dr["Id"]), dr["name"].ToString(), dr["Nickname"].ToString(), dr["rank"].ToString(), Convert.ToInt32(dr["wallet"]), dr["email"].ToString(), ((byte[])dr["avatar"]));
                         acc_recovery.sender_mail = Global.User.email.ToString();
                         first_form f = new first_form();
                         this.Hide();
                         f.ShowDialog();
                     }
                     else
-                        if (MetroFramework.MetroMessageBox.Show(this, "Wrong Username or Password", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Hand) == DialogResult.Cancel)
+                        if (MetroFramework.MetroMessageBox.Show(this, "Wrong Username or Password , "+pass_encrypt(password_txt.Text)+"", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Hand) == DialogResult.Cancel)
                     {
                         first_form f = new first_form();
                         this.Dispose();

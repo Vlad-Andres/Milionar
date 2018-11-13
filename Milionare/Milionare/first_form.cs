@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Configuration;
 using MySql.Data.MySqlClient;
 using System.Threading;
+using System.IO;
 
 /*
 SELECT* FROM topics WHERE Id IN
@@ -33,7 +34,9 @@ namespace Milionare
                 login_lbl.Enabled = false;
                 login_lbl.Top += 30;
                 slash_lbl.Visible = false;
-                reg_lbl.Text = " Log out..";       
+                reg_lbl.Text = " Log out..";
+                MemoryStream mstream = new MemoryStream(Global.User.avatar);
+                avatar_pic.Image = Image.FromStream(mstream);    
             }
             if (Global.User.rank=="admin" || Global.User.rank == "moder") { label1.Text = "Back Stage +"; };
            // Application.Run(new first_form());

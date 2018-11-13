@@ -222,6 +222,7 @@
             this.avatar_btn.TabIndex = 6;
             this.avatar_btn.Text = "Choose avatar";
             this.avatar_btn.UseVisualStyleBackColor = false;
+            this.avatar_btn.Click += new System.EventHandler(this.avatar_btn_Click);
             this.avatar_btn.MouseEnter += new System.EventHandler(this.avatar_btn_MouseEnter);
             this.avatar_btn.MouseLeave += new System.EventHandler(this.avatar_btn_MouseLeave);
             // 

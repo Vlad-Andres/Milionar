@@ -40,7 +40,9 @@
             this.reg_lbl = new System.Windows.Forms.Label();
             this.slash_lbl = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.avatar_pic = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.avatar_pic)).BeginInit();
             this.SuspendLayout();
             // 
             // science_btn
@@ -181,7 +183,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::Milionare.Properties.Resources.mixed_class;
             this.pictureBox1.Location = new System.Drawing.Point(386, 206);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(70, 70);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -191,6 +193,16 @@
             this.pictureBox1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
             this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
             // 
+            // avatar_pic
+            // 
+            this.avatar_pic.BackColor = System.Drawing.Color.Transparent;
+            this.avatar_pic.Location = new System.Drawing.Point(376, 12);
+            this.avatar_pic.Name = "avatar_pic";
+            this.avatar_pic.Size = new System.Drawing.Size(68, 57);
+            this.avatar_pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.avatar_pic.TabIndex = 10;
+            this.avatar_pic.TabStop = false;
+            // 
             // first_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,6 +211,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(827, 517);
             this.ControlBox = false;
+            this.Controls.Add(this.avatar_pic);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.slash_lbl);
             this.Controls.Add(this.reg_lbl);
@@ -213,6 +226,7 @@
             this.Name = "first_form";
             this.Load += new System.EventHandler(this.first_form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.avatar_pic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -231,6 +245,7 @@
         private System.Windows.Forms.Label reg_lbl;
         private System.Windows.Forms.Label slash_lbl;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox avatar_pic;
     }
 }
 

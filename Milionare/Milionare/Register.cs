@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Security.Cryptography;
@@ -141,14 +143,20 @@ namespace Milionare
 
         private void reg_btn_Click(object sender, EventArgs e)
         {
+            MemoryStream memoryStream = new MemoryStream();
+            img.Save(memoryStream, ImageFormat.Png);
+            byte[] imageBt = memoryStream.ToArray();
+
             MySqlConnection connection = new MySqlConnection();
             string con_string = Global.db_connect_prop;
-            string query = "INSERT INTO users (`Name`,`Nickname`,`email`,`password`,`wallet`,`rank`) VALUES ('" + name_txt.Text + "','" + username_txt.Text + "','" + mail_txt.Text + "','" + pass_encrypt(username_txt.Text) + "',0,'user')";
+            string query = "INSERT INTO users (`Name`,`Nickname`,`email`,`password`,`wallet`,`rank`,`avatar`) VALUES ('" + name_txt.Text + "','" + username_txt.Text + "','" + mail_txt.Text + "','" + pass_encrypt(password_txt.Text) + "',0,'user',@IMG)";
             try
             {
+
                 using (connection = new MySqlConnection(con_string))
                 using (MySqlCommand write = new MySqlCommand(query, connection))
                 {
+                    write.Parameters.Add(new MySqlParameter("@IMG", imageBt));
                     connection.Open();
                     write.ExecuteNonQuery();
                     connection.Close();
@@ -208,6 +216,31 @@ namespace Milionare
                 errorProvider1.SetError(this.re_pass_txt, "Password don't match");
                 reg_btn.Enabled = false;
                 return;
+            }
+        }
+        Image img;
+        Image img_Resize(Image image, int w, int h)
+        {
+            Bitmap bmp = new Bitmap(w, h);
+            Graphics graphic = Graphics.FromImage(bmp);
+            graphic.DrawImage(image, 0, 0, w, h);
+            graphic.Dispose();
+
+            return bmp;
+        }
+        private void avatar_btn_Click(object sender, EventArgs e)
+        {
+
+
+            string[] exten = { ".PNG", ".JPG" };
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "images | *.png; *.jpg";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                img = Image.FromFile(ofd.FileName);
+                img = img_Resize(img, 200, 200);
+                reg_avatar_pic.Image = img;
+                img = img_Resize(img, 50, 50);
             }
         }
     }

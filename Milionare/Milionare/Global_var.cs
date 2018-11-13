@@ -38,7 +38,7 @@ namespace Milionare
                 {
                     connection.Open();
                     MySqlDataReader qv = q_ver.ExecuteReader(); qv.Read();
-                    if (Convert.ToInt32(qv["COUNT(*)"]) < 16)
+                    if (Convert.ToInt32(qv["COUNT(DISTINCT(price))"]) < 16)
                     {
                         connection.Close();
                         MessageBox.Show("Unfortunately there is no enough questions for this topic , please try another", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -135,7 +135,8 @@ namespace Milionare
         {
             public static int wallet,id;
             public static string name,nickname,rank,email;
-            public User(int ident, string nm, string nk, string rnk,int wall, string mail)
+            public static byte[] avatar;
+            public User(int ident, string nm, string nk, string rnk,int wall, string mail, byte[] img)
             {
                 id = ident;
                 name = nm;
@@ -143,6 +144,7 @@ namespace Milionare
                 rank = rnk;
                 wallet = wall;
                 email = mail;
+                avatar = img;
             }
         }
 
