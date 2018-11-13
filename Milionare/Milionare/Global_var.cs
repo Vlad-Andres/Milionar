@@ -95,7 +95,7 @@ namespace Milionare
         {
             MySqlConnection connection = new MySqlConnection();
             string con_string = db_connect_prop;
-            string question_insert = "INSERT INTO milionaire.'"+table_in+"' (question,author,price,var_a,var_b,var_c,var_d,correct_ans,topic_id) VALUES('" + question + "', '"+User.id+"', "+question_value+", '" + variant_A + "', '" + variant_B + "', '" + variant_C + "', '" + variant_D + "', '"+right_answer+"', (SELECT Id FROM topics WHERE topic = '" + topic + "' )); ";
+            string question_insert = "INSERT INTO milionaire."+table_in+" (question,author,price,var_a,var_b,var_c,var_d,correct_ans,topic_id) VALUES('" + question + "', '"+User.id+"', "+question_value+", '" + variant_A + "', '" + variant_B + "', '" + variant_C + "', '" + variant_D + "', '"+right_answer+"', (SELECT Id FROM topics WHERE topic = '" + topic + "' )); ";
 
             try { 
                 using (connection = new MySqlConnection(con_string))
