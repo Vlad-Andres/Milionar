@@ -18,6 +18,8 @@ namespace Milionare
 {
     public partial class Register : Form
     {
+        MySqlConnection connection = new MySqlConnection();
+        string con_string = Global.db_connect_prop;
         public Register()
         {
             InitializeComponent();
@@ -143,12 +145,20 @@ namespace Milionare
 
         private void reg_btn_Click(object sender, EventArgs e)
         {
-            MemoryStream memoryStream = new MemoryStream();
-            img.Save(memoryStream, ImageFormat.Png);
-            byte[] imageBt = memoryStream.ToArray();
+            //validation --
+            if (!field_unique_validation(username_txt,"Nickname")) { MessageBox.Show("Username already taken, please choose another"); return; };
+            if (!field_unique_validation(mail_txt,"email")) { MessageBox.Show("Email already registered, please choose another"); return; };
+            //image to byte  convert --
+            byte[] imageBt = null;
+            if (img != null)
+            {
+                MemoryStream memoryStream = new MemoryStream();
+                img.Save(memoryStream, ImageFormat.Png);
+                imageBt = memoryStream.ToArray();
+            } 
 
-            MySqlConnection connection = new MySqlConnection();
-            string con_string = Global.db_connect_prop;
+
+
             string query = "INSERT INTO users (`Name`,`Nickname`,`email`,`password`,`wallet`,`rank`,`avatar`) VALUES ('" + name_txt.Text + "','" + username_txt.Text + "','" + mail_txt.Text + "','" + pass_encrypt(password_txt.Text) + "',0,'user',@IMG)";
             try
             {
@@ -241,6 +251,29 @@ namespace Milionare
                 img = img_Resize(img, 200, 200);
                 reg_avatar_pic.Image = img;
                 img = img_Resize(img, 50, 50);
+            }
+        }
+        private bool field_unique_validation(object sender,string field_name)
+        {
+            string query = "SELECT COUNT(*) FROM users WHERE `"+field_name+"`='"+ ((TextBox)sender).Text + "'";
+            try
+            {
+                using (connection = new MySqlConnection(con_string))
+                using (MySqlCommand count = new MySqlCommand(query, connection))
+                {
+                    connection.Open();
+                    MySqlDataReader dr = count.ExecuteReader(); dr.Read();
+                    if (dr["COUNT(*)"].ToString() == "0")
+                    {
+                        connection.Close();  return true;
+                    }
+                    else return false;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Global.mysql_err_msg(ex);
+                return false;
             }
         }
     }

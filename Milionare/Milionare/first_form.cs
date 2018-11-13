@@ -35,8 +35,7 @@ namespace Milionare
                 login_lbl.Top += 30;
                 slash_lbl.Visible = false;
                 reg_lbl.Text = " Log out..";
-                MemoryStream mstream = new MemoryStream(Global.User.avatar);
-                avatar_pic.Image = Image.FromStream(mstream);    
+                avatar_pic.Image = Global.User.avatar_img;    
             }
             if (Global.User.rank=="admin" || Global.User.rank == "moder") { label1.Text = "Back Stage +"; };
            // Application.Run(new first_form());

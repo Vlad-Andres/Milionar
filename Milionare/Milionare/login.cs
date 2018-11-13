@@ -54,34 +54,41 @@ namespace Milionare
                 MySqlConnection connection = new MySqlConnection();
                 string con_string = Global.db_connect_prop;
                 string query = "SELECT COUNT(*),`Id`,`wallet`,`rank`,`name`,`Nickname`,`email`,`avatar` FROM users WHERE Nickname='" + username_txt.Text + "' AND password='" + pass_encrypt(password_txt.Text) + "'";
-                using (connection = new MySqlConnection(con_string))
-                using (MySqlCommand query_print = new MySqlCommand(query, connection))
+                try
                 {
-                    connection.Open();
-                    MySqlDataReader dr = query_print.ExecuteReader(); dr.Read();
-                    if (dr["COUNT(*)"].ToString() == "1")
+                    using (connection = new MySqlConnection(con_string))
+                    using (MySqlCommand query_print = new MySqlCommand(query, connection))
                     {
-                        if (Properties.Settings.Default.remember)
+                        connection.Open();
+                        MySqlDataReader dr = query_print.ExecuteReader(); dr.Read();
+                        if (dr["COUNT(*)"].ToString() == "1")
                         {
-                            Properties.Settings.Default.UserName = username_txt.Text;
-                            Properties.Settings.Default.Password = password_txt.Text;
-                            Properties.Settings.Default.Save();
+                            if (Properties.Settings.Default.remember)
+                            {
+                                Properties.Settings.Default.UserName = username_txt.Text;
+                                Properties.Settings.Default.Password = password_txt.Text;
+                                Properties.Settings.Default.Save();
+                            }
+                            //Global.User.name = "testnamne";
+                            byte[] avatar_temp = ((dr["avatar"]) != DBNull.Value) ? ((byte[])dr["avatar"]) : null;
+                            Global.User current_user = new Global.User(Convert.ToInt32(dr["Id"]), dr["name"].ToString(), dr["Nickname"].ToString(), dr["rank"].ToString(), Convert.ToInt32(dr["wallet"]), dr["email"].ToString(), avatar_temp);
+                            acc_recovery.sender_mail = Global.User.email.ToString();
+                            first_form f = new first_form();
+                            this.Hide();
+                            f.ShowDialog();
                         }
-                        //Global.User.name = "testnamne";
-                        Global.User current_user = new Global.User(Convert.ToInt32(dr["Id"]), dr["name"].ToString(), dr["Nickname"].ToString(), dr["rank"].ToString(), Convert.ToInt32(dr["wallet"]), dr["email"].ToString(), ((byte[])dr["avatar"]));
-                        acc_recovery.sender_mail = Global.User.email.ToString();
-                        first_form f = new first_form();
-                        this.Hide();
-                        f.ShowDialog();
+                        else
+                            if (MetroFramework.MetroMessageBox.Show(this, "Wrong Username or Password , "+pass_encrypt(password_txt.Text)+"", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Hand) == DialogResult.Cancel)
+                        {
+                            first_form f = new first_form();
+                            this.Dispose();
+                            f.ShowDialog();
+                        }
+                        connection.Close();
                     }
-                    else
-                        if (MetroFramework.MetroMessageBox.Show(this, "Wrong Username or Password , "+pass_encrypt(password_txt.Text)+"", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Hand) == DialogResult.Cancel)
-                    {
-                        first_form f = new first_form();
-                        this.Dispose();
-                        f.ShowDialog();
-                    }
-                    connection.Close();
+                } catch (MySqlException ex)
+                {
+                    Global.mysql_err_msg(ex);
                 }
             }
             else

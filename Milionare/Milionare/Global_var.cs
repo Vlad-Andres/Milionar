@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using System.IO;
+using System.Drawing;
 
 namespace Milionare
 {
@@ -135,7 +137,9 @@ namespace Milionare
         {
             public static int wallet,id;
             public static string name,nickname,rank,email;
-            public static byte[] avatar;
+            //public static byte[] avatar;
+            public static Image avatar_img;
+            //public static  MemoryStream avatar_img = new MemoryStream();
             public User(int ident, string nm, string nk, string rnk,int wall, string mail, byte[] img)
             {
                 id = ident;
@@ -144,9 +148,18 @@ namespace Milionare
                 rank = rnk;
                 wallet = wall;
                 email = mail;
-                avatar = img;
+                //avatar = img; 
+                if (img != null)
+                {
+                    MemoryStream avatar_stream = new MemoryStream(img);
+                    avatar_img = Image.FromStream(avatar_stream);
+                }
+                else avatar_img = null;
+                
             }
+
         }
+        
 
 
     }
