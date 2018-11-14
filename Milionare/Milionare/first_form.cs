@@ -30,9 +30,10 @@ namespace Milionare
             InitializeComponent();
             if (Global.User.nickname != null)
             {
-                login_lbl.Text = Global.User.nickname +" "+Global.User.wallet.ToString() + " $";
+                username_txt.Text = Global.User.nickname;
+                username_txt.Visible = true;
+                login_lbl.Text =  "";
                 login_lbl.Enabled = false;
-                login_lbl.Top += 30;
                 slash_lbl.Visible = false;
                 reg_lbl.Text = " Log out..";
                 avatar_pic.Image = Global.User.avatar_img;    

@@ -116,10 +116,27 @@ namespace Milionare
                 }
                 else author_img = null;
             }
+            public bool Equals(Question other)
+            {
+                // Would still want to check for null etc. first.
+              ////  if (q_price==other.q_price) { MessageBox.Show(q_price.ToString() + "=" + other.q_price.ToString()); } else
+               // { MessageBox.Show(q_price.ToString() + "!=" + other.q_price.ToString()); }
+                return this.q_price == other.q_price;
+
+
+            }
         }
         
         List<Question> questions_list = new List<Question>();
-        
+        public bool IsinList(Question q)
+        {
+            foreach (Question qs in questions_list)
+            {
+                if (q.Equals(qs)) { return true; }
+                //return q.Equals(qs);
+            }
+            return false;
+        }
         /*SqlConnection connection;*/
         string[] sums = new string[] {"100 $","200 $","300 $","500 $","1 000 $","2 000 $","4 000 $","8 000 $",
             "16 000 $","32 000 $","64 000 $","125 000 $","250 000 $","500 000 $","1 Milion"};
@@ -132,14 +149,15 @@ namespace Milionare
             MySqlConnection connection = new MySqlConnection();
             DataTable table = new DataTable();
                // MessageBox.Show(Global.topic.ToString());
-            string select_querry = "SELECT q.Id, q.question, q.var_a, q.var_b, q.var_c, q.var_d , q.correct_ans, q.price, u.avatar  FROM milionaire.questions q JOIN users u ON q.author = u.Id  WHERE topic_id = "+Global.topic+" ORDER BY RAND() LIMIT 16; ";
+            string select_querry = "SELECT q.Id, q.question, q.var_a, q.var_b, q.var_c, q.var_d , q.correct_ans, q.price, u.avatar  FROM milionaire.questions q JOIN users u ON q.author = u.Id  WHERE topic_id = "+Global.topic+"";
             MySqlDataAdapter adapter = new MySqlDataAdapter(select_querry, con_string);
             adapter.Fill(table);
             foreach (DataRow row in table.Rows)
             {
                 byte[] avatar_temp = ((row[8]) != DBNull.Value) ? ((byte[])row[8]) : null;
                 Question q = new Question(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString(), row[6].ToString(), Convert.ToInt32(row[7]),avatar_temp );
-                questions_list.Add(q);
+                    if (!IsinList(q)) { questions_list.Add(q); MessageBox.Show("ID: "+q.question_id+"pret:"+q.q_price.ToString(),"adaugata"); };
+ 
                 connection.Close();
             }
             }catch (MySqlException e)
@@ -167,7 +185,7 @@ namespace Milionare
             }
             Random random = new Random();
             current_id = random.Next(0,price_equal.Count);
-            author_img.Image = Global.User.avatar_img;
+            author_img.Image = Question.author_img;
             label1.Text = questions_list[price_equal[current_id]].question_text;
             A_btn.Text = questions_list[price_equal[current_id]].variant_a_text;
             B_btn.Text = questions_list[price_equal[current_id]].variant_b_text;

@@ -41,8 +41,11 @@
             this.slash_lbl = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.avatar_pic = new System.Windows.Forms.PictureBox();
+            this.user_info_panel = new System.Windows.Forms.Panel();
+            this.username_txt = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.avatar_pic)).BeginInit();
+            this.user_info_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // science_btn
@@ -51,9 +54,10 @@
             this.science_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.science_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
             this.science_btn.ForeColor = System.Drawing.Color.Silver;
-            this.science_btn.Location = new System.Drawing.Point(179, 127);
+            this.science_btn.Location = new System.Drawing.Point(239, 156);
+            this.science_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.science_btn.Name = "science_btn";
-            this.science_btn.Size = new System.Drawing.Size(181, 56);
+            this.science_btn.Size = new System.Drawing.Size(241, 69);
             this.science_btn.TabIndex = 0;
             this.science_btn.Text = "Science";
             this.science_btn.UseVisualStyleBackColor = false;
@@ -64,9 +68,10 @@
             this.exit_button.BackColor = System.Drawing.Color.Transparent;
             this.exit_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exit_button.ForeColor = System.Drawing.Color.DimGray;
-            this.exit_button.Location = new System.Drawing.Point(790, 12);
+            this.exit_button.Location = new System.Drawing.Point(1053, 15);
+            this.exit_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.exit_button.Name = "exit_button";
-            this.exit_button.Size = new System.Drawing.Size(25, 26);
+            this.exit_button.Size = new System.Drawing.Size(33, 32);
             this.exit_button.TabIndex = 1;
             this.exit_button.Text = "X";
             this.exit_button.UseVisualStyleBackColor = false;
@@ -83,9 +88,10 @@
             this.sport_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sport_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
             this.sport_btn.ForeColor = System.Drawing.Color.Silver;
-            this.sport_btn.Location = new System.Drawing.Point(468, 127);
+            this.sport_btn.Location = new System.Drawing.Point(624, 156);
+            this.sport_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.sport_btn.Name = "sport_btn";
-            this.sport_btn.Size = new System.Drawing.Size(181, 56);
+            this.sport_btn.Size = new System.Drawing.Size(241, 69);
             this.sport_btn.TabIndex = 2;
             this.sport_btn.Text = "Sport";
             this.sport_btn.UseVisualStyleBackColor = false;
@@ -97,9 +103,10 @@
             this.history_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.history_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
             this.history_btn.ForeColor = System.Drawing.Color.Silver;
-            this.history_btn.Location = new System.Drawing.Point(468, 303);
+            this.history_btn.Location = new System.Drawing.Point(624, 373);
+            this.history_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.history_btn.Name = "history_btn";
-            this.history_btn.Size = new System.Drawing.Size(181, 56);
+            this.history_btn.Size = new System.Drawing.Size(241, 69);
             this.history_btn.TabIndex = 4;
             this.history_btn.Text = "History";
             this.history_btn.UseVisualStyleBackColor = false;
@@ -111,9 +118,10 @@
             this.arts_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.arts_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.arts_btn.ForeColor = System.Drawing.Color.Silver;
-            this.arts_btn.Location = new System.Drawing.Point(179, 303);
+            this.arts_btn.Location = new System.Drawing.Point(239, 373);
+            this.arts_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.arts_btn.Name = "arts_btn";
-            this.arts_btn.Size = new System.Drawing.Size(181, 56);
+            this.arts_btn.Size = new System.Drawing.Size(241, 69);
             this.arts_btn.TabIndex = 3;
             this.arts_btn.Text = "Arts";
             this.arts_btn.UseVisualStyleBackColor = false;
@@ -125,9 +133,10 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(12, 12);
+            this.label1.Location = new System.Drawing.Point(16, 15);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 26);
+            this.label1.Size = new System.Drawing.Size(241, 32);
             this.label1.TabIndex = 5;
             this.label1.Text = "Back Stage (beta)";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -141,9 +150,10 @@
             this.login_lbl.BackColor = System.Drawing.Color.Transparent;
             this.login_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.login_lbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.login_lbl.Location = new System.Drawing.Point(650, 21);
+            this.login_lbl.Location = new System.Drawing.Point(867, 26);
+            this.login_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.login_lbl.Name = "login_lbl";
-            this.login_lbl.Size = new System.Drawing.Size(43, 17);
+            this.login_lbl.Size = new System.Drawing.Size(50, 20);
             this.login_lbl.TabIndex = 6;
             this.login_lbl.Text = "Login";
             this.login_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -157,9 +167,10 @@
             this.reg_lbl.BackColor = System.Drawing.Color.Transparent;
             this.reg_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.reg_lbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.reg_lbl.Location = new System.Drawing.Point(699, 21);
+            this.reg_lbl.Location = new System.Drawing.Point(932, 26);
+            this.reg_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.reg_lbl.Name = "reg_lbl";
-            this.reg_lbl.Size = new System.Drawing.Size(61, 17);
+            this.reg_lbl.Size = new System.Drawing.Size(72, 20);
             this.reg_lbl.TabIndex = 7;
             this.reg_lbl.Text = "Register";
             this.reg_lbl.Click += new System.EventHandler(this.reg_lbl_Click);
@@ -172,9 +183,10 @@
             this.slash_lbl.BackColor = System.Drawing.Color.Transparent;
             this.slash_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.slash_lbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.slash_lbl.Location = new System.Drawing.Point(690, 21);
+            this.slash_lbl.Location = new System.Drawing.Point(920, 26);
+            this.slash_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.slash_lbl.Name = "slash_lbl";
-            this.slash_lbl.Size = new System.Drawing.Size(12, 17);
+            this.slash_lbl.Size = new System.Drawing.Size(14, 20);
             this.slash_lbl.TabIndex = 8;
             this.slash_lbl.Text = "/";
             // 
@@ -182,10 +194,10 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::Milionare.Properties.Resources.mixed_class;
-            this.pictureBox1.Location = new System.Drawing.Point(386, 206);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(515, 254);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(70, 70);
+            this.pictureBox1.Size = new System.Drawing.Size(93, 86);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
@@ -196,22 +208,45 @@
             // avatar_pic
             // 
             this.avatar_pic.BackColor = System.Drawing.Color.Transparent;
-            this.avatar_pic.Location = new System.Drawing.Point(376, 12);
+            this.avatar_pic.Location = new System.Drawing.Point(47, 14);
+            this.avatar_pic.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.avatar_pic.Name = "avatar_pic";
-            this.avatar_pic.Size = new System.Drawing.Size(68, 57);
+            this.avatar_pic.Size = new System.Drawing.Size(91, 70);
             this.avatar_pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.avatar_pic.TabIndex = 10;
             this.avatar_pic.TabStop = false;
             // 
+            // user_info_panel
+            // 
+            this.user_info_panel.BackColor = System.Drawing.Color.Transparent;
+            this.user_info_panel.Controls.Add(this.username_txt);
+            this.user_info_panel.Controls.Add(this.avatar_pic);
+            this.user_info_panel.Location = new System.Drawing.Point(466, 12);
+            this.user_info_panel.Name = "user_info_panel";
+            this.user_info_panel.Size = new System.Drawing.Size(193, 120);
+            this.user_info_panel.TabIndex = 11;
+            // 
+            // username_txt
+            // 
+            this.username_txt.AutoSize = true;
+            this.username_txt.ForeColor = System.Drawing.Color.Cornsilk;
+            this.username_txt.Location = new System.Drawing.Point(73, 88);
+            this.username_txt.Name = "username_txt";
+            this.username_txt.Size = new System.Drawing.Size(35, 17);
+            this.username_txt.TabIndex = 11;
+            this.username_txt.Text = "unm";
+            this.username_txt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.username_txt.Visible = false;
+            // 
             // first_form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Milionare.Properties.Resources.dark_blue_wallpaper_10;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(827, 517);
+            this.ClientSize = new System.Drawing.Size(1103, 636);
             this.ControlBox = false;
-            this.Controls.Add(this.avatar_pic);
+            this.Controls.Add(this.user_info_panel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.slash_lbl);
             this.Controls.Add(this.reg_lbl);
@@ -223,10 +258,13 @@
             this.Controls.Add(this.exit_button);
             this.Controls.Add(this.science_btn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "first_form";
             this.Load += new System.EventHandler(this.first_form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.avatar_pic)).EndInit();
+            this.user_info_panel.ResumeLayout(false);
+            this.user_info_panel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,6 +284,8 @@
         private System.Windows.Forms.Label slash_lbl;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox avatar_pic;
+        private System.Windows.Forms.Panel user_info_panel;
+        private System.Windows.Forms.Label username_txt;
     }
 }
 
