@@ -18,22 +18,7 @@ namespace Milionare
         {
             InitializeComponent();
         }
-        private string pass_encrypt(string password)
-        {
-            string hash = "Vl0ad";
-            byte[] data = UTF8Encoding.UTF8.GetBytes(password);
-            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
-            {
-                byte[] keys = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
-                using (TripleDESCryptoServiceProvider tripleDes = new TripleDESCryptoServiceProvider() { Key = keys, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
-                {
-                    ICryptoTransform transform = tripleDes.CreateEncryptor();
-                    byte[] results = transform.TransformFinalBlock(data, 0, data.Length);
-                    password = Convert.ToBase64String(results, 0, results.Length);
-                    return password;
-                }
-            }
-        }
+        
 
         private void login_Load(object sender, EventArgs e)
         {
@@ -53,7 +38,7 @@ namespace Milionare
             {
                 MySqlConnection connection = new MySqlConnection();
                 string con_string = Global.db_connect_prop;
-                string query = "SELECT COUNT(*),`Id`,`wallet`,`rank`,`name`,`Nickname`,`email`,`avatar` FROM users WHERE Nickname='" + username_txt.Text + "' AND password='" + pass_encrypt(password_txt.Text) + "'";
+                string query = "SELECT COUNT(*),`Id`,`wallet`,`rank`,`name`,`Nickname`,`email`,`avatar` FROM users WHERE Nickname='" + username_txt.Text + "' AND password=SHA2('" +password_txt.Text + "',224)";
                 try
                 {
                     using (connection = new MySqlConnection(con_string))
@@ -78,7 +63,7 @@ namespace Milionare
                             f.ShowDialog();
                         }
                         else
-                            if (MetroFramework.MetroMessageBox.Show(this, "Wrong Username or Password , "+pass_encrypt(password_txt.Text)+"", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Hand) == DialogResult.Cancel)
+                            if (MetroFramework.MetroMessageBox.Show(this, "Wrong Username or Password ", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Hand) == DialogResult.Cancel)
                         {
                             first_form f = new first_form();
                             this.Dispose();

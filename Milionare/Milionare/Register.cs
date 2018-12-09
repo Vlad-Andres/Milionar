@@ -41,22 +41,6 @@ namespace Milionare
             this.Dispose();
             f.ShowDialog();
         }
-        private string pass_encrypt(string password)
-        {
-            string hash = "Vl0ad";
-            byte[] data = UTF8Encoding.UTF8.GetBytes(password);
-            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
-            {
-                byte[] keys = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
-                using (TripleDESCryptoServiceProvider tripleDes = new TripleDESCryptoServiceProvider() { Key = keys, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
-                {
-                    ICryptoTransform transform = tripleDes.CreateEncryptor();
-                    byte[] results = transform.TransformFinalBlock(data, 0, data.Length);
-                    password = Convert.ToBase64String(results, 0, results.Length);
-                    return password;
-                }
-            }
-        }
         public bool IsValid(string emailaddress)
         {
             try
@@ -159,7 +143,7 @@ namespace Milionare
 
 
 
-            string query = "INSERT INTO users (`Name`,`Nickname`,`email`,`password`,`wallet`,`rank`,`avatar`) VALUES ('" + name_txt.Text + "','" + username_txt.Text + "','" + mail_txt.Text + "','" + pass_encrypt(password_txt.Text) + "',0,'user',@IMG)";
+            string query = "INSERT INTO users (`Name`,`Nickname`,`email`,`password`,`wallet`,`rank`,`avatar`) VALUES ('" + name_txt.Text + "','" + username_txt.Text + "','" + mail_txt.Text + "',SHA2('" + password_txt.Text + "',224) ,0,'user',@IMG)";
             try
             {
 

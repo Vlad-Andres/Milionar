@@ -149,14 +149,14 @@ namespace Milionare
             MySqlConnection connection = new MySqlConnection();
             DataTable table = new DataTable();
                // MessageBox.Show(Global.topic.ToString());
-            string select_querry = "SELECT q.Id, q.question, q.var_a, q.var_b, q.var_c, q.var_d , q.correct_ans, q.price, u.avatar  FROM milionaire.questions q JOIN users u ON q.author = u.Id  WHERE topic_id = "+Global.topic+"";
+            string select_querry = "SELECT q.Id, q.question, q.var_a, q.var_b, q.var_c, q.var_d , q.correct_ans, q.price, u.avatar  FROM milionaire.questions q JOIN users u ON q.author = u.Id  WHERE topic_id = "+Global.topic+" ORDER BY rand()";
             MySqlDataAdapter adapter = new MySqlDataAdapter(select_querry, con_string);
             adapter.Fill(table);
             foreach (DataRow row in table.Rows)
             {
                 byte[] avatar_temp = ((row[8]) != DBNull.Value) ? ((byte[])row[8]) : null;
                 Question q = new Question(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString(), row[6].ToString(), Convert.ToInt32(row[7]),avatar_temp );
-                    if (!IsinList(q)) { questions_list.Add(q); MessageBox.Show("ID: "+q.question_id+"pret:"+q.q_price.ToString(),"adaugata"); };
+                    if (!IsinList(q)) { questions_list.Add(q); };
  
                 connection.Close();
             }
