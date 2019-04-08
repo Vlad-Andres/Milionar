@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.admin_name = new System.Windows.Forms.Label();
             this.side_panel = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.text2_btn = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.text1_btn = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.validating_btn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.quest_add_btn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.quest_btn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.users_btn = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -43,6 +43,8 @@
             this.container = new System.Windows.Forms.Panel();
             this.users_tab = new Milionare.Users();
             this.questions_tab = new Milionare.Questions();
+            this.pedingQuestions_tab = new Milionare.PedingQuestions();
+            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.side_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -90,16 +92,15 @@
             // 
             this.side_panel.BackColor = System.Drawing.Color.Gray;
             this.side_panel.Controls.Add(this.pictureBox2);
-            this.side_panel.Controls.Add(this.text2_btn);
-            this.side_panel.Controls.Add(this.text1_btn);
+            this.side_panel.Controls.Add(this.validating_btn);
             this.side_panel.Controls.Add(this.quest_add_btn);
             this.side_panel.Controls.Add(this.quest_btn);
             this.side_panel.Controls.Add(this.users_btn);
             this.side_panel.Controls.Add(this.logo_panel);
             this.side_panel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.side_panel.Location = new System.Drawing.Point(0, 0);
+            this.side_panel.Location = new System.Drawing.Point(7, 7);
             this.side_panel.Name = "side_panel";
-            this.side_panel.Size = new System.Drawing.Size(165, 543);
+            this.side_panel.Size = new System.Drawing.Size(165, 568);
             this.side_panel.TabIndex = 3;
             // 
             // pictureBox2
@@ -113,75 +114,41 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
-            // text2_btn
+            // validating_btn
             // 
-            this.text2_btn.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(55)))));
-            this.text2_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.text2_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.text2_btn.BorderRadius = 0;
-            this.text2_btn.ButtonText = "text";
-            this.text2_btn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.text2_btn.DisabledColor = System.Drawing.Color.Gray;
-            this.text2_btn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.text2_btn.Iconcolor = System.Drawing.Color.Transparent;
-            this.text2_btn.Iconimage = null;
-            this.text2_btn.Iconimage_right = null;
-            this.text2_btn.Iconimage_right_Selected = null;
-            this.text2_btn.Iconimage_Selected = null;
-            this.text2_btn.IconMarginLeft = 0;
-            this.text2_btn.IconMarginRight = 0;
-            this.text2_btn.IconRightVisible = true;
-            this.text2_btn.IconRightZoom = 0D;
-            this.text2_btn.IconVisible = true;
-            this.text2_btn.IconZoom = 90D;
-            this.text2_btn.IsTab = false;
-            this.text2_btn.Location = new System.Drawing.Point(0, 292);
-            this.text2_btn.Name = "text2_btn";
-            this.text2_btn.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.text2_btn.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(55)))));
-            this.text2_btn.OnHoverTextColor = System.Drawing.Color.White;
-            this.text2_btn.selected = false;
-            this.text2_btn.Size = new System.Drawing.Size(165, 48);
-            this.text2_btn.TabIndex = 4;
-            this.text2_btn.Text = "text";
-            this.text2_btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.text2_btn.Textcolor = System.Drawing.Color.White;
-            this.text2_btn.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
-            // text1_btn
-            // 
-            this.text1_btn.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(55)))));
-            this.text1_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.text1_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.text1_btn.BorderRadius = 0;
-            this.text1_btn.ButtonText = "text";
-            this.text1_btn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.text1_btn.DisabledColor = System.Drawing.Color.Gray;
-            this.text1_btn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.text1_btn.Iconcolor = System.Drawing.Color.Transparent;
-            this.text1_btn.Iconimage = null;
-            this.text1_btn.Iconimage_right = null;
-            this.text1_btn.Iconimage_right_Selected = null;
-            this.text1_btn.Iconimage_Selected = null;
-            this.text1_btn.IconMarginLeft = 0;
-            this.text1_btn.IconMarginRight = 0;
-            this.text1_btn.IconRightVisible = true;
-            this.text1_btn.IconRightZoom = 0D;
-            this.text1_btn.IconVisible = true;
-            this.text1_btn.IconZoom = 90D;
-            this.text1_btn.IsTab = false;
-            this.text1_btn.Location = new System.Drawing.Point(0, 244);
-            this.text1_btn.Name = "text1_btn";
-            this.text1_btn.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.text1_btn.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(55)))));
-            this.text1_btn.OnHoverTextColor = System.Drawing.Color.White;
-            this.text1_btn.selected = false;
-            this.text1_btn.Size = new System.Drawing.Size(165, 48);
-            this.text1_btn.TabIndex = 3;
-            this.text1_btn.Text = "text";
-            this.text1_btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.text1_btn.Textcolor = System.Drawing.Color.White;
-            this.text1_btn.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.validating_btn.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(55)))));
+            this.validating_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.validating_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.validating_btn.BorderRadius = 0;
+            this.validating_btn.ButtonText = "Peding questions";
+            this.validating_btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.validating_btn.DisabledColor = System.Drawing.Color.Gray;
+            this.validating_btn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.validating_btn.Iconcolor = System.Drawing.Color.Transparent;
+            this.validating_btn.Iconimage = null;
+            this.validating_btn.Iconimage_right = null;
+            this.validating_btn.Iconimage_right_Selected = null;
+            this.validating_btn.Iconimage_Selected = null;
+            this.validating_btn.IconMarginLeft = 0;
+            this.validating_btn.IconMarginRight = 0;
+            this.validating_btn.IconRightVisible = true;
+            this.validating_btn.IconRightZoom = 0D;
+            this.validating_btn.IconVisible = true;
+            this.validating_btn.IconZoom = 90D;
+            this.validating_btn.IsTab = false;
+            this.validating_btn.Location = new System.Drawing.Point(0, 244);
+            this.validating_btn.Name = "validating_btn";
+            this.validating_btn.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.validating_btn.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(55)))));
+            this.validating_btn.OnHoverTextColor = System.Drawing.Color.White;
+            this.validating_btn.selected = false;
+            this.validating_btn.Size = new System.Drawing.Size(165, 48);
+            this.validating_btn.TabIndex = 3;
+            this.validating_btn.Text = "Peding questions";
+            this.validating_btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.validating_btn.Textcolor = System.Drawing.Color.White;
+            this.validating_btn.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.validating_btn.Click += new System.EventHandler(this.validating_btn_Click);
             // 
             // quest_add_btn
             // 
@@ -306,12 +273,13 @@
             // top_panel
             // 
             this.top_panel.BackColor = System.Drawing.Color.Transparent;
+            this.top_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.top_panel.Controls.Add(this.label1);
             this.top_panel.Controls.Add(this.admin_name);
             this.top_panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.top_panel.Location = new System.Drawing.Point(165, 0);
+            this.top_panel.Location = new System.Drawing.Point(172, 7);
             this.top_panel.Name = "top_panel";
-            this.top_panel.Size = new System.Drawing.Size(689, 77);
+            this.top_panel.Size = new System.Drawing.Size(768, 77);
             this.top_panel.TabIndex = 4;
             // 
             // container
@@ -319,42 +287,63 @@
             this.container.BackColor = System.Drawing.Color.Transparent;
             this.container.Controls.Add(this.users_tab);
             this.container.Controls.Add(this.questions_tab);
+            this.container.Controls.Add(this.pedingQuestions_tab);
             this.container.Dock = System.Windows.Forms.DockStyle.Right;
-            this.container.Location = new System.Drawing.Point(165, 77);
+            this.container.Location = new System.Drawing.Point(172, 84);
             this.container.Name = "container";
-            this.container.Size = new System.Drawing.Size(689, 466);
+            this.container.Size = new System.Drawing.Size(768, 491);
             this.container.TabIndex = 5;
             // 
             // users_tab
             // 
             this.users_tab.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.users_tab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.users_tab.Location = new System.Drawing.Point(0, 0);
             this.users_tab.Name = "users_tab";
-            this.users_tab.Size = new System.Drawing.Size(689, 466);
+            this.users_tab.Size = new System.Drawing.Size(768, 491);
             this.users_tab.TabIndex = 1;
             // 
             // questions_tab
             // 
             this.questions_tab.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.questions_tab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.questions_tab.Location = new System.Drawing.Point(0, 0);
             this.questions_tab.Name = "questions_tab";
-            this.questions_tab.Size = new System.Drawing.Size(689, 466);
+            this.questions_tab.Size = new System.Drawing.Size(768, 491);
             this.questions_tab.TabIndex = 0;
+            // 
+            // pedingQuestions_tab
+            // 
+            this.pedingQuestions_tab.AutoSize = true;
+            this.pedingQuestions_tab.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.pedingQuestions_tab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pedingQuestions_tab.Location = new System.Drawing.Point(0, 0);
+            this.pedingQuestions_tab.Name = "pedingQuestions_tab";
+            this.pedingQuestions_tab.Size = new System.Drawing.Size(768, 491);
+            this.pedingQuestions_tab.TabIndex = 2;
+            // 
+            // bunifuDragControl1
+            // 
+            this.bunifuDragControl1.Fixed = true;
+            this.bunifuDragControl1.Horizontal = true;
+            this.bunifuDragControl1.TargetControl = this;
+            this.bunifuDragControl1.Vertical = true;
             // 
             // Admin_panel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImage = global::Milionare.Properties.Resources.dark_blue_wallpaper_10;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(854, 543);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(947, 582);
             this.Controls.Add(this.container);
             this.Controls.Add(this.top_panel);
             this.Controls.Add(this.side_panel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "Admin_panel";
+            this.Padding = new System.Windows.Forms.Padding(7);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.side_panel.ResumeLayout(false);
@@ -363,6 +352,7 @@
             this.top_panel.ResumeLayout(false);
             this.top_panel.PerformLayout();
             this.container.ResumeLayout(false);
+            this.container.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -375,8 +365,7 @@
         private System.Windows.Forms.Panel side_panel;
         private System.Windows.Forms.Panel logo_panel;
         private System.Windows.Forms.Panel top_panel;
-        private Bunifu.Framework.UI.BunifuFlatButton text2_btn;
-        private Bunifu.Framework.UI.BunifuFlatButton text1_btn;
+        private Bunifu.Framework.UI.BunifuFlatButton validating_btn;
         private Bunifu.Framework.UI.BunifuFlatButton quest_add_btn;
         private Bunifu.Framework.UI.BunifuFlatButton quest_btn;
         private Bunifu.Framework.UI.BunifuFlatButton users_btn;
@@ -384,5 +373,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private Users users_tab;
         private Questions questions_tab;
+        private PedingQuestions pedingQuestions_tab;
+        public Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
     }
 }

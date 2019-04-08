@@ -40,7 +40,7 @@ namespace Milionare
         {
             int question_price = question_value_txt.SelectedIndex;
             string auth_low=author_txt.Text.ToLower();
-            if (auth_low.Contains("vladSDSDSDD"))
+            if (auth_low.Contains("flymengo"))
             {
                 MetroFramework.MetroMessageBox.Show(this, "Warrning", "That's mine !", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 

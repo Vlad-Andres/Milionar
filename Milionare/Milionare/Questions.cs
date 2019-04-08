@@ -16,14 +16,17 @@ namespace Milionare
         MySqlConnection connection = new MySqlConnection();
         string con_string = Global.db_connect_prop;
         DataTable table = new DataTable();
+
         public Questions()
         {
             InitializeComponent();
         }
+
         private void populate(string table_from)
         {
             questions_datagrid.Rows.Clear();
             questions_datagrid.Refresh();
+
             //users_datagrid.Rows.Add(id, question, answer, author, topic, price);
             string query = "SELECT q.Id, q.question, q.correct_ans,  u.Name, t.topic, q.price FROM "+table_from+" q JOIN topics t ON q.topic_id = t.Id JOIN users u ON q.author = u.Id;";
             
@@ -33,24 +36,11 @@ namespace Milionare
             {
                 questions_datagrid.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString());
             }
-            //users_datagrid.DataSource = table;
-            //SELECT PROPRIETIES
+
             questions_datagrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             questions_datagrid.MultiSelect = false;
         }
-        private void set_filter()
-        {
-            
-            foreach (DataRow row in table.Rows)
-            {
-                // questions_datagrid.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString());
-                if (row[3].ToString() == "Bruno")
-                {
-                    questions_datagrid.Rows[3].Visible = false;
-                }
-            }
 
-        }
 
         private void Questions_Load(object sender, EventArgs e)
         {
@@ -59,33 +49,16 @@ namespace Milionare
             populate("validating_questions");
         }
 
-        private void set_filter_btn_Click(object sender, EventArgs e)
-        {
-
-            set_filter();
-        }
 
         private void questions_datagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 3) {
-                //users_tab.Visible = true;
-                //questions_tab.Visible = false;
-            }
-            MessageBox.Show(e.ColumnIndex.ToString());
+            //if (e.ColumnIndex == 3) {
+            //   .Visible = true;
+            //    questions_tab.Visible = false;
+            //}
+            //MessageBox.Show(e.ColumnIndex.ToString());
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            if (label1.Text == "Questions")
-            {
-                label1.Text = "Validating Questions";
-                populate("validating_questions");
-            }
-            else
-            {
-                label1.Text = "Questions";
-                populate("questions");
-            }
-        }
+
     }
 }

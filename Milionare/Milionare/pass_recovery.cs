@@ -75,6 +75,7 @@ namespace Milionare
                             user_welcome_lbl.Visible = false;
                             materialRaisedButton1.Text = "SUBMIT";
                             Code_lbl.Visible = true;
+                            check_spam_lbl.Visible = true;
 
 
                         }

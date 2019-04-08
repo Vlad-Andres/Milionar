@@ -24,7 +24,7 @@ namespace Milionare
             users_btn.selected = false;
             quest_btn.selected = false;
             quest_add_btn.selected = false;
-            text1_btn.selected = false;
+            validating_btn.selected = false;
             text2_btn.selected = false;
             ((Bunifu.Framework.UI.BunifuFlatButton)sender).selected = true;
         }
@@ -43,21 +43,57 @@ namespace Milionare
 
         private void quest_btn_Click(object sender, EventArgs e)
         {
-            questions_tab.Visible=true;
-            users_tab.Visible = false;
+            makeTabVisible("questions");
         }
 
         private void users_btn_Click(object sender, EventArgs e)
         {
-            users_tab.Visible = true;
-            questions_tab.Visible = false;
+            makeTabVisible("users");
         }
 
         private void quest_add_btn_Click(object sender, EventArgs e)
         {
-            backstage f = new backstage();
-            this.Hide();
-            f.ShowDialog();
+            makeTabVisible("add_question");
+        }
+
+        private void validating_btn_Click(object sender, EventArgs e)
+        {
+            makeTabVisible("validating");
+        }
+        private void makeTabVisible(string tab)
+        {
+            switch (tab){
+                case "users":
+                    {
+                        users_tab.Visible = true;
+                        questions_tab.Visible = false;
+                        pedingQuestions_tab.Visible = false;
+                        break;
+                    }
+                case "questions":
+                    {
+                        users_tab.Visible = false;
+                        questions_tab.Visible = true;
+                        pedingQuestions_tab.Visible = false;
+                        break;
+                    }
+                case "validating":
+                    {
+                        users_tab.Visible = false;
+                        questions_tab.Visible = false;
+                        pedingQuestions_tab.Visible = true;
+                        break;
+                    }
+                case "add_question":
+                    {
+                        backstage f = new backstage();
+                        this.Hide();
+                        f.ShowDialog();
+                        break;
+                    }
+                default: break;
+            }
         }
     }
+
 }

@@ -232,6 +232,7 @@ namespace Milionare
         }
         private void exit_button_Click(object sender, EventArgs e)
         {
+            this.Dispose();
             Application.Exit();
         }
 

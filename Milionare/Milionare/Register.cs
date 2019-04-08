@@ -234,7 +234,7 @@ namespace Milionare
                 img = Image.FromFile(ofd.FileName);
                 img = img_Resize(img, 200, 200);
                 reg_avatar_pic.Image = img;
-                img = img_Resize(img, 50, 50);
+                img = img_Resize(img, 100, 100);
             }
         }
         private bool field_unique_validation(object sender,string field_name)

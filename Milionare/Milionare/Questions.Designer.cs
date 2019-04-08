@@ -28,42 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.questions_datagrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
+            this.label1 = new System.Windows.Forms.Label();
             this.Id_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nick_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.wallet_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rank_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.set_filter_btn = new System.Windows.Forms.Button();
-            this.answ_filter_txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.auth_filter_txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.topic_filter_txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.questions_datagrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // questions_datagrid
             // 
             this.questions_datagrid.AllowUserToAddRows = false;
             this.questions_datagrid.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.questions_datagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.questions_datagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.questions_datagrid.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.questions_datagrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.questions_datagrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.DarkBlue;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.questions_datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.questions_datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.questions_datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.questions_datagrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id_col,
@@ -81,9 +75,20 @@
             this.questions_datagrid.Name = "questions_datagrid";
             this.questions_datagrid.ReadOnly = true;
             this.questions_datagrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.questions_datagrid.Size = new System.Drawing.Size(689, 368);
+            this.questions_datagrid.Size = new System.Drawing.Size(768, 368);
             this.questions_datagrid.TabIndex = 2;
             this.questions_datagrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.questions_datagrid_CellContentClick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Emoji", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DimGray;
+            this.label1.Location = new System.Drawing.Point(267, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(153, 38);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Questions";
             // 
             // Id_col
             // 
@@ -107,6 +112,7 @@
             this.nick_col.HeaderText = "Right Answer";
             this.nick_col.Name = "nick_col";
             this.nick_col.ReadOnly = true;
+            this.nick_col.Width = 120;
             // 
             // email_col
             // 
@@ -131,103 +137,17 @@
             this.rank_id.ReadOnly = true;
             this.rank_id.Width = 40;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Emoji", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(267, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 38);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Questions";
-            // 
-            // set_filter_btn
-            // 
-            this.set_filter_btn.Location = new System.Drawing.Point(427, 435);
-            this.set_filter_btn.Name = "set_filter_btn";
-            this.set_filter_btn.Size = new System.Drawing.Size(144, 24);
-            this.set_filter_btn.TabIndex = 4;
-            this.set_filter_btn.Text = "Set Filter";
-            this.set_filter_btn.UseVisualStyleBackColor = true;
-            this.set_filter_btn.Click += new System.EventHandler(this.set_filter_btn_Click);
-            // 
-            // answ_filter_txt
-            // 
-            this.answ_filter_txt.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.answ_filter_txt.Depth = 0;
-            this.answ_filter_txt.Hint = "Answer";
-            this.answ_filter_txt.Location = new System.Drawing.Point(5, 435);
-            this.answ_filter_txt.MouseState = MaterialSkin.MouseState.HOVER;
-            this.answ_filter_txt.Name = "answ_filter_txt";
-            this.answ_filter_txt.PasswordChar = '\0';
-            this.answ_filter_txt.SelectedText = "";
-            this.answ_filter_txt.SelectionLength = 0;
-            this.answ_filter_txt.SelectionStart = 0;
-            this.answ_filter_txt.Size = new System.Drawing.Size(132, 23);
-            this.answ_filter_txt.TabIndex = 6;
-            this.answ_filter_txt.UseSystemPasswordChar = false;
-            // 
-            // auth_filter_txt
-            // 
-            this.auth_filter_txt.BackColor = System.Drawing.Color.White;
-            this.auth_filter_txt.Depth = 0;
-            this.auth_filter_txt.Hint = "Author";
-            this.auth_filter_txt.Location = new System.Drawing.Point(145, 435);
-            this.auth_filter_txt.MouseState = MaterialSkin.MouseState.HOVER;
-            this.auth_filter_txt.Name = "auth_filter_txt";
-            this.auth_filter_txt.PasswordChar = '\0';
-            this.auth_filter_txt.SelectedText = "";
-            this.auth_filter_txt.SelectionLength = 0;
-            this.auth_filter_txt.SelectionStart = 0;
-            this.auth_filter_txt.Size = new System.Drawing.Size(132, 23);
-            this.auth_filter_txt.TabIndex = 7;
-            this.auth_filter_txt.UseSystemPasswordChar = false;
-            // 
-            // topic_filter_txt
-            // 
-            this.topic_filter_txt.BackColor = System.Drawing.Color.White;
-            this.topic_filter_txt.Depth = 0;
-            this.topic_filter_txt.Hint = "Topic";
-            this.topic_filter_txt.Location = new System.Drawing.Point(285, 435);
-            this.topic_filter_txt.MouseState = MaterialSkin.MouseState.HOVER;
-            this.topic_filter_txt.Name = "topic_filter_txt";
-            this.topic_filter_txt.PasswordChar = '\0';
-            this.topic_filter_txt.SelectedText = "";
-            this.topic_filter_txt.SelectionLength = 0;
-            this.topic_filter_txt.SelectionStart = 0;
-            this.topic_filter_txt.Size = new System.Drawing.Size(132, 23);
-            this.topic_filter_txt.TabIndex = 8;
-            this.topic_filter_txt.UseSystemPasswordChar = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Milionare.Properties.Resources.next;
-            this.pictureBox1.Location = new System.Drawing.Point(647, 20);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(42, 38);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // Questions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.topic_filter_txt);
-            this.Controls.Add(this.auth_filter_txt);
-            this.Controls.Add(this.answ_filter_txt);
-            this.Controls.Add(this.set_filter_btn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.questions_datagrid);
             this.Name = "Questions";
-            this.Size = new System.Drawing.Size(689, 466);
+            this.Size = new System.Drawing.Size(768, 491);
             this.Load += new System.EventHandler(this.Questions_Load);
             ((System.ComponentModel.ISupportInitialize)(this.questions_datagrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,10 +163,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn email_col;
         private System.Windows.Forms.DataGridViewTextBoxColumn wallet_col;
         private System.Windows.Forms.DataGridViewTextBoxColumn rank_id;
-        private System.Windows.Forms.Button set_filter_btn;
-        private MaterialSkin.Controls.MaterialSingleLineTextField answ_filter_txt;
-        private MaterialSkin.Controls.MaterialSingleLineTextField auth_filter_txt;
-        private MaterialSkin.Controls.MaterialSingleLineTextField topic_filter_txt;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

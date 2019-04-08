@@ -12,19 +12,22 @@ namespace Milionare
         {
             
             InitializeComponent();
-            if (Global.User.rank != "moder") { button1.Enabled = false; button1.Cursor = Cursors.No; }
+            if (Global.User.rank != "moder") {
+                button1.Enabled = false;
+                button1.Visible = false;//button1.Cursor = Cursors.No;
+            }
         }
         private void populate()
         {
             users_datagrid.Rows.Clear();
             //users_datagrid.Rows.Add(id, name, nick, email, wallet, rank);
-            string query = "SELECT `Id`,`Name`,`Nickname`,`email`,`wallet`,`rank` FROM users;";
+            string query = "SELECT `Id`,`Name`,`Nickname`,`email`,`wallet`,`rank`,`last_login` FROM users;";
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, con_string);
             adapter.Fill(table);
             foreach (DataRow row in table.Rows)
             {
-                users_datagrid.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString());
+                users_datagrid.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString(),row[6].ToString());
             }
             //users_datagrid.DataSource = table;
             //SELECT PROPRIETIES

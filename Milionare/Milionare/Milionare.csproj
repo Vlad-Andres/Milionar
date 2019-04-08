@@ -117,6 +117,12 @@
     <Compile Include="login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
     </Compile>
+    <Compile Include="PedingQuestions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PedingQuestions.Designer.cs">
+      <DependentUpon>PedingQuestions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Questions.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -170,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PedingQuestions.resx">
+      <DependentUpon>PedingQuestions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Questions.resx">
       <DependentUpon>Questions.cs</DependentUpon>
@@ -276,6 +285,8 @@
     <None Include="Resources\name_icon.png" />
     <None Include="Resources\forgot_pass_icon.png" />
     <None Include="bin\Debug\resources\icons\mixed_class.png" />
+    <None Include="bin\Debug\resources\icons\approve.png" />
+    <None Include="bin\Debug\resources\icons\delete.png" />
     <Content Include="Resources\gradient_bkg.png" />
     <None Include="Resources\register_lbl_icon.png" />
     <None Include="Resources\register_icon.png" />
