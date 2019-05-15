@@ -22,7 +22,11 @@ namespace Milionare
             question_value_txt.SelectedIndex = 0;
             right_asnwer_txt.SelectedIndex = 0;
             author_txt.Text = Global.User.nickname;
-            MessageBox.Show(Global.User.name);
+            
+            
+            
+            
+            .Show(Global.User.name);
             topic_txt.DropDownStyle = ComboBoxStyle.DropDownList;
             right_asnwer_txt.DropDownStyle = ComboBoxStyle.DropDownList;
             question_value_txt.DropDownStyle = ComboBoxStyle.DropDownList;

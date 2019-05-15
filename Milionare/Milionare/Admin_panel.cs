@@ -25,7 +25,7 @@ namespace Milionare
             quest_btn.selected = false;
             quest_add_btn.selected = false;
             validating_btn.selected = false;
-            text2_btn.selected = false;
+         //   text2_btn.selected = false;
             ((Bunifu.Framework.UI.BunifuFlatButton)sender).selected = true;
         }
 
