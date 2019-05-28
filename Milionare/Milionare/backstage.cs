@@ -26,7 +26,7 @@ namespace Milionare
             
             
             
-            .Show(Global.User.name);
+            
             topic_txt.DropDownStyle = ComboBoxStyle.DropDownList;
             right_asnwer_txt.DropDownStyle = ComboBoxStyle.DropDownList;
             question_value_txt.DropDownStyle = ComboBoxStyle.DropDownList;

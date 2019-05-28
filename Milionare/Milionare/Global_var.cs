@@ -7,7 +7,7 @@ using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing;
-
+using System.Text.RegularExpressions;
 namespace Milionare
 {
     static class Global
@@ -74,6 +74,58 @@ namespace Milionare
             }
 
         }
+        public static void apply_placeholder(String text,object sender,String regexp,int min_len,int max_len,object btn_to_enable, ErrorProvider err_provider,String err_text)
+        {
+            try
+            {
+                TextBox current_txt = ((TextBox)sender);
+                apply_placeholder(text, sender);
+                if (btn_to_enable != null)
+                {
+                    if (regexp != null) {
+                        if (Regex.IsMatch(current_txt.Text, regexp))
+                        {
+                            err_provider.Clear();
+                            //((Button)btn_to_enable).Enabled = true;
+                        }
+                        else
+                        {
+                            err_provider.SetError(current_txt, err_text);
+                            ((Button)btn_to_enable).Enabled = false;
+                        }
+                    }
+                    if (min_len!=0 && max_len != 0)
+                    {
+                        if(current_txt.Text.Length>min_len && current_txt.Text.Length < max_len){
+                            err_provider.Clear();
+                            //((Button)btn_to_enable).Enabled = true;
+                        }
+                        else
+                        {
+                            err_provider.SetError(current_txt, err_text);
+                            ((Button)btn_to_enable).Enabled = false;
+                        }
+                    }
+                }
+                
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.StackTrace.ToString());
+            }
+        }
+        public static void apply_placeholder(String text, object sender)
+        {
+            try
+            {
+                TextBox current_txt = ((TextBox)sender);
+                if (current_txt.Text == "") { current_txt.Text = text; current_txt.ForeColor = Color.MediumAquamarine; }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.StackTrace.ToString());
+            }
+        }
         public static void question_ifenough(int s)
         {
            /* MySqlConnection connection = new MySqlConnection();
@@ -135,18 +187,19 @@ namespace Milionare
         //----------------------------------------Users-----------------------------------------------------------------------
         public class User
         {
-            public static int wallet,id;
+            public static int wallet,id, score;
             public static string name,nickname,rank,email;
             //public static byte[] avatar;
             public static Image avatar_img;
             //public static  MemoryStream avatar_img = new MemoryStream();
-            public User(int ident, string nm, string nk, string rnk,int wall, string mail, byte[] img)
+            public User(int ident, string nm, string nk, string rnk,int wall,int scr, string mail, byte[] img)
             {
                 id = ident;
                 name = nm;
                 nickname = nk;
                 rank = rnk;
                 wallet = wall;
+                score = scr;
                 email = mail;
                 //avatar = img; 
                 if (img != null)

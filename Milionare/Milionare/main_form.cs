@@ -301,7 +301,7 @@ namespace Milionare
             ((Button)sender).BackgroundImage = Image.FromFile("resources/variants_btns/" + letter + "_yellow.png");
             if (questions_list[price_equal[current_id]].answer == letter)
             {
-                Thread.Sleep(2000);
+                //Thread.Sleep(2000);
                 validating = true;
                 ((Button)sender).BackgroundImage = Image.FromFile("resources/variants_btns/" + letter + "_green.png");
                 if_correct = true;

@@ -22,6 +22,7 @@ namespace Milionare
 
         private void login_Load(object sender, EventArgs e)
         {
+            
             if (Properties.Settings.Default.remember && Properties.Settings.Default.UserName != null && Properties.Settings.Default.Password != null)
             {
                 username_txt.Text = Properties.Settings.Default.UserName;
@@ -29,7 +30,12 @@ namespace Milionare
                 remember_checkbx.Checked = true;
             }
             else
+            {
+                //Global.apply_placeholder("Username", username_txt);
+                //Global.apply_placeholder("Password", password_txt);
                 Properties.Settings.Default.remember = false;
+            }
+                
         }
 
         private void login_btn_Click(object sender, EventArgs e)
@@ -38,7 +44,7 @@ namespace Milionare
             {
                 MySqlConnection connection = new MySqlConnection();
                 string con_string = Global.db_connect_prop;
-                string query = "SELECT COUNT(*),`Id`,`wallet`,`rank`,`name`,`Nickname`,`email`,`avatar` FROM users WHERE Nickname='" + username_txt.Text + "' AND password=SHA2('" +password_txt.Text + "',224)";
+                string query = "SELECT COUNT(*),`Id`,`wallet`,`score`,`rank`,`name`,`Nickname`,`email`,`avatar` FROM users WHERE Nickname='" + username_txt.Text + "' AND password=SHA2('" +password_txt.Text + "',224)";
                 try
                 {
                     using (connection = new MySqlConnection(con_string))
@@ -56,7 +62,7 @@ namespace Milionare
                             }
                             //Global.User.name = "testnamne";
                             byte[] avatar_temp = ((dr["avatar"]) != DBNull.Value) ? ((byte[])dr["avatar"]) : null;
-                            Global.User current_user = new Global.User(Convert.ToInt32(dr["Id"]), dr["name"].ToString(), dr["Nickname"].ToString(), dr["rank"].ToString(), Convert.ToInt32(dr["wallet"]), dr["email"].ToString(), avatar_temp);
+                            Global.User current_user = new Global.User(Convert.ToInt32(dr["Id"]), dr["name"].ToString(), dr["Nickname"].ToString(), dr["rank"].ToString(), Convert.ToInt32(dr["wallet"]),Convert.ToInt32(dr["score"]), dr["email"].ToString(), avatar_temp);
                             acc_recovery.sender_mail = Global.User.email.ToString();
                             first_form f = new first_form();
                             this.Hide();
@@ -78,7 +84,13 @@ namespace Milionare
             }
             else
             {
+                if(MetroFramework.MetroMessageBox.Show(this,"Empty Username or Password Field !","",MessageBoxButtons.RetryCancel,MessageBoxIcon.Hand)==DialogResult.Cancel)
 
+                {
+                    first_form f = new first_form();
+                    this.Dispose();
+                    f.ShowDialog();
+                }
             }
         }
 
@@ -122,6 +134,38 @@ namespace Milionare
             first_form f = new first_form();
             this.Dispose();
             f.ShowDialog();
+        }
+
+        private void username_txt_Enter(object sender, EventArgs e)
+        {
+            if (!remember_checkbx.Checked)
+            {
+                username_txt.Text = "";
+                username_txt.ForeColor = Color.MediumSpringGreen;
+            }
+
+        }
+
+        private void username_txt_Leave(object sender, EventArgs e)
+        {
+            if(!remember_checkbx.Checked)
+            Global.apply_placeholder("Username", sender);
+        }
+
+        private void password_txt_Enter(object sender, EventArgs e)
+        {
+            if(!remember_checkbx.Checked)
+            {
+                password_txt.Text = "";
+                password_txt.ForeColor = Color.MediumSpringGreen;
+            }
+            
+        }
+
+        private void password_txt_Leave(object sender, EventArgs e)
+        {
+            if(!remember_checkbx.Checked)
+            Global.apply_placeholder("Password", sender);
         }
     }
 }

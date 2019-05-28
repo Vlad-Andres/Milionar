@@ -23,6 +23,7 @@ namespace Milionare
         public Register()
         {
             InitializeComponent();
+            reg_btn.Enabled = false;
         }
 
         private void avatar_btn_MouseEnter(object sender, EventArgs e)
@@ -56,79 +57,75 @@ namespace Milionare
         }
         private void mail_txt_Leave(object sender, EventArgs e)
         {
-            if (mail_txt.Text == "") { mail_txt.Text = "abc@example.com"; mail_txt.ForeColor = Color.MediumAquamarine; }
+            
             string pattern = "^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$";
+            Global.apply_placeholder("Email", sender,pattern,0,0,reg_btn,errorProvider1,"Please enter a valid email");
 
+            //if (Regex.IsMatch(mail_txt.Text, pattern))
+            //{
+            //    errorProvider1.Clear();
+            //    reg_btn.Enabled = true;
+            //}
+            //else
+            //{
+            //    errorProvider1.SetError(this.mail_txt, "Please enter a valid mail");
+            //    reg_btn.Enabled = false;
 
-            if (Regex.IsMatch(mail_txt.Text, pattern))
-            {
-                errorProvider1.Clear();
-                reg_btn.Enabled = true;
-            }
-            else
-            {
-                errorProvider1.SetError(this.mail_txt, "Please enter a valid mail");
-                reg_btn.Enabled = false;
-
-                return;
-            }
+            //    return;
+            //}
         }
 
 
         private void name_txt_Leave(object sender, EventArgs e)
         {
-            if (name_txt.Text == "") { name_txt.Text = "Name"; name_txt.ForeColor = Color.MediumAquamarine; }
+            Global.apply_placeholder("Name", sender,null,2,15,reg_btn,errorProvider1,"Please enter a valid name");
 
-            if (name_txt.Text.Length > 2 && name_txt.Text.Length < 10)
-            {
-                errorProvider1.Clear();
-                reg_btn.Enabled = true;
-            }
-            else
-            {
-                errorProvider1.SetError(this.name_txt, "Please enter a valid name");
-                reg_btn.Enabled = false;
-
-                return;
-            }
         }
 
         private void password_txt_Leave(object sender, EventArgs e)
         {
-            if (password_txt.Text == "") { password_txt.Text = "Password"; password_txt.UseSystemPasswordChar = false; password_txt.ForeColor = Color.MediumAquamarine; }
-            if (password_txt.Text.Length > 2 && password_txt.Text.Length < 25)
+            if (password_txt.UseSystemPasswordChar == true)
             {
-                errorProvider1.Clear();
-                reg_btn.Enabled = true;
+                Global.apply_placeholder("Password", sender, null, 2, 25, reg_btn, errorProvider1, "Password must be between 2 and 25 characters lenght");
             }
             else
-            {
-                errorProvider1.SetError(this.password_txt, "Please enter a valid password");
-                reg_btn.Enabled = false;
-                return;
-            }
+                Global.apply_placeholder("Password", sender,null,2,25,reg_btn,errorProvider1,"Please enter a valid password");
+            //re_pass_txt_Leave(re_pass_txt,e);
+
+            //if (password_txt.Text.Length > 2 && password_txt.Text.Length < 25)
+            //{
+            //    errorProvider1.Clear();
+            //    reg_btn.Enabled = true;
+            //}
+            //else
+            //{
+            //    errorProvider1.SetError(this.password_txt, "Please enter a valid password");
+            //    reg_btn.Enabled = false;
+            //    return;
+            //}
             
         }
 
         private void username_txt_Leave(object sender, EventArgs e)
         {
-            if (username_txt.Text == "") { username_txt.Text = "Username"; username_txt.ForeColor = Color.MediumAquamarine; }
-            if (username_txt.Text.Length > 2 && username_txt.Text.Length < 25)
-            {
-                errorProvider1.Clear();
-                reg_btn.Enabled = true;
-            }
-            else
-            {
-                errorProvider1.SetError(this.username_txt, "Please enter a valid username");
-                reg_btn.Enabled = false;
-                reg_btn.Cursor = Cursors.No;
-                return;
-            }
+            Global.apply_placeholder("Username", sender,null,2,25,reg_btn,errorProvider1,"Please enter a valid username");
+            //if (username_txt.Text.Length > 2 && username_txt.Text.Length < 25)
+            //{
+            //    errorProvider1.Clear();
+            //    reg_btn.Enabled = true;
+            //}
+            //else
+            //{
+            //    errorProvider1.SetError(this.username_txt, "Please enter a valid username");
+            //    reg_btn.Enabled = false;
+            //    reg_btn.Cursor = Cursors.No;
+            //    return;
+            //}
         }
 
         private void reg_btn_Click(object sender, EventArgs e)
         {
+
             //validation --
             if (!field_unique_validation(username_txt,"Nickname")) { MessageBox.Show("Username already taken, please choose another"); return; };
             if (!field_unique_validation(mail_txt,"email")) { MessageBox.Show("Email already registered, please choose another"); return; };
@@ -143,7 +140,7 @@ namespace Milionare
 
 
 
-            string query = "INSERT INTO users (`Name`,`Nickname`,`email`,`password`,`wallet`,`rank`,`avatar`) VALUES ('" + name_txt.Text + "','" + username_txt.Text + "','" + mail_txt.Text + "',SHA2('" + password_txt.Text + "',224) ,0,'user',@IMG)";
+            string query = "INSERT INTO users (`Name`,`Nickname`,`email`,`password`,`wallet`,`rank`,`avatar`,`energy`,`login_streak`) VALUES ('" + name_txt.Text + "','" + username_txt.Text + "','" + mail_txt.Text + "',SHA2('" + password_txt.Text + "',224) ,0,'user',@IMG,5,0)";
             try
             {
 
@@ -199,8 +196,8 @@ namespace Milionare
 
         private void re_pass_txt_Leave(object sender, EventArgs e)
         {
-            if (re_pass_txt.Text == "") { re_pass_txt.Text = "Retype password"; re_pass_txt.UseSystemPasswordChar = false; re_pass_txt.ForeColor = Color.MediumAquamarine; }
-            if (re_pass_txt.Text == password_txt.Text)
+            Global.apply_placeholder("Retype Password", sender);
+            if (re_pass_txt.Text == password_txt.Text && re_pass_txt.Text!="Password")
             {
                 errorProvider1.Clear();
                 reg_btn.Enabled = true;

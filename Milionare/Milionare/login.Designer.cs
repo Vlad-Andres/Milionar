@@ -55,27 +55,32 @@
             this.username_txt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.username_txt.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.username_txt.ForeColor = System.Drawing.Color.White;
-            this.username_txt.Location = new System.Drawing.Point(67, 19);
+            this.username_txt.Location = new System.Drawing.Point(89, 23);
+            this.username_txt.Margin = new System.Windows.Forms.Padding(4);
             this.username_txt.Name = "username_txt";
-            this.username_txt.Size = new System.Drawing.Size(278, 33);
+            this.username_txt.Size = new System.Drawing.Size(370, 40);
             this.username_txt.TabIndex = 0;
+            this.username_txt.Enter += new System.EventHandler(this.username_txt_Enter);
+            this.username_txt.Leave += new System.EventHandler(this.username_txt_Leave);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.username_txt);
-            this.panel1.Location = new System.Drawing.Point(47, 213);
+            this.panel1.Location = new System.Drawing.Point(63, 262);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(353, 60);
+            this.panel1.Size = new System.Drawing.Size(471, 74);
             this.panel1.TabIndex = 1;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Milionare.Properties.Resources.login_icon;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(64, 60);
+            this.pictureBox2.Size = new System.Drawing.Size(85, 74);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
@@ -84,9 +89,10 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::Milionare.Properties.Resources.power2;
-            this.pictureBox1.Location = new System.Drawing.Point(147, 21);
+            this.pictureBox1.Location = new System.Drawing.Point(196, 26);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(147, 147);
+            this.pictureBox1.Size = new System.Drawing.Size(196, 181);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -96,17 +102,19 @@
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Controls.Add(this.pictureBox3);
             this.panel2.Controls.Add(this.password_txt);
-            this.panel2.Location = new System.Drawing.Point(47, 293);
+            this.panel2.Location = new System.Drawing.Point(63, 361);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(353, 60);
+            this.panel2.Size = new System.Drawing.Size(471, 74);
             this.panel2.TabIndex = 3;
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Milionare.Properties.Resources.pass_icon;
             this.pictureBox3.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(64, 60);
+            this.pictureBox3.Size = new System.Drawing.Size(85, 74);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 1;
             this.pictureBox3.TabStop = false;
@@ -117,20 +125,24 @@
             this.password_txt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.password_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.password_txt.ForeColor = System.Drawing.Color.White;
-            this.password_txt.Location = new System.Drawing.Point(67, 19);
+            this.password_txt.Location = new System.Drawing.Point(89, 23);
+            this.password_txt.Margin = new System.Windows.Forms.Padding(4);
             this.password_txt.Name = "password_txt";
-            this.password_txt.Size = new System.Drawing.Size(278, 32);
+            this.password_txt.Size = new System.Drawing.Size(370, 38);
             this.password_txt.TabIndex = 0;
             this.password_txt.UseSystemPasswordChar = true;
+            this.password_txt.Enter += new System.EventHandler(this.password_txt_Enter);
+            this.password_txt.Leave += new System.EventHandler(this.password_txt_Leave);
             // 
             // login_btn
             // 
             this.login_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.login_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.login_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.login_btn.Location = new System.Drawing.Point(152, 401);
+            this.login_btn.Location = new System.Drawing.Point(203, 494);
+            this.login_btn.Margin = new System.Windows.Forms.Padding(4);
             this.login_btn.Name = "login_btn";
-            this.login_btn.Size = new System.Drawing.Size(142, 42);
+            this.login_btn.Size = new System.Drawing.Size(189, 52);
             this.login_btn.TabIndex = 4;
             this.login_btn.Text = "Log In";
             this.login_btn.UseVisualStyleBackColor = false;
@@ -149,9 +161,10 @@
             this.remember_checkbx.BackColor = System.Drawing.Color.Transparent;
             this.remember_checkbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.remember_checkbx.ForeColor = System.Drawing.Color.White;
-            this.remember_checkbx.Location = new System.Drawing.Point(47, 359);
+            this.remember_checkbx.Location = new System.Drawing.Point(63, 442);
+            this.remember_checkbx.Margin = new System.Windows.Forms.Padding(4);
             this.remember_checkbx.Name = "remember_checkbx";
-            this.remember_checkbx.Size = new System.Drawing.Size(123, 21);
+            this.remember_checkbx.Size = new System.Drawing.Size(146, 24);
             this.remember_checkbx.TabIndex = 6;
             this.remember_checkbx.Text = "Remember me ";
             this.remember_checkbx.UseVisualStyleBackColor = false;
@@ -164,12 +177,13 @@
             this.pass_lost.Depth = 0;
             this.pass_lost.Font = new System.Drawing.Font("Roboto", 11F);
             this.pass_lost.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.pass_lost.Location = new System.Drawing.Point(43, 460);
+            this.pass_lost.Location = new System.Drawing.Point(57, 566);
+            this.pass_lost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.pass_lost.MouseState = MaterialSkin.MouseState.HOVER;
             this.pass_lost.Name = "pass_lost";
-            this.pass_lost.Size = new System.Drawing.Size(152, 19);
+            this.pass_lost.Size = new System.Drawing.Size(190, 24);
             this.pass_lost.TabIndex = 7;
-            this.pass_lost.Text = "Lost yout password ?";
+            this.pass_lost.Text = "Lost your password ?";
             this.pass_lost.Click += new System.EventHandler(this.pass_lost_Click);
             // 
             // register_lbl
@@ -179,10 +193,11 @@
             this.register_lbl.Depth = 0;
             this.register_lbl.Font = new System.Drawing.Font("Roboto", 11F);
             this.register_lbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.register_lbl.Location = new System.Drawing.Point(336, 460);
+            this.register_lbl.Location = new System.Drawing.Point(448, 566);
+            this.register_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.register_lbl.MouseState = MaterialSkin.MouseState.HOVER;
             this.register_lbl.Name = "register_lbl";
-            this.register_lbl.Size = new System.Drawing.Size(64, 19);
+            this.register_lbl.Size = new System.Drawing.Size(80, 24);
             this.register_lbl.TabIndex = 8;
             this.register_lbl.Text = "Register";
             this.register_lbl.Click += new System.EventHandler(this.register_lbl_Click);
@@ -192,9 +207,10 @@
             this.exit_button.BackColor = System.Drawing.Color.Transparent;
             this.exit_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exit_button.ForeColor = System.Drawing.Color.DimGray;
-            this.exit_button.Location = new System.Drawing.Point(413, 12);
+            this.exit_button.Location = new System.Drawing.Point(551, 15);
+            this.exit_button.Margin = new System.Windows.Forms.Padding(4);
             this.exit_button.Name = "exit_button";
-            this.exit_button.Size = new System.Drawing.Size(25, 26);
+            this.exit_button.Size = new System.Drawing.Size(33, 32);
             this.exit_button.TabIndex = 9;
             this.exit_button.Text = "X";
             this.exit_button.UseVisualStyleBackColor = false;
@@ -202,10 +218,10 @@
             // 
             // login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Milionare.Properties.Resources.gradient_bkg;
-            this.ClientSize = new System.Drawing.Size(450, 500);
+            this.ClientSize = new System.Drawing.Size(600, 615);
             this.ControlBox = false;
             this.Controls.Add(this.exit_button);
             this.Controls.Add(this.register_lbl);
@@ -216,6 +232,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.login_FormClosed);

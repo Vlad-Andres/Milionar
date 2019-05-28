@@ -30,8 +30,21 @@ namespace Milionare
             InitializeComponent();
             if (Global.User.nickname != null)
             {
+                main_btns_pnl.Location = new Point (26, 128);
+                users_top_pnl.Visible = true;
+                if (connection == null)
+                {
+                    setConnection();
+                }
+                populate_top_datagrid();
+                users_top_datagrid.Rows[0].Selected = false;
+
                 username_txt.Text = Global.User.nickname;
                 username_txt.Visible = true;
+                user_score_txt.Text = "Score: "+Global.User.score.ToString();
+                user_score_txt.Visible = true;
+                user_wallet_txt.Text = "You have: " + Global.User.wallet.ToString()+" $";
+                user_wallet_txt.Visible = true;
                 login_lbl.Text =  "";
                 login_lbl.Enabled = false;
                 slash_lbl.Visible = false;
@@ -319,5 +332,49 @@ namespace Milionare
             pictureBox1.BackColor = Color.Transparent;
         }
 
-    }
+        //TOP of Players section bellow 
+        MySqlConnection connection = null;
+        string con_string;
+        private void setConnection()
+        {
+            connection = new MySqlConnection();
+            con_string = Global.db_connect_prop;
+        }
+        private void populate_top_datagrid()
+        {
+            
+            users_top_datagrid.Rows.Clear();
+            //string query = "set @row_num = 0; SELECT @row_num := @row_num + 1 as order_num, Nickname FROM milionaire.users ORDER BY score desc;";
+            string query = "SELECT Nickname,score FROM milionaire.users ORDER BY score desc;";
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter(query, con_string);
+
+            adapter.Fill(table);
+            int order = 0;
+            
+            foreach (DataRow row in table.Rows)
+            {
+                order++;
+                users_top_datagrid.Rows.Add(order.ToString(), row[0].ToString(),row[1].ToString());
+            }
+            
+            users_top_datagrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+        }
+
+        private void show_me_btn_Click(object sender, EventArgs e)
+        {
+            String NicktoSearch = Global.User.nickname;
+            int rowIndex = -1;
+            foreach (DataGridViewRow row in users_top_datagrid.Rows)
+            {
+                if (row.Cells[1].Value.ToString().Equals(NicktoSearch))
+                {
+                    rowIndex = row.Index;
+                    break;
+                }
+            }
+            users_top_datagrid.Rows[rowIndex].Selected = true;
+        }
+    } 
 }
