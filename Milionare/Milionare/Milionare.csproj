@@ -129,11 +129,23 @@
     <Compile Include="Questions.Designer.cs">
       <DependentUpon>Questions.cs</DependentUpon>
     </Compile>
+    <Compile Include="question_log_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="question_log_form.Designer.cs">
+      <DependentUpon>question_log_form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ValidationLogs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ValidationLogs.Designer.cs">
+      <DependentUpon>ValidationLogs.cs</DependentUpon>
     </Compile>
     <Compile Include="Users.cs">
       <SubType>UserControl</SubType>
@@ -183,8 +195,14 @@
     <EmbeddedResource Include="Questions.resx">
       <DependentUpon>Questions.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="question_log_form.resx">
+      <DependentUpon>question_log_form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ValidationLogs.resx">
+      <DependentUpon>ValidationLogs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users.resx">
       <DependentUpon>Users.cs</DependentUpon>
@@ -287,6 +305,9 @@
     <None Include="bin\Debug\resources\icons\mixed_class.png" />
     <None Include="bin\Debug\resources\icons\approve.png" />
     <None Include="bin\Debug\resources\icons\delete.png" />
+    <None Include="bin\Debug\resources\icons\refresh.png" />
+    <None Include="bin\Debug\resources\icons\refresh2.png" />
+    <None Include="bin\Debug\resources\icons\refresh %282%29.png" />
     <Content Include="Resources\gradient_bkg.png" />
     <None Include="Resources\register_lbl_icon.png" />
     <None Include="Resources\register_icon.png" />

@@ -33,6 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.admin_name = new System.Windows.Forms.Label();
             this.side_panel = new System.Windows.Forms.Panel();
+            this.validation_logs_btn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.validating_btn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.quest_add_btn = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -41,10 +42,11 @@
             this.logo_panel = new System.Windows.Forms.Panel();
             this.top_panel = new System.Windows.Forms.Panel();
             this.container = new System.Windows.Forms.Panel();
+            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.users_tab = new Milionare.Users();
             this.questions_tab = new Milionare.Questions();
             this.pedingQuestions_tab = new Milionare.PedingQuestions();
-            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.validation_logs_pnl = new Milionare.validation_logs();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.side_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -91,6 +93,7 @@
             // side_panel
             // 
             this.side_panel.BackColor = System.Drawing.Color.Gray;
+            this.side_panel.Controls.Add(this.validation_logs_btn);
             this.side_panel.Controls.Add(this.pictureBox2);
             this.side_panel.Controls.Add(this.validating_btn);
             this.side_panel.Controls.Add(this.quest_add_btn);
@@ -102,6 +105,42 @@
             this.side_panel.Name = "side_panel";
             this.side_panel.Size = new System.Drawing.Size(165, 568);
             this.side_panel.TabIndex = 3;
+            // 
+            // validation_logs_btn
+            // 
+            this.validation_logs_btn.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(55)))));
+            this.validation_logs_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.validation_logs_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.validation_logs_btn.BorderRadius = 0;
+            this.validation_logs_btn.ButtonText = "Validation Logs";
+            this.validation_logs_btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.validation_logs_btn.DisabledColor = System.Drawing.Color.Gray;
+            this.validation_logs_btn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.validation_logs_btn.Iconcolor = System.Drawing.Color.Transparent;
+            this.validation_logs_btn.Iconimage = null;
+            this.validation_logs_btn.Iconimage_right = null;
+            this.validation_logs_btn.Iconimage_right_Selected = null;
+            this.validation_logs_btn.Iconimage_Selected = null;
+            this.validation_logs_btn.IconMarginLeft = 0;
+            this.validation_logs_btn.IconMarginRight = 0;
+            this.validation_logs_btn.IconRightVisible = true;
+            this.validation_logs_btn.IconRightZoom = 0D;
+            this.validation_logs_btn.IconVisible = true;
+            this.validation_logs_btn.IconZoom = 90D;
+            this.validation_logs_btn.IsTab = false;
+            this.validation_logs_btn.Location = new System.Drawing.Point(0, 292);
+            this.validation_logs_btn.Name = "validation_logs_btn";
+            this.validation_logs_btn.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.validation_logs_btn.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(55)))));
+            this.validation_logs_btn.OnHoverTextColor = System.Drawing.Color.White;
+            this.validation_logs_btn.selected = false;
+            this.validation_logs_btn.Size = new System.Drawing.Size(165, 48);
+            this.validation_logs_btn.TabIndex = 7;
+            this.validation_logs_btn.Text = "Validation Logs";
+            this.validation_logs_btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.validation_logs_btn.Textcolor = System.Drawing.Color.White;
+            this.validation_logs_btn.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.validation_logs_btn.Click += new System.EventHandler(this.validation_logs_btn_Click);
             // 
             // pictureBox2
             // 
@@ -288,11 +327,19 @@
             this.container.Controls.Add(this.users_tab);
             this.container.Controls.Add(this.questions_tab);
             this.container.Controls.Add(this.pedingQuestions_tab);
+            this.container.Controls.Add(this.validation_logs_pnl);
             this.container.Dock = System.Windows.Forms.DockStyle.Right;
             this.container.Location = new System.Drawing.Point(172, 84);
             this.container.Name = "container";
             this.container.Size = new System.Drawing.Size(768, 491);
             this.container.TabIndex = 5;
+            // 
+            // bunifuDragControl1
+            // 
+            this.bunifuDragControl1.Fixed = true;
+            this.bunifuDragControl1.Horizontal = true;
+            this.bunifuDragControl1.TargetControl = this;
+            this.bunifuDragControl1.Vertical = true;
             // 
             // users_tab
             // 
@@ -322,12 +369,13 @@
             this.pedingQuestions_tab.Size = new System.Drawing.Size(768, 491);
             this.pedingQuestions_tab.TabIndex = 2;
             // 
-            // bunifuDragControl1
+            // validation_logs_pnl
             // 
-            this.bunifuDragControl1.Fixed = true;
-            this.bunifuDragControl1.Horizontal = true;
-            this.bunifuDragControl1.TargetControl = this;
-            this.bunifuDragControl1.Vertical = true;
+            this.validation_logs_pnl.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.validation_logs_pnl.Location = new System.Drawing.Point(0, 0);
+            this.validation_logs_pnl.Name = "validation_logs_pnl";
+            this.validation_logs_pnl.Size = new System.Drawing.Size(768, 491);
+            this.validation_logs_pnl.TabIndex = 3;
             // 
             // Admin_panel
             // 
@@ -375,5 +423,7 @@
         private Questions questions_tab;
         private PedingQuestions pedingQuestions_tab;
         public Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
+        private Bunifu.Framework.UI.BunifuFlatButton validation_logs_btn;
+        private validation_logs validation_logs_pnl;
     }
 }

@@ -60,7 +60,11 @@ namespace Milionare
         {
             makeTabVisible("validating");
         }
-        private void makeTabVisible(string tab)
+        private void validation_logs_btn_Click(object sender, EventArgs e)
+        {
+            makeTabVisible("validation_logs");
+        }
+        public void makeTabVisible(string tab)
         {
             switch (tab){
                 case "users":
@@ -68,6 +72,7 @@ namespace Milionare
                         users_tab.Visible = true;
                         questions_tab.Visible = false;
                         pedingQuestions_tab.Visible = false;
+                        validation_logs_pnl.Visible = false;
                         break;
                     }
                 case "questions":
@@ -75,6 +80,7 @@ namespace Milionare
                         users_tab.Visible = false;
                         questions_tab.Visible = true;
                         pedingQuestions_tab.Visible = false;
+                        validation_logs_pnl.Visible = false;
                         break;
                     }
                 case "validating":
@@ -82,6 +88,7 @@ namespace Milionare
                         users_tab.Visible = false;
                         questions_tab.Visible = false;
                         pedingQuestions_tab.Visible = true;
+                        validation_logs_pnl.Visible = false;
                         break;
                     }
                 case "add_question":
@@ -91,9 +98,19 @@ namespace Milionare
                         f.ShowDialog();
                         break;
                     }
+                case "validation_logs":
+                    {
+                        users_tab.Visible = false;
+                        questions_tab.Visible = false;
+                        pedingQuestions_tab.Visible = false;
+                        validation_logs_pnl.Visible = true;
+                        break;
+                    }
                 default: break;
             }
         }
+
+        
     }
 
 }

@@ -45,21 +45,22 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.avatar_pic = new System.Windows.Forms.PictureBox();
             this.user_info_panel = new System.Windows.Forms.Panel();
-            this.username_txt = new System.Windows.Forms.Label();
-            this.user_score_txt = new System.Windows.Forms.Label();
             this.user_wallet_txt = new System.Windows.Forms.Label();
+            this.user_score_txt = new System.Windows.Forms.Label();
+            this.username_txt = new System.Windows.Forms.Label();
             this.users_top_pnl = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.users_top_datagrid = new System.Windows.Forms.DataGridView();
-            this.show_me_btn = new System.Windows.Forms.Button();
-            this.main_btns_pnl = new System.Windows.Forms.Panel();
             this.UserPlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.user_score = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.main_btns_pnl = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.avatar_pic)).BeginInit();
             this.user_info_panel.SuspendLayout();
             this.users_top_pnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.users_top_datagrid)).BeginInit();
             this.main_btns_pnl.SuspendLayout();
             this.SuspendLayout();
@@ -202,7 +203,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::Milionare.Properties.Resources.mixed_class;
             this.pictureBox1.Location = new System.Drawing.Point(253, 119);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(70, 70);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -230,36 +231,10 @@
             this.user_info_panel.Controls.Add(this.username_txt);
             this.user_info_panel.Controls.Add(this.avatar_pic);
             this.user_info_panel.Location = new System.Drawing.Point(341, 11);
-            this.user_info_panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.user_info_panel.Margin = new System.Windows.Forms.Padding(2);
             this.user_info_panel.Name = "user_info_panel";
             this.user_info_panel.Size = new System.Drawing.Size(136, 112);
             this.user_info_panel.TabIndex = 11;
-            // 
-            // username_txt
-            // 
-            this.username_txt.AutoSize = true;
-            this.username_txt.ForeColor = System.Drawing.Color.Cornsilk;
-            this.username_txt.Location = new System.Drawing.Point(34, 72);
-            this.username_txt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.username_txt.Name = "username_txt";
-            this.username_txt.Size = new System.Drawing.Size(27, 13);
-            this.username_txt.TabIndex = 11;
-            this.username_txt.Text = "unm";
-            this.username_txt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.username_txt.Visible = false;
-            // 
-            // user_score_txt
-            // 
-            this.user_score_txt.AutoSize = true;
-            this.user_score_txt.ForeColor = System.Drawing.Color.Cornsilk;
-            this.user_score_txt.Location = new System.Drawing.Point(34, 85);
-            this.user_score_txt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.user_score_txt.Name = "user_score_txt";
-            this.user_score_txt.Size = new System.Drawing.Size(33, 13);
-            this.user_score_txt.TabIndex = 12;
-            this.user_score_txt.Text = "score";
-            this.user_score_txt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.user_score_txt.Visible = false;
             // 
             // user_wallet_txt
             // 
@@ -274,17 +249,55 @@
             this.user_wallet_txt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.user_wallet_txt.Visible = false;
             // 
+            // user_score_txt
+            // 
+            this.user_score_txt.AutoSize = true;
+            this.user_score_txt.ForeColor = System.Drawing.Color.Cornsilk;
+            this.user_score_txt.Location = new System.Drawing.Point(34, 85);
+            this.user_score_txt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.user_score_txt.Name = "user_score_txt";
+            this.user_score_txt.Size = new System.Drawing.Size(33, 13);
+            this.user_score_txt.TabIndex = 12;
+            this.user_score_txt.Text = "score";
+            this.user_score_txt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.user_score_txt.Visible = false;
+            // 
+            // username_txt
+            // 
+            this.username_txt.AutoSize = true;
+            this.username_txt.ForeColor = System.Drawing.Color.Cornsilk;
+            this.username_txt.Location = new System.Drawing.Point(34, 72);
+            this.username_txt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.username_txt.Name = "username_txt";
+            this.username_txt.Size = new System.Drawing.Size(27, 13);
+            this.username_txt.TabIndex = 11;
+            this.username_txt.Text = "unm";
+            this.username_txt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.username_txt.Visible = false;
+            // 
             // users_top_pnl
             // 
             this.users_top_pnl.BackColor = System.Drawing.Color.Transparent;
+            this.users_top_pnl.Controls.Add(this.pictureBox2);
             this.users_top_pnl.Controls.Add(this.label2);
-            this.users_top_pnl.Controls.Add(this.show_me_btn);
             this.users_top_pnl.Controls.Add(this.users_top_datagrid);
             this.users_top_pnl.Location = new System.Drawing.Point(605, 67);
             this.users_top_pnl.Name = "users_top_pnl";
-            this.users_top_pnl.Size = new System.Drawing.Size(200, 438);
+            this.users_top_pnl.Size = new System.Drawing.Size(200, 360);
             this.users_top_pnl.TabIndex = 12;
             this.users_top_pnl.Visible = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Image = global::Milionare.Properties.Resources.refresh__2_;
+            this.pictureBox2.Location = new System.Drawing.Point(154, 9);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(29, 26);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 14;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click_1);
             // 
             // label2
             // 
@@ -292,7 +305,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(37, 12);
+            this.label2.Location = new System.Drawing.Point(21, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(127, 26);
             this.label2.TabIndex = 13;
@@ -340,31 +353,9 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.users_top_datagrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.users_top_datagrid.RowHeadersVisible = false;
-            this.users_top_datagrid.Size = new System.Drawing.Size(200, 365);
+            this.users_top_datagrid.Size = new System.Drawing.Size(200, 317);
             this.users_top_datagrid.TabIndex = 0;
-            // 
-            // show_me_btn
-            // 
-            this.show_me_btn.Location = new System.Drawing.Point(62, 412);
-            this.show_me_btn.Name = "show_me_btn";
-            this.show_me_btn.Size = new System.Drawing.Size(75, 23);
-            this.show_me_btn.TabIndex = 14;
-            this.show_me_btn.Text = "Show Me";
-            this.show_me_btn.UseVisualStyleBackColor = true;
-            this.show_me_btn.Click += new System.EventHandler(this.show_me_btn_Click);
-            // 
-            // main_btns_pnl
-            // 
-            this.main_btns_pnl.BackColor = System.Drawing.Color.Transparent;
-            this.main_btns_pnl.Controls.Add(this.arts_btn);
-            this.main_btns_pnl.Controls.Add(this.history_btn);
-            this.main_btns_pnl.Controls.Add(this.sport_btn);
-            this.main_btns_pnl.Controls.Add(this.pictureBox1);
-            this.main_btns_pnl.Controls.Add(this.science_btn);
-            this.main_btns_pnl.Location = new System.Drawing.Point(121, 128);
-            this.main_btns_pnl.Name = "main_btns_pnl";
-            this.main_btns_pnl.Size = new System.Drawing.Size(572, 345);
-            this.main_btns_pnl.TabIndex = 13;
+            this.users_top_datagrid.TabStop = false;
             // 
             // UserPlace
             // 
@@ -389,6 +380,19 @@
             this.user_score.Name = "user_score";
             this.user_score.ReadOnly = true;
             this.user_score.Width = 50;
+            // 
+            // main_btns_pnl
+            // 
+            this.main_btns_pnl.BackColor = System.Drawing.Color.Transparent;
+            this.main_btns_pnl.Controls.Add(this.arts_btn);
+            this.main_btns_pnl.Controls.Add(this.history_btn);
+            this.main_btns_pnl.Controls.Add(this.sport_btn);
+            this.main_btns_pnl.Controls.Add(this.pictureBox1);
+            this.main_btns_pnl.Controls.Add(this.science_btn);
+            this.main_btns_pnl.Location = new System.Drawing.Point(121, 128);
+            this.main_btns_pnl.Name = "main_btns_pnl";
+            this.main_btns_pnl.Size = new System.Drawing.Size(572, 345);
+            this.main_btns_pnl.TabIndex = 13;
             // 
             // first_form
             // 
@@ -415,6 +419,7 @@
             this.user_info_panel.PerformLayout();
             this.users_top_pnl.ResumeLayout(false);
             this.users_top_pnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.users_top_datagrid)).EndInit();
             this.main_btns_pnl.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -443,11 +448,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel users_top_pnl;
         private System.Windows.Forms.DataGridView users_top_datagrid;
-        private System.Windows.Forms.Button show_me_btn;
         private System.Windows.Forms.Panel main_btns_pnl;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserPlace;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn user_score;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

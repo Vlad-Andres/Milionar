@@ -12,9 +12,17 @@ namespace Milionare
         {
             
             InitializeComponent();
-            if (Global.User.rank != "moder") {
+            if (Global.User.rank != "admin") {
                 button1.Enabled = false;
                 button1.Visible = false;//button1.Cursor = Cursors.No;
+                add_user_btn.Visible = false;
+                add_user_btn.Enabled = false;
+                set_user_btn.Enabled = false;
+                set_user_btn.Visible = false;
+                set_admin_btn.Visible = false;
+                set_admin_btn.Enabled = false;
+                users_datagrid.Visible = false;
+                users_datagrid.Enabled = false;
             }
         }
         private void populate()
@@ -79,7 +87,7 @@ namespace Milionare
             {
                 if (users_datagrid.Rows[i].Selected)
                 {
-                    add_rank("admin",Convert.ToInt32(users_datagrid.Rows[i].Cells[0].Value));
+                    add_rank("moder",Convert.ToInt32(users_datagrid.Rows[i].Cells[0].Value));
                 }
             }
 
@@ -117,6 +125,7 @@ namespace Milionare
         {
             Register r = new Register();
             r.Show();
+            
         }
     }
 

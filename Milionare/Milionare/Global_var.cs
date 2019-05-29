@@ -174,6 +174,32 @@ namespace Milionare
               (SELECT topic_id FROM games)*/
 
         }
+        public static void question_write(string table_in, string topic, string question, string variant_A, string variant_B, string variant_C, string variant_D, string right_answer, int question_value, string auth_name)
+        {
+            MySqlConnection connection = new MySqlConnection();
+            string con_string = db_connect_prop;
+            string question_insert = "INSERT INTO milionaire." + table_in + " (question,author,price,var_a,var_b,var_c,var_d,correct_ans,topic_id) VALUES('" + question + "', (SELECT Id FROM users WHERE Nickname = '" + auth_name + "'), " + question_value + ", '" + variant_A + "', '" + variant_B + "', '" + variant_C + "', '" + variant_D + "', '" + right_answer + "', (SELECT Id FROM topics WHERE topic = '" + topic + "' )); ";
+
+            try
+            {
+                using (connection = new MySqlConnection(con_string))
+                using (MySqlCommand write = new MySqlCommand(question_insert, connection))
+                {
+                    connection.Open();
+                    write.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                mysql_err_msg(ex);
+
+            }
+
+
+
+
+        }
         public static void mysql_err_msg(MySqlException ex)
         {
             if (MessageBox.Show("Error number: " + ex.Number.ToString() + " \n Do you want to read more?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)

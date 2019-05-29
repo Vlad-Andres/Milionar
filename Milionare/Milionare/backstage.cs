@@ -35,9 +35,19 @@ namespace Milionare
 
         private void back_btn_Click(object sender, EventArgs e)
         {
-            first_form f = new first_form();
-            this.Hide();
-            f.ShowDialog();
+            if (Global.User.rank == "admin" || Global.User.rank == "moder")
+            {
+                Admin_panel f = new Admin_panel();
+                this.Hide();
+                f.ShowDialog();
+            }
+            else
+            {
+                first_form f = new first_form();
+                this.Hide();
+                f.ShowDialog();
+            }
+            
         }
 
         private void add_question_btn_Click(object sender, EventArgs e)

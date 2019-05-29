@@ -37,7 +37,8 @@ namespace Milionare
                     setConnection();
                 }
                 populate_top_datagrid();
-                users_top_datagrid.Rows[0].Selected = false;
+
+                //users_top_datagrid.Rows[0].Selected = false;
 
                 username_txt.Text = Global.User.nickname;
                 username_txt.Visible = true;
@@ -61,6 +62,11 @@ namespace Milionare
         {
             this.Left = (Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2;
             this.Top = (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2;
+
+            users_top_datagrid.ClearSelection();
+            users_top_datagrid.Update();
+            
+            //users_top_datagrid.RowsDefaultCellStyle.SelectionBackColor = System.Drawing.Color.Transparent;
         }
 
         private void science_btn_Click(object sender, EventArgs e)
@@ -351,30 +357,51 @@ namespace Milionare
 
             adapter.Fill(table);
             int order = 0;
+            bool isLeader = false;
             
             foreach (DataRow row in table.Rows)
             {
                 order++;
-                users_top_datagrid.Rows.Add(order.ToString(), row[0].ToString(),row[1].ToString());
+                
+                if (order <=10) {
+                    if (row[0].ToString().Equals(Global.User.nickname)) { isLeader = true;  }
+                    users_top_datagrid.Rows.Add(order.ToString(), row[0].ToString(), row[1].ToString());
+                }else
+                {
+                    if (!isLeader) {
+                        if (row[0].ToString().Equals(Global.User.nickname)){
+                            users_top_datagrid.Rows.Add(order.ToString(), row[0].ToString(), row[1].ToString());
+                            
+                        }  
+                    }
+                }
             }
             
             users_top_datagrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
         }
 
-        private void show_me_btn_Click(object sender, EventArgs e)
+        private void select_user_row()
         {
-            String NicktoSearch = Global.User.nickname;
+            String searchValue = Global.User.nickname;
             int rowIndex = -1;
             foreach (DataGridViewRow row in users_top_datagrid.Rows)
             {
-                if (row.Cells[1].Value.ToString().Equals(NicktoSearch))
+                if (row.Cells[1].Value.ToString().Equals(searchValue))
                 {
                     rowIndex = row.Index;
                     break;
                 }
             }
             users_top_datagrid.Rows[rowIndex].Selected = true;
+        }
+
+        private void pictureBox2_Click_1(object sender, EventArgs e)
+        {
+            users_top_datagrid.Rows.Clear();
+            populate_top_datagrid();
+            users_top_datagrid.ClearSelection();
+            users_top_datagrid.Update();
         }
     } 
 }

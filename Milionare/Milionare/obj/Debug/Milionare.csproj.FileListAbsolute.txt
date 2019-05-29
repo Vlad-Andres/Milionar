@@ -404,7 +404,6 @@ D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.A
 D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.backstage.resources
 D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.login.resources
 D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.PedingQuestions.resources
-D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.Questions.resources
 D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.Register.resources
 D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.Users.resources
 D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.first_form.resources
@@ -429,3 +428,6 @@ D:\study\programming\projects\Milionar\Milionare\Milionare\bin\Debug\PagedList.x
 D:\study\programming\projects\Milionar\Milionare\Milionare\bin\Debug\System.Threading.Tasks.Dataflow.xml
 D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.exe
 D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.pdb
+D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.Questions.resources
+D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.validation_logs.resources
+D:\study\programming\projects\Milionar\Milionare\Milionare\obj\Debug\Milionare.question_log_form.resources

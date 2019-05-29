@@ -30,23 +30,26 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.questions_datagrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.val_all_btn = new System.Windows.Forms.Button();
             this.dell_all_btn = new System.Windows.Forms.Button();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nick_col = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.wallet_col = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.rank_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rank_id = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.var_a = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.var_b = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.var_C = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.var_D = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.validate = new System.Windows.Forms.DataGridViewImageColumn();
-            this.delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.validate = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.delete = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.questions_datagrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,9 +60,9 @@
             this.label1.ForeColor = System.Drawing.Color.DimGray;
             this.label1.Location = new System.Drawing.Point(201, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(291, 38);
+            this.label1.Size = new System.Drawing.Size(308, 38);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Questions in peding";
+            this.label1.Text = "Questions in pending";
             // 
             // questions_datagrid
             // 
@@ -80,6 +83,8 @@
             this.questions_datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.questions_datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.questions_datagrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.Author,
             this.name_col,
             this.nick_col,
             this.wallet_col,
@@ -88,7 +93,6 @@
             this.var_b,
             this.var_C,
             this.var_D,
-            this.Id,
             this.validate,
             this.delete});
             this.questions_datagrid.DoubleBuffered = true;
@@ -139,6 +143,20 @@
             this.dataGridViewImageColumn2.Image = global::Milionare.Properties.Resources.delete;
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             // 
+            // Id
+            // 
+            this.Id.Frozen = true;
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.Visible = false;
+            // 
+            // Author
+            // 
+            this.Author.Frozen = true;
+            this.Author.HeaderText = "Author";
+            this.Author.Name = "Author";
+            this.Author.ReadOnly = true;
+            // 
             // name_col
             // 
             this.name_col.Frozen = true;
@@ -178,11 +196,29 @@
             // 
             // rank_id
             // 
+            this.rank_id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.rank_id.Frozen = true;
-            this.rank_id.HeaderText = "$";
+            this.rank_id.HeaderText = "Value";
+            this.rank_id.Items.AddRange(new object[] {
+            "100 $",
+            "200 $",
+            "300 $",
+            "500 $",
+            "1000 $",
+            "2000 $",
+            "4000 $",
+            "8000 $",
+            "16 000 $",
+            "32 000 $",
+            "64 000 $",
+            "125 000 $",
+            "250 000 $",
+            "500 000 $",
+            "1 000 000 $"});
             this.rank_id.Name = "rank_id";
             this.rank_id.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.rank_id.Width = 40;
+            this.rank_id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.rank_id.Width = 61;
             // 
             // var_a
             // 
@@ -212,32 +248,30 @@
             this.var_D.Name = "var_D";
             this.var_D.Width = 39;
             // 
-            // Id
-            // 
-            this.Id.Frozen = true;
-            this.Id.HeaderText = "";
-            this.Id.Name = "Id";
-            this.Id.Visible = false;
-            // 
             // validate
             // 
             this.validate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Lime;
+            this.validate.DefaultCellStyle = dataGridViewCellStyle3;
+            this.validate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.validate.Frozen = true;
-            this.validate.HeaderText = "";
-            this.validate.Image = global::Milionare.Properties.Resources.approve;
-            this.validate.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.validate.HeaderText = "Approve";
             this.validate.Name = "validate";
-            this.validate.Width = 5;
+            this.validate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.validate.Width = 55;
             // 
             // delete
             // 
             this.delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Red;
+            this.delete.DefaultCellStyle = dataGridViewCellStyle4;
             this.delete.Frozen = true;
-            this.delete.HeaderText = "";
-            this.delete.Image = global::Milionare.Properties.Resources.delete;
-            this.delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.delete.HeaderText = "Reject";
             this.delete.Name = "delete";
-            this.delete.Width = 5;
+            this.delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.delete.Width = 46;
             // 
             // PedingQuestions
             // 
@@ -265,16 +299,17 @@
         private System.Windows.Forms.Button dell_all_btn;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Author;
         private System.Windows.Forms.DataGridViewTextBoxColumn name_col;
         private System.Windows.Forms.DataGridViewComboBoxColumn nick_col;
         private System.Windows.Forms.DataGridViewComboBoxColumn wallet_col;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rank_id;
+        private System.Windows.Forms.DataGridViewComboBoxColumn rank_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn var_a;
         private System.Windows.Forms.DataGridViewTextBoxColumn var_b;
         private System.Windows.Forms.DataGridViewTextBoxColumn var_C;
         private System.Windows.Forms.DataGridViewTextBoxColumn var_D;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewImageColumn validate;
-        private System.Windows.Forms.DataGridViewImageColumn delete;
+        private System.Windows.Forms.DataGridViewButtonColumn validate;
+        private System.Windows.Forms.DataGridViewButtonColumn delete;
     }
 }

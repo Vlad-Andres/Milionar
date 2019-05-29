@@ -200,17 +200,20 @@ namespace Milionare
             validation_timer.Stop();
             MySqlConnection connection = new MySqlConnection();
             string con_string = Global.db_connect_prop;
-            
+
             //UPDATE `milionaire`.`users` SET `wallet`= '1000' WHERE `Id`= '2';
+            if (Global.User.nickname != null) {
+                Global.User.score += id * 100;
+            }
             
 
             if (id >= 5 && id < 10)
             { 
                 Global.User.wallet += 1000;
-                if (MetroFramework.MetroMessageBox.Show(this, "Results", "You earned 1 thousand dollars", MessageBoxButtons.RetryCancel, MessageBoxIcon.Information) == DialogResult.Retry)
+                if (MetroFramework.MetroMessageBox.Show(this, "You earned 1 thousand credits and "+id*100+" score points", "Results", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
                 {
                     if (Global.User.nickname != null) { 
-                        string query = "UPDATE users SET wallet=" + Global.User.wallet + " WHERE Nickname='" + Global.User.nickname + "' ";
+                        string query = "UPDATE users SET wallet=" + Global.User.wallet + ", score="+ Global.User.score +" WHERE Nickname='" + Global.User.nickname + "' ";
                         using (connection = new MySqlConnection(con_string))
                         using (MySqlCommand write = new MySqlCommand(query, connection))
                         {  connection.Open(); write.ExecuteNonQuery(); connection.Close(); }
@@ -219,24 +222,16 @@ namespace Milionare
                     this.Dispose();
                     f.ShowDialog();
                 }
-                else {
-                    if (Global.User.nickname != null)
-                    {
-                        string query = "UPDATE users SET wallet=" + Global.User.wallet + " WHERE Nickname='" + Global.User.nickname + "' ";
-                        using (connection = new MySqlConnection(con_string))
-                        using (MySqlCommand write = new MySqlCommand(query, connection))
-                        { connection.Open(); write.ExecuteNonQuery(); connection.Close(); }
-                    }
-                    Application.Exit(); }
+                
             }
             else if (id >= 10 && id < 15)
             {
                 Global.User.wallet += 32000;
-                if (MetroFramework.MetroMessageBox.Show(this, "Results", "You earned 32 thousands dollars", MessageBoxButtons.RetryCancel, MessageBoxIcon.Information) == DialogResult.Retry)
+                if (MetroFramework.MetroMessageBox.Show(this, "You earned 32 thousands credits and " + id * 100 + " score points", "Results", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
                 {
                     if (Global.User.nickname != null)
                     {
-                        string query = "UPDATE users SET wallet=" + Global.User.wallet + " WHERE Nickname='" + Global.User.nickname + "' ";
+                        string query = "UPDATE users SET wallet=" + Global.User.wallet + ", score=" + Global.User.score + " WHERE Nickname='" + Global.User.nickname + "' ";
                         using (connection = new MySqlConnection(con_string))
                         using (MySqlCommand write = new MySqlCommand(query, connection))
                         { connection.Open(); write.ExecuteNonQuery(); connection.Close(); }
@@ -245,25 +240,17 @@ namespace Milionare
                     this.Dispose();
                     f.ShowDialog();
                 }
-                else {
-                    if (Global.User.nickname != null)
-                    {
-                        string query = "UPDATE users SET wallet=" + Global.User.wallet + " WHERE Nickname='" + Global.User.nickname + "' ";
-                        using (connection = new MySqlConnection(con_string))
-                        using (MySqlCommand write = new MySqlCommand(query, connection))
-                        { connection.Open(); write.ExecuteNonQuery(); connection.Close(); }
-                    }
-                    Application.Exit(); }
+                
             }
             else if (id == 15)
             {
                 Global.User.wallet += 1000000;
 
-                if (MetroFramework.MetroMessageBox.Show(this, "Congratulations", "You won 1 million dollars", MessageBoxButtons.RetryCancel, MessageBoxIcon.Information) == DialogResult.Retry)
+                if (MetroFramework.MetroMessageBox.Show(this, "You won 1 million credits and " + id * 100 + " score points", "Congratulations", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
                 {
                     if (Global.User.nickname != null)
                     {
-                        string query = "UPDATE users SET wallet=" + Global.User.wallet + " WHERE Nickname='" + Global.User.nickname + "' ";
+                        string query = "UPDATE users SET wallet=" + Global.User.wallet + ", score=" + Global.User.score + " WHERE Nickname='" + Global.User.nickname + "' ";
                         using (connection = new MySqlConnection(con_string))
                         using (MySqlCommand write = new MySqlCommand(query, connection))
                         { connection.Open(); write.ExecuteNonQuery(); connection.Close(); }
@@ -272,25 +259,24 @@ namespace Milionare
                     this.Dispose();
                     f.ShowDialog();
                 }
-                else {
-                    if (Global.User.nickname != null)
-                    {
-                        string query = "UPDATE users SET wallet=" + Global.User.wallet + " WHERE Nickname='" + Global.User.nickname + "' ";
-                        using (connection = new MySqlConnection(con_string))
-                        using (MySqlCommand write = new MySqlCommand(query, connection))
-                        { connection.Open(); write.ExecuteNonQuery(); connection.Close(); }
-                    }
-                    Application.Exit(); }
+
             }
             else if (id < 5)
             {
-                if (MetroFramework.MetroMessageBox.Show(this, "Results", "You didn't earned anything :(", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                if (MetroFramework.MetroMessageBox.Show(this, "You earned: "+id*100+" score points", "Results", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
                 {
+                    if (Global.User.nickname != null)
+                    {
+                        string query = "UPDATE users SET wallet=" + Global.User.wallet + ", score=" + Global.User.score + " WHERE Nickname='" + Global.User.nickname + "' ";
+                        using (connection = new MySqlConnection(con_string))
+                        using (MySqlCommand write = new MySqlCommand(query, connection))
+                        { connection.Open(); write.ExecuteNonQuery(); connection.Close(); }
+                    }
                     first_form f = new first_form();
                     this.Dispose();
                     f.ShowDialog();
                 }
-                else { Application.Exit(); }
+                
             }
 
         }

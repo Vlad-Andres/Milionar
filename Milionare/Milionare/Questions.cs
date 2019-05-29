@@ -45,8 +45,8 @@ namespace Milionare
         private void Questions_Load(object sender, EventArgs e)
         {
             questions_datagrid.RowHeadersVisible = false;
-            label1.Text="Validating Questions";
-            populate("validating_questions");
+            label1.Text="Questions";
+            populate("questions");
         }
 
 
