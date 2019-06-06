@@ -34,10 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.questions_datagrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
-            this.val_all_btn = new System.Windows.Forms.Button();
-            this.dell_all_btn = new System.Windows.Forms.Button();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +46,10 @@
             this.var_D = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.validate = new System.Windows.Forms.DataGridViewButtonColumn();
             this.delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.val_all_btn = new System.Windows.Forms.Button();
+            this.dell_all_btn = new System.Windows.Forms.Button();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.questions_datagrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,42 +106,6 @@
             this.questions_datagrid.Size = new System.Drawing.Size(768, 368);
             this.questions_datagrid.TabIndex = 5;
             this.questions_datagrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.questions_datagrid_CellContentClick);
-            // 
-            // val_all_btn
-            // 
-            this.val_all_btn.BackColor = System.Drawing.Color.YellowGreen;
-            this.val_all_btn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.val_all_btn.Location = new System.Drawing.Point(542, 436);
-            this.val_all_btn.Name = "val_all_btn";
-            this.val_all_btn.Size = new System.Drawing.Size(144, 24);
-            this.val_all_btn.TabIndex = 6;
-            this.val_all_btn.Text = "Validate All";
-            this.val_all_btn.UseVisualStyleBackColor = false;
-            // 
-            // dell_all_btn
-            // 
-            this.dell_all_btn.BackColor = System.Drawing.Color.Firebrick;
-            this.dell_all_btn.ForeColor = System.Drawing.SystemColors.Control;
-            this.dell_all_btn.Location = new System.Drawing.Point(392, 436);
-            this.dell_all_btn.Name = "dell_all_btn";
-            this.dell_all_btn.Size = new System.Drawing.Size(144, 24);
-            this.dell_all_btn.TabIndex = 7;
-            this.dell_all_btn.Text = "Delete All";
-            this.dell_all_btn.UseVisualStyleBackColor = false;
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.Frozen = true;
-            this.dataGridViewImageColumn1.HeaderText = "validate";
-            this.dataGridViewImageColumn1.Image = global::Milionare.Properties.Resources.approve;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            // 
-            // dataGridViewImageColumn2
-            // 
-            this.dataGridViewImageColumn2.Frozen = true;
-            this.dataGridViewImageColumn2.HeaderText = "delete";
-            this.dataGridViewImageColumn2.Image = global::Milionare.Properties.Resources.delete;
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             // 
             // Id
             // 
@@ -272,6 +236,44 @@
             this.delete.Name = "delete";
             this.delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.delete.Width = 46;
+            // 
+            // val_all_btn
+            // 
+            this.val_all_btn.BackColor = System.Drawing.Color.YellowGreen;
+            this.val_all_btn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.val_all_btn.Location = new System.Drawing.Point(542, 436);
+            this.val_all_btn.Name = "val_all_btn";
+            this.val_all_btn.Size = new System.Drawing.Size(144, 24);
+            this.val_all_btn.TabIndex = 6;
+            this.val_all_btn.Text = "Validate All";
+            this.val_all_btn.UseVisualStyleBackColor = false;
+            this.val_all_btn.Visible = false;
+            // 
+            // dell_all_btn
+            // 
+            this.dell_all_btn.BackColor = System.Drawing.Color.Firebrick;
+            this.dell_all_btn.ForeColor = System.Drawing.SystemColors.Control;
+            this.dell_all_btn.Location = new System.Drawing.Point(392, 436);
+            this.dell_all_btn.Name = "dell_all_btn";
+            this.dell_all_btn.Size = new System.Drawing.Size(144, 24);
+            this.dell_all_btn.TabIndex = 7;
+            this.dell_all_btn.Text = "Delete All";
+            this.dell_all_btn.UseVisualStyleBackColor = false;
+            this.dell_all_btn.Visible = false;
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.Frozen = true;
+            this.dataGridViewImageColumn1.HeaderText = "validate";
+            this.dataGridViewImageColumn1.Image = global::Milionare.Properties.Resources.approve;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.Frozen = true;
+            this.dataGridViewImageColumn2.HeaderText = "delete";
+            this.dataGridViewImageColumn2.Image = global::Milionare.Properties.Resources.delete;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             // 
             // PedingQuestions
             // 

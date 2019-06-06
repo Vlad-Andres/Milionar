@@ -56,6 +56,8 @@
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.user_score = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.main_btns_pnl = new System.Windows.Forms.Panel();
+            this.settings_pic = new System.Windows.Forms.PictureBox();
+            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.avatar_pic)).BeginInit();
             this.user_info_panel.SuspendLayout();
@@ -63,6 +65,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.users_top_datagrid)).BeginInit();
             this.main_btns_pnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.settings_pic)).BeginInit();
             this.SuspendLayout();
             // 
             // science_btn
@@ -394,6 +397,28 @@
             this.main_btns_pnl.Size = new System.Drawing.Size(572, 345);
             this.main_btns_pnl.TabIndex = 13;
             // 
+            // settings_pic
+            // 
+            this.settings_pic.BackColor = System.Drawing.Color.Transparent;
+            this.settings_pic.Image = global::Milionare.Properties.Resources.settings;
+            this.settings_pic.Location = new System.Drawing.Point(12, 458);
+            this.settings_pic.Name = "settings_pic";
+            this.settings_pic.Size = new System.Drawing.Size(48, 47);
+            this.settings_pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.settings_pic.TabIndex = 14;
+            this.settings_pic.TabStop = false;
+            this.settings_pic.Click += new System.EventHandler(this.settings_pic_Click);
+            this.settings_pic.MouseEnter += new System.EventHandler(this.settings_pic_MouseEnter);
+            this.settings_pic.MouseLeave += new System.EventHandler(this.settings_pic_MouseLeave);
+            this.settings_pic.MouseHover += new System.EventHandler(this.settings_pic_MouseHover);
+            // 
+            // bunifuDragControl1
+            // 
+            this.bunifuDragControl1.Fixed = true;
+            this.bunifuDragControl1.Horizontal = true;
+            this.bunifuDragControl1.TargetControl = this;
+            this.bunifuDragControl1.Vertical = true;
+            // 
             // first_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -402,6 +427,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(827, 517);
             this.ControlBox = false;
+            this.Controls.Add(this.settings_pic);
             this.Controls.Add(this.main_btns_pnl);
             this.Controls.Add(this.users_top_pnl);
             this.Controls.Add(this.user_info_panel);
@@ -422,6 +448,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.users_top_datagrid)).EndInit();
             this.main_btns_pnl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.settings_pic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -453,6 +480,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn user_score;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox settings_pic;
+        private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
     }
 }
 

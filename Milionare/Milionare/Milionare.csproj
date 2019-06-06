@@ -142,6 +142,12 @@
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
     <Compile Include="secured_db_connection.cs" />
+    <Compile Include="Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
     <Compile Include="ValidationLogs.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -201,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ValidationLogs.resx">
       <DependentUpon>ValidationLogs.cs</DependentUpon>
@@ -311,6 +320,8 @@
     <None Include="bin\Debug\resources\icons\refresh.png" />
     <None Include="bin\Debug\resources\icons\refresh2.png" />
     <None Include="bin\Debug\resources\icons\refresh %282%29.png" />
+    <None Include="bin\Debug\resources\icons\settings_before.png" />
+    <None Include="bin\Debug\resources\icons\settings.png" />
     <Content Include="Resources\gradient_bkg.png" />
     <None Include="Resources\register_lbl_icon.png" />
     <None Include="Resources\register_icon.png" />

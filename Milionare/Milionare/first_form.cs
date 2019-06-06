@@ -403,5 +403,31 @@ namespace Milionare
             users_top_datagrid.ClearSelection();
             users_top_datagrid.Update();
         }
+
+        private void settings_pic_MouseEnter(object sender, EventArgs e)
+        {
+            settings_pic.BackColor = Color.Red;
+
+
+        }
+
+        private void settings_pic_MouseLeave(object sender, EventArgs e)
+        {
+            //settings_pic.SizeMode = PictureBoxSizeMode.StretchImage;
+            settings_pic.BackColor = Color.Transparent;
+        }
+
+        private void settings_pic_MouseHover(object sender, EventArgs e)
+        {
+            //settings_pic.SizeMode = PictureBoxSizeMode.StretchImage;
+            //settings_pic.BackColor = Color.Transparent;
+        }
+
+        private void settings_pic_Click(object sender, EventArgs e)
+        {
+            //!TODO: De facut schimbarea DB 
+            Settings s = new Settings();
+            s.ShowDialog();
+        }
     } 
 }
