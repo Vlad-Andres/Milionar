@@ -12,3 +12,6 @@ Milionare/Milionare/obj/Debug/Milionare\.csproj\.GenerateResource\.Cache
 *.exe
 
 Milionare/Milionare/obj/Debug/Milionare\.pdb
+/Milionare/ITP_Installer
+/Milionare/ITP
+/Milionare/Milionare/secured_db_connection.cs

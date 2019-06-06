@@ -351,7 +351,7 @@ namespace Milionare
             
             users_top_datagrid.Rows.Clear();
             //string query = "set @row_num = 0; SELECT @row_num := @row_num + 1 as order_num, Nickname FROM milionaire.users ORDER BY score desc;";
-            string query = "SELECT Nickname,score FROM milionaire.users ORDER BY score desc;";
+            string query = "SELECT Nickname,score FROM "+Global.schema+".users ORDER BY score desc;";
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, con_string);
 

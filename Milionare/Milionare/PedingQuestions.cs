@@ -32,7 +32,7 @@ namespace Milionare
             MySqlConnection connection = new MySqlConnection();
 
             string querry;
-                querry = "INSERT INTO milionaire.validation_logs (user_id,verdict,executed_on,question_id,author_id,topic_id,question_text,price,var_a,var_b,var_c,var_d,correct_ans) values(" + Global.User.id + ", '" + verdict + "', '" + timestamp + "', null ,(SELECT Id FROM users WHERE Nickname = '"+author+"'),(SELECT Id from topics WHERE topic = '"+topic+"'),'"+question_text+"',"+price+",'"+var_a+ "','" + var_b + "','" + var_c + "','" + var_d + "','" + correct_ans + "' )";
+                querry = "INSERT INTO "+Global.schema+".validation_logs (user_id,verdict,executed_on,question_id,author_id,topic_id,question_text,price,var_a,var_b,var_c,var_d,correct_ans) values(" + Global.User.id + ", '" + verdict + "', '" + timestamp + "', null ,(SELECT Id FROM users WHERE Nickname = '"+author+"'),(SELECT Id from topics WHERE topic = '"+topic+"'),'"+question_text+"',"+price+",'"+var_a+ "','" + var_b + "','" + var_c + "','" + var_d + "','" + correct_ans + "' )";
 
             try
             {
@@ -58,7 +58,7 @@ namespace Milionare
 
             string querry;
 
-                querry = "INSERT INTO milionaire.validation_logs (user_id,verdict,executed_on,question_id) values(" + Global.User.id + ", '" + verdict + "', '" + timestamp + "', (SELECT Id from questions where question = '" + question + "') )";
+                querry = "INSERT INTO "+Global.schema+".validation_logs (user_id,verdict,executed_on,question_id) values(" + Global.User.id + ", '" + verdict + "', '" + timestamp + "', (SELECT Id from questions where question = '" + question + "') )";
 
 
             try

@@ -15,7 +15,10 @@ namespace Milionare
         public static int global_int = 0;
         public static int game_id = 0, topic;
         public static bool passed = true;
-        public static string db_connect_prop = "server=localhost; database=milionaire; user=root; password=toor";
+
+        //public static string db_connect_prop = "server=localhost; database=milionaire; user=root; password=toor";
+        public static string db_connect_prop = secured_db_connection.db_connect_prop;
+        public static string schema = secured_db_connection.db_schema;
 
         public static int GlobalVar
         {
@@ -149,7 +152,7 @@ namespace Milionare
         {
             MySqlConnection connection = new MySqlConnection();
             string con_string = db_connect_prop;
-            string question_insert = "INSERT INTO milionaire."+table_in+" (question,author,price,var_a,var_b,var_c,var_d,correct_ans,topic_id) VALUES('" + question + "', '"+User.id+"', "+question_value+", '" + variant_A + "', '" + variant_B + "', '" + variant_C + "', '" + variant_D + "', '"+right_answer+"', (SELECT Id FROM topics WHERE topic = '" + topic + "' )); ";
+            string question_insert = "INSERT INTO "+Global.schema+"."+table_in+" (question,author,price,var_a,var_b,var_c,var_d,correct_ans,topic_id) VALUES('" + question + "', '"+User.id+"', "+question_value+", '" + variant_A + "', '" + variant_B + "', '" + variant_C + "', '" + variant_D + "', '"+right_answer+"', (SELECT Id FROM topics WHERE topic = '" + topic + "' )); ";
 
             try { 
                 using (connection = new MySqlConnection(con_string))
@@ -178,7 +181,7 @@ namespace Milionare
         {
             MySqlConnection connection = new MySqlConnection();
             string con_string = db_connect_prop;
-            string question_insert = "INSERT INTO milionaire." + table_in + " (question,author,price,var_a,var_b,var_c,var_d,correct_ans,topic_id) VALUES('" + question + "', (SELECT Id FROM users WHERE Nickname = '" + auth_name + "'), " + question_value + ", '" + variant_A + "', '" + variant_B + "', '" + variant_C + "', '" + variant_D + "', '" + right_answer + "', (SELECT Id FROM topics WHERE topic = '" + topic + "' )); ";
+            string question_insert = "INSERT INTO "+Global.schema+"." + table_in + " (question,author,price,var_a,var_b,var_c,var_d,correct_ans,topic_id) VALUES('" + question + "', (SELECT Id FROM users WHERE Nickname = '" + auth_name + "'), " + question_value + ", '" + variant_A + "', '" + variant_B + "', '" + variant_C + "', '" + variant_D + "', '" + right_answer + "', (SELECT Id FROM topics WHERE topic = '" + topic + "' )); ";
 
             try
             {
