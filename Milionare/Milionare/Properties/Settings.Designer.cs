@@ -80,5 +80,29 @@ namespace Milionare.Properties {
                 this["remember"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string current_con_string {
+            get {
+                return ((string)(this["current_con_string"]));
+            }
+            set {
+                this["current_con_string"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string current_shema {
+            get {
+                return ((string)(this["current_shema"]));
+            }
+            set {
+                this["current_shema"] = value;
+            }
+        }
     }
 }

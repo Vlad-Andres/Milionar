@@ -446,7 +446,6 @@ D:\study\programming\projects\Installers\[alfa]Milionar_PC_installer\Milionar\Mi
 D:\study\programming\projects\Installers\[alfa]Milionar_PC_installer\Milionar\Milionare\Milionare\bin\Debug\Newtonsoft.Json.xml
 D:\study\programming\projects\Installers\[alfa]Milionar_PC_installer\Milionar\Milionare\Milionare\bin\Debug\PagedList.xml
 D:\study\programming\projects\Installers\[alfa]Milionar_PC_installer\Milionar\Milionare\Milionare\bin\Debug\System.Threading.Tasks.Dataflow.xml
-D:\study\programming\projects\Installers\[alfa]Milionar_PC_installer\Milionar\Milionare\Milionare\obj\Debug\Milionare.csprojResolveAssemblyReference.cache
 D:\study\programming\projects\Installers\[alfa]Milionar_PC_installer\Milionar\Milionare\Milionare\obj\Debug\Milionare.Admin_panel.resources
 D:\study\programming\projects\Installers\[alfa]Milionar_PC_installer\Milionar\Milionare\Milionare\obj\Debug\Milionare.backstage.resources
 D:\study\programming\projects\Installers\[alfa]Milionar_PC_installer\Milionar\Milionare\Milionare\obj\Debug\Milionare.login.resources
@@ -464,3 +463,4 @@ D:\study\programming\projects\Installers\[alfa]Milionar_PC_installer\Milionar\Mi
 D:\study\programming\projects\Installers\[alfa]Milionar_PC_installer\Milionar\Milionare\Milionare\obj\Debug\Interactive Testing Platform.exe
 D:\study\programming\projects\Installers\[alfa]Milionar_PC_installer\Milionar\Milionare\Milionare\obj\Debug\Interactive Testing Platform.pdb
 D:\study\programming\projects\Installers\[alfa]Milionar_PC_installer\Milionar\Milionare\Milionare\obj\Debug\Milionare.Settings.resources
+D:\study\programming\projects\Installers\[alfa]Milionar_PC_installer\Milionar\Milionare\Milionare\obj\Debug\Milionare.csprojResolveAssemblyReference.cache

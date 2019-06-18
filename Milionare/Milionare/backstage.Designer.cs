@@ -55,6 +55,7 @@
             this.green_dot = new System.Windows.Forms.Label();
             this.dot_timer = new System.Windows.Forms.Timer(this.components);
             this.add_valid_btn = new System.Windows.Forms.Button();
+            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -381,6 +382,13 @@
             this.add_valid_btn.Visible = false;
             this.add_valid_btn.Click += new System.EventHandler(this.add_valid_btn_Click);
             // 
+            // bunifuDragControl1
+            // 
+            this.bunifuDragControl1.Fixed = true;
+            this.bunifuDragControl1.Horizontal = true;
+            this.bunifuDragControl1.TargetControl = this;
+            this.bunifuDragControl1.Vertical = true;
+            // 
             // backstage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -449,5 +457,6 @@
         private System.Windows.Forms.Label green_dot;
         private System.Windows.Forms.Timer dot_timer;
         private System.Windows.Forms.Button add_valid_btn;
+        private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
     }
 }

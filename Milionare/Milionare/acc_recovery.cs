@@ -26,7 +26,7 @@ namespace Milionare
             maili.To.Add(email);
             maili.Subject= "Verify Code";
             maili.Body = "Your code fors verification is " + ver_code() + "";
-            smtpServer.Port = 25;
+            smtpServer.Port = 587;
             smtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtpServer.Credentials = new System.Net.NetworkCredential("pass.code.millionaire@gmail.com", "SuMChKUZhz6U");
             smtpServer.EnableSsl = true;

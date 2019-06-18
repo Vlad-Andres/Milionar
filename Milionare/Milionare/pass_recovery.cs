@@ -105,6 +105,7 @@ namespace Milionare
                     
                     materialRaisedButton1.Text = "CHANGE";
                     Code_lbl.Visible = false;
+                    check_spam_lbl.Visible = false;
                     new_pass_lbl.Visible = true;
                     re_pass_txt.Visible = true;
                     recovery_email_txt.Visible = false;

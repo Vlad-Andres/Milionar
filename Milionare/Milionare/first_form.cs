@@ -28,6 +28,16 @@ namespace Milionare
         {
 
             InitializeComponent();
+
+            //Db save
+            if (Properties.Settings.Default.current_shema == "")
+            {
+                Properties.Settings.Default.current_shema = secured_db_connection.revert_schema;
+                Properties.Settings.Default.current_con_string = secured_db_connection.revert_schema;
+            }
+            Global.db_connect_prop = Properties.Settings.Default.current_con_string;
+            Global.schema = Properties.Settings.Default.current_shema;
+
             if (Global.User.nickname != null)
             {
                 main_btns_pnl.Location = new Point (26, 128);

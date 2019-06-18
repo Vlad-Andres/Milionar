@@ -17,8 +17,9 @@ namespace Milionare
         public static bool passed = true;
 
         //public static string db_connect_prop = "server=localhost; database=milionaire; user=root; password=toor";
-        public static string db_connect_prop = secured_db_connection.db_connect_prop;
-        public static string schema = secured_db_connection.db_schema;
+
+        public static string db_connect_prop;// = secured_db_connection.db_connect_prop;
+        public static string schema;// = secured_db_connection.db_schema;
 
         public static int GlobalVar
         {

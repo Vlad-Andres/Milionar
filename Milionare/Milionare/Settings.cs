@@ -18,7 +18,8 @@ namespace Milionare
         public Settings()
         {
             InitializeComponent();
-            if (secured_db_connection.db_schema != secured_db_connection.revert_schema) { global_db_cbx.Checked = false; }
+            //MessageBox.Show(Properties.Settings.Default.current_shema);
+            if (Properties.Settings.Default.current_shema != secured_db_connection.revert_schema && Properties.Settings.Default.current_shema !="") { global_db_cbx.Checked = false; }
         }
 
         private void global_db_cbx_CheckedChanged(object sender, EventArgs e)
@@ -29,10 +30,9 @@ namespace Milionare
                 connect_btn.BackColor = SystemColors.InactiveCaption;
                 create_db_btn.BackColor = SystemColors.InactiveCaption;
                 Db_panel.BackColor = SystemColors.InactiveCaption;
-                if (secured_db_connection.db_schema != secured_db_connection.revert_schema)
+                if (Global.schema != secured_db_connection.revert_schema)
                 {
-                    secured_db_connection.db_connect_prop= secured_db_connection.revert_prop;
-                    secured_db_connection.db_schema = secured_db_connection.revert_schema;
+                    change_properties("revert");
                     MessageBox.Show("Reverted to Global Repository!");
                 }
             }
@@ -61,7 +61,7 @@ namespace Milionare
                     cmd = new MySqlCommand(full_query, conn);
                     cmd.ExecuteNonQuery();
                     conn.Close();
-                    MessageBox.Show("Now you can connect to this database from each PC within your server \n ----------------------------------------------------------------- \nPlease remember this information for further connection \n Database: "+db_name_lbl.Text+" \n Server: "+server_lbl.Text+" \n User: "+user_lbl.Text+" \n Password: "+pass_lbl.Text+ " \n -----------------------------------------------------------------", "Done!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Now you can connect to this database from each PC within your server \n ----------------------------------------------------------------- \nPlease remember this information for further connection \n Database: "+db_name_lbl.Text+" \n Server: "+server_lbl.Text+" \n User: "+user_lbl.Text+" \n Password: "+pass_lbl.Text+ " \n ----------------------------------------------------------------- \n Temporary administrator account is created \n Username: admin \n Password: root  \n Please delete this account for security reasons", "Done!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 catch (Exception ex)
                 {
@@ -91,24 +91,41 @@ namespace Milionare
                     MySqlDataReader dr = query_print.ExecuteReader(); dr.Read();
                     if (dr["COUNT(*)"].ToString() == "11")
                     {
-                        MessageBox.Show("Your database is VALID for this application.", "SWITCHED");
-
-                        secured_db_connection.db_connect_prop = 
+                        connection.Close();
+                        Global.db_connect_prop = 
                             "server="+server_lbl.Text+"; database="+db_name_lbl.Text+"; user="+user_lbl.Text+"; password="+pass_lbl.Text+"";
-                        secured_db_connection.db_schema = db_name_lbl.Text;
+                        Global.schema = db_name_lbl.Text;
+                        change_properties("new");
+                        MessageBox.Show("Your database is VALID for this application.", "SWITCHED");
                     }
                     else
                     {
+                        connection.Close();
                         MessageBox.Show("Unfortunately your database does not satisfy our conditions to be elegible, please retry.", "ERROR");
                     }
-
-                    connection.Close();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+        private void change_properties(string toState)
+        {
+            if(toState == "revert")
+            {
+                Properties.Settings.Default.current_con_string = secured_db_connection.revert_prop;
+                Properties.Settings.Default.current_shema = secured_db_connection.revert_schema;
+                Global.db_connect_prop = secured_db_connection.revert_prop;
+                Global.schema = secured_db_connection.revert_schema;
+                //MessageBox.Show("Current prop:" + Global.db_connect_prop + " \n schema" + Global.schema);
+            }
+            else
+            {
+                Properties.Settings.Default.current_con_string = Global.db_connect_prop;
+                Properties.Settings.Default.current_shema = Global.schema;
+            }
+            Properties.Settings.Default.Save();
         }
     }
 }
