@@ -28,7 +28,7 @@ namespace Milionare
         {
 
             InitializeComponent();
-
+            avatar_pic.Visible = false;
             //Db save
             if (Properties.Settings.Default.current_shema == "")
             {
@@ -60,7 +60,13 @@ namespace Milionare
                 login_lbl.Enabled = false;
                 slash_lbl.Visible = false;
                 reg_lbl.Text = " Log out..";
-                avatar_pic.Image = Global.User.avatar_img;    
+                if (Global.User.avatar_img != null)
+                {
+                    avatar_pic.Image = Global.User.avatar_img;
+                }
+
+                avatar_pic.Visible = true;
+                
             }
             if (Global.User.rank=="admin" || Global.User.rank == "moder") { label1.Text = "Back Stage +"; };
            // Application.Run(new first_form());
@@ -75,7 +81,9 @@ namespace Milionare
 
             users_top_datagrid.ClearSelection();
             users_top_datagrid.Update();
+            if (users_top_pnl.Visible) { select_user_row(); }
             
+
             //users_top_datagrid.RowsDefaultCellStyle.SelectionBackColor = System.Drawing.Color.Transparent;
         }
 
@@ -374,7 +382,7 @@ namespace Milionare
                 order++;
                 
                 if (order <=10) {
-                    if (row[0].ToString().Equals(Global.User.nickname)) { isLeader = true;  }
+                    if (row[0].ToString().Equals(Global.User.nickname)) { isLeader = true;   }
                     users_top_datagrid.Rows.Add(order.ToString(), row[0].ToString(), row[1].ToString());
                 }else
                 {
@@ -394,7 +402,7 @@ namespace Milionare
         private void select_user_row()
         {
             String searchValue = Global.User.nickname;
-            int rowIndex = -1;
+            int rowIndex = 1;
             foreach (DataGridViewRow row in users_top_datagrid.Rows)
             {
                 if (row.Cells[1].Value.ToString().Equals(searchValue))
@@ -412,6 +420,7 @@ namespace Milionare
             populate_top_datagrid();
             users_top_datagrid.ClearSelection();
             users_top_datagrid.Update();
+            select_user_row();
         }
 
         private void settings_pic_MouseEnter(object sender, EventArgs e)

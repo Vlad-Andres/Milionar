@@ -44,7 +44,7 @@ namespace Milionare
                 {
                     connection.Open();
                     MySqlDataReader qv = q_ver.ExecuteReader(); qv.Read();
-                    if (Convert.ToInt32(qv["COUNT(DISTINCT(price))"]) < 15)
+                    if (Convert.ToInt32(qv["COUNT(DISTINCT(price))"]) < 15 && topic!=5)
                     {
                         connection.Close();
                         MessageBox.Show("Unfortunately there is no enough questions for this topic , please try another", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -153,7 +153,7 @@ namespace Milionare
         {
             MySqlConnection connection = new MySqlConnection();
             string con_string = db_connect_prop;
-            string question_insert = "INSERT INTO "+Global.schema+"."+table_in+" (question,author,price,var_a,var_b,var_c,var_d,correct_ans,topic_id) VALUES('" + question + "', '"+User.id+"', "+question_value+", '" + variant_A + "', '" + variant_B + "', '" + variant_C + "', '" + variant_D + "', '"+right_answer+"', (SELECT Id FROM topics WHERE topic = '" + topic + "' )); ";
+            string question_insert = @"INSERT INTO "+Global.schema+"."+table_in+" (question,author,price,var_a,var_b,var_c,var_d,correct_ans,topic_id) VALUES('" + question + "', '"+User.id+"', "+question_value+", '" + variant_A + "', '" + variant_B + "', '" + variant_C + "', '" + variant_D + "', '"+right_answer+"', (SELECT Id FROM topics WHERE topic = '" + topic + "' )); ";
 
             try { 
                 using (connection = new MySqlConnection(con_string))

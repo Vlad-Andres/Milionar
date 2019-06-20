@@ -238,6 +238,7 @@
             this.reg_btn.Text = "Sign Up";
             this.reg_btn.UseVisualStyleBackColor = false;
             this.reg_btn.Click += new System.EventHandler(this.reg_btn_Click);
+            this.reg_btn.MouseHover += new System.EventHandler(this.reg_btn_MouseHover);
             // 
             // exit_button
             // 
@@ -289,6 +290,7 @@
             this.re_pass_txt.Text = "Retype password";
             this.re_pass_txt.Enter += new System.EventHandler(this.re_pass_txt_Enter);
             this.re_pass_txt.Leave += new System.EventHandler(this.re_pass_txt_Leave);
+            this.re_pass_txt.MouseLeave += new System.EventHandler(this.re_pass_txt_MouseLeave);
             // 
             // bunifuDragControl1
             // 

@@ -32,6 +32,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.users_datagrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
+            this.set_admin_btn = new System.Windows.Forms.Button();
+            this.set_user_btn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.add_user_btn = new System.Windows.Forms.Button();
+            this.msg_to_admin = new System.Windows.Forms.Label();
             this.Id_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nick_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,11 +44,6 @@
             this.wallet_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rank_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.last_login = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.set_admin_btn = new System.Windows.Forms.Button();
-            this.set_user_btn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.add_user_btn = new System.Windows.Forms.Button();
-            this.msg_to_admin = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.users_datagrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,59 +95,6 @@
             this.users_datagrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.users_datagrid.Size = new System.Drawing.Size(768, 368);
             this.users_datagrid.TabIndex = 1;
-            // 
-            // Id_col
-            // 
-            this.Id_col.Frozen = true;
-            this.Id_col.HeaderText = "ID";
-            this.Id_col.Name = "Id_col";
-            this.Id_col.ReadOnly = true;
-            this.Id_col.Width = 50;
-            // 
-            // name_col
-            // 
-            this.name_col.Frozen = true;
-            this.name_col.HeaderText = "Name";
-            this.name_col.Name = "name_col";
-            this.name_col.ReadOnly = true;
-            // 
-            // nick_col
-            // 
-            this.nick_col.Frozen = true;
-            this.nick_col.HeaderText = "Nickname";
-            this.nick_col.Name = "nick_col";
-            this.nick_col.ReadOnly = true;
-            // 
-            // email_col
-            // 
-            this.email_col.Frozen = true;
-            this.email_col.HeaderText = "Email";
-            this.email_col.Name = "email_col";
-            this.email_col.ReadOnly = true;
-            this.email_col.Width = 200;
-            // 
-            // wallet_col
-            // 
-            this.wallet_col.Frozen = true;
-            this.wallet_col.HeaderText = "Wallet";
-            this.wallet_col.Name = "wallet_col";
-            this.wallet_col.ReadOnly = true;
-            // 
-            // rank_id
-            // 
-            this.rank_id.Frozen = true;
-            this.rank_id.HeaderText = "Rank";
-            this.rank_id.Name = "rank_id";
-            this.rank_id.ReadOnly = true;
-            this.rank_id.Width = 70;
-            // 
-            // last_login
-            // 
-            this.last_login.Frozen = true;
-            this.last_login.HeaderText = "Last Login";
-            this.last_login.Name = "last_login";
-            this.last_login.ReadOnly = true;
-            this.last_login.Width = 150;
             // 
             // set_admin_btn
             // 
@@ -203,6 +150,61 @@
             this.msg_to_admin.Size = new System.Drawing.Size(743, 43);
             this.msg_to_admin.TabIndex = 7;
             this.msg_to_admin.Text = "This tab is available only for the administrator!\r\n";
+            this.msg_to_admin.Visible = false;
+            // 
+            // Id_col
+            // 
+            this.Id_col.Frozen = true;
+            this.Id_col.HeaderText = "ID";
+            this.Id_col.Name = "Id_col";
+            this.Id_col.ReadOnly = true;
+            this.Id_col.Visible = false;
+            this.Id_col.Width = 50;
+            // 
+            // name_col
+            // 
+            this.name_col.Frozen = true;
+            this.name_col.HeaderText = "Name";
+            this.name_col.Name = "name_col";
+            this.name_col.ReadOnly = true;
+            // 
+            // nick_col
+            // 
+            this.nick_col.Frozen = true;
+            this.nick_col.HeaderText = "Nickname";
+            this.nick_col.Name = "nick_col";
+            this.nick_col.ReadOnly = true;
+            // 
+            // email_col
+            // 
+            this.email_col.Frozen = true;
+            this.email_col.HeaderText = "Email";
+            this.email_col.Name = "email_col";
+            this.email_col.ReadOnly = true;
+            this.email_col.Width = 200;
+            // 
+            // wallet_col
+            // 
+            this.wallet_col.Frozen = true;
+            this.wallet_col.HeaderText = "Wallet";
+            this.wallet_col.Name = "wallet_col";
+            this.wallet_col.ReadOnly = true;
+            // 
+            // rank_id
+            // 
+            this.rank_id.Frozen = true;
+            this.rank_id.HeaderText = "Rank";
+            this.rank_id.Name = "rank_id";
+            this.rank_id.ReadOnly = true;
+            this.rank_id.Width = 70;
+            // 
+            // last_login
+            // 
+            this.last_login.Frozen = true;
+            this.last_login.HeaderText = "Last Login";
+            this.last_login.Name = "last_login";
+            this.last_login.ReadOnly = true;
+            this.last_login.Width = 150;
             // 
             // Users
             // 
@@ -233,6 +235,7 @@
         private System.Windows.Forms.Button set_user_btn;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button add_user_btn;
+        private System.Windows.Forms.Label msg_to_admin;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id_col;
         private System.Windows.Forms.DataGridViewTextBoxColumn name_col;
         private System.Windows.Forms.DataGridViewTextBoxColumn nick_col;
@@ -240,6 +243,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn wallet_col;
         private System.Windows.Forms.DataGridViewTextBoxColumn rank_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn last_login;
-        private System.Windows.Forms.Label msg_to_admin;
     }
 }

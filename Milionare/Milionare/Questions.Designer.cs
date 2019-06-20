@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.questions_datagrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.label1 = new System.Windows.Forms.Label();
             this.Id_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,6 +38,7 @@
             this.email_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.wallet_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rank_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.del_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.questions_datagrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,19 +46,19 @@
             // 
             this.questions_datagrid.AllowUserToAddRows = false;
             this.questions_datagrid.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.questions_datagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.questions_datagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.questions_datagrid.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.questions_datagrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.questions_datagrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.DarkBlue;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.questions_datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.questions_datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.questions_datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.questions_datagrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id_col,
@@ -96,6 +97,7 @@
             this.Id_col.HeaderText = "ID";
             this.Id_col.Name = "Id_col";
             this.Id_col.ReadOnly = true;
+            this.Id_col.Visible = false;
             this.Id_col.Width = 50;
             // 
             // name_col
@@ -137,11 +139,24 @@
             this.rank_id.ReadOnly = true;
             this.rank_id.Width = 40;
             // 
+            // del_btn
+            // 
+            this.del_btn.BackColor = System.Drawing.Color.Firebrick;
+            this.del_btn.ForeColor = System.Drawing.SystemColors.Control;
+            this.del_btn.Location = new System.Drawing.Point(557, 435);
+            this.del_btn.Name = "del_btn";
+            this.del_btn.Size = new System.Drawing.Size(144, 24);
+            this.del_btn.TabIndex = 5;
+            this.del_btn.Text = "Delete Qestion";
+            this.del_btn.UseVisualStyleBackColor = false;
+            this.del_btn.Click += new System.EventHandler(this.del_btn_Click);
+            // 
             // Questions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.Controls.Add(this.del_btn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.questions_datagrid);
             this.Name = "Questions";
@@ -163,5 +178,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn email_col;
         private System.Windows.Forms.DataGridViewTextBoxColumn wallet_col;
         private System.Windows.Forms.DataGridViewTextBoxColumn rank_id;
+        private System.Windows.Forms.Button del_btn;
     }
 }

@@ -196,18 +196,18 @@ namespace Milionare
 
         private void re_pass_txt_Leave(object sender, EventArgs e)
         {
-            Global.apply_placeholder("Retype Password", sender);
-            if (re_pass_txt.Text == password_txt.Text && re_pass_txt.Text!="Password")
-            {
-                errorProvider1.Clear();
-                reg_btn.Enabled = true;
-            }
-            else
-            {
-                errorProvider1.SetError(this.re_pass_txt, "Password don't match");
-                reg_btn.Enabled = false;
-                return;
-            }
+            //Global.apply_placeholder("Retype Password", sender);
+            //if (re_pass_txt.Text == password_txt.Text && re_pass_txt.Text!="Password")
+            //{
+            //    errorProvider1.Clear();
+            //    reg_btn.Enabled = true;
+            //}
+            //else
+            //{
+            //    errorProvider1.SetError(this.re_pass_txt, "Password don't match");
+            //    reg_btn.Enabled = false;
+            //    return;
+            //}
         }
         Image img;
         Image img_Resize(Image image, int w, int h)
@@ -256,6 +256,38 @@ namespace Milionare
                 Global.mysql_err_msg(ex);
                 return false;
             }
+        }
+
+        private void re_pass_txt_MouseLeave(object sender, EventArgs e)
+        {
+            Global.apply_placeholder("Retype Password", sender);
+            if (re_pass_txt.Text == password_txt.Text && re_pass_txt.Text != "Password")
+            {
+                errorProvider1.Clear();
+                reg_btn.Enabled = true;
+            }
+            else
+            {
+                errorProvider1.SetError(this.re_pass_txt, "Password don't match");
+                reg_btn.Enabled = false;
+                return;
+            }
+        }
+
+        private void reg_btn_MouseHover(object sender, EventArgs e)
+        {
+            //Global.apply_placeholder("Retype Password", sender);
+            //if (re_pass_txt.Text == password_txt.Text && re_pass_txt.Text != "Password")
+            //{
+            //    errorProvider1.Clear();
+            //    reg_btn.Enabled = true;
+            //}
+            //else
+            //{
+            //    errorProvider1.SetError(this.re_pass_txt, "Password don't match");
+            //    reg_btn.Enabled = false;
+            //    return;
+            //}
         }
     }
 }

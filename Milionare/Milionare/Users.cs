@@ -23,6 +23,7 @@ namespace Milionare
                 set_admin_btn.Enabled = false;
                 users_datagrid.Visible = false;
                 users_datagrid.Enabled = false;
+                msg_to_admin.Visible = true;
             }
         }
         private void populate()

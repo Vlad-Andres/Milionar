@@ -29,7 +29,7 @@ namespace Milionare
             logs_datagrid.Refresh();
 
             //users_datagrid.Rows.Add(id, question, answer, author, topic, price);
-            string query = "SELECT u.Nickname , v.verdict, v.question_id , (SELECT Nickname FROM users WHERE Id = v.author_id) , v.executed_on ,t.topic, v.question_text, v.var_a, v.var_b, v.var_c, v.var_d, v.correct_ans FROM validation_logs v JOIN users u ON v.user_id= u.Id left JOIN topics t ON v.topic_id = t.Id;";
+            string query = "SELECT u.Nickname , v.verdict, v.question_id , (SELECT Nickname FROM users WHERE Id = v.user_id) , v.executed_on ,t.topic, v.question_text, v.var_a, v.var_b, v.var_c, v.var_d, v.correct_ans FROM validation_logs v JOIN users u ON v.user_id= u.Id left JOIN topics t ON v.topic_id = t.Id;";
 
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, con_string);
             adapter.Fill(table);
@@ -46,14 +46,14 @@ namespace Milionare
         {
             if (logs_datagrid.Rows[e.RowIndex].Cells[2].Value.ToString() != "")
             {
-                MessageBox.Show("first");
+                //MessageBox.Show("first");
                 question_log_form log = new question_log_form(Convert.ToInt32(logs_datagrid.Rows[e.RowIndex].Cells[2].Value), logs_datagrid.Rows[e.RowIndex].Cells[3].Value.ToString());
                 log.TopMost = true;
                 log.Show();
             }
             else
             {
-                MessageBox.Show("seccond");
+                //MessageBox.Show("seccond");
                 question_log_form log = new question_log_form(
                     logs_datagrid.Rows[e.RowIndex].Cells[6].Value.ToString(),
                     logs_datagrid.Rows[e.RowIndex].Cells[3].Value.ToString(),

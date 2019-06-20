@@ -219,6 +219,7 @@
             // avatar_pic
             // 
             this.avatar_pic.BackColor = System.Drawing.Color.Transparent;
+            this.avatar_pic.Image = global::Milionare.Properties.Resources.login_icon;
             this.avatar_pic.Location = new System.Drawing.Point(35, 11);
             this.avatar_pic.Name = "avatar_pic";
             this.avatar_pic.Size = new System.Drawing.Size(68, 57);

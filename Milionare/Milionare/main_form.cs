@@ -148,9 +148,17 @@ namespace Milionare
             try { 
             MySqlConnection connection = new MySqlConnection();
             DataTable table = new DataTable();
-               // MessageBox.Show(Global.topic.ToString());
-            string select_querry = "SELECT q.Id, q.question, q.var_a, q.var_b, q.var_c, q.var_d , q.correct_ans, q.price, u.avatar  FROM "+Global.schema+".questions q JOIN users u ON q.author = u.Id  WHERE topic_id = " + Global.topic+" ORDER BY rand()";
-            MySqlDataAdapter adapter = new MySqlDataAdapter(select_querry, con_string);
+                // MessageBox.Show(Global.topic.ToString());
+                string select_querry;
+            if (Global.topic == 5)
+                {
+                    select_querry = "SELECT q.Id, q.question, q.var_a, q.var_b, q.var_c, q.var_d , q.correct_ans, q.price, u.avatar  FROM " + Global.schema + ".questions q JOIN users u ON q.author = u.Id ORDER BY rand()";
+                }
+                else
+                {
+                    select_querry = "SELECT q.Id, q.question, q.var_a, q.var_b, q.var_c, q.var_d , q.correct_ans, q.price, u.avatar  FROM " + Global.schema + ".questions q JOIN users u ON q.author = u.Id  WHERE topic_id = " + Global.topic + " ORDER BY rand()";
+                }
+                MySqlDataAdapter adapter = new MySqlDataAdapter(select_querry, con_string);
             adapter.Fill(table);
             foreach (DataRow row in table.Rows)
             {
